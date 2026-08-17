@@ -1,0 +1,1 @@
+export { ReferentielsPage } from './ReferentielsPage';

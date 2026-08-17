@@ -1,0 +1,477 @@
+﻿=== PRÉVISUALISATION DÉTAILLÉE (AUCUNE ÉCRITURE SQL) ===
+Fichier : D:\InstantFLOW_C#\Instant_Flow\Correspondance_Organisationnelle_Budget_Web.xlsx
+
+## 1. Les 11 entités (code + libellé)
+  - AC | ADMINISTRATION CENTRALE
+  - DBD | DISTRIBUTION DE BANDUNDU
+  - DDK | DEPARTEMENT DE DISTRIBUTION DE KINSHASA
+  - DNE | DIRECTION REGIONALE NORD-EST
+  - DNK | DIRECTION REGIONALE DU NORD KIVU
+  - DOC | KASAI OCCIDENTAL
+  - DPE | EQUATEUR
+  - DRK | DIRECTION REGIONALE DU KONGO CENTRALE
+  - DRO | KASAI ORIENTAL
+  - DRS | DIRECTION REGIONALE SUD
+  - DSK | DIRECTION REGIONALE DU SUD KIVU
+
+## 2. Les 15 départements (sigle + libellé complet)
+  - CA | PRESIDENT DU CONSEIL D'ADMINISTRATION(PCA)
+  - DAM | DEPARTEMENT DES APPROVISIONNEMENTS ET MARCHES (DAM)
+  - DCG | DEPARTEMENT DU CONTRÔLE GENERAL (DCG)
+  - DDI | DEPARTEMENT DE DISTRIBUTION ( DDI)
+  - DDK | DEPARTEMENT DE DISTRIBUTION DE KINSHASA (DDK)
+  - DEC | DEPARTEMENT COMMERCIAL (DEC )
+  - DEP | DEPARTEMENT ETUDES, PLANIFICATION, NORMES ET STANDARDS (DEP)
+  - DEQ | DEPARTEMENT DE L' EQUIPEMENT ET ELECTRIFICATION RURALE (DEQ)
+  - DFI | DEPARTEMENT DES FINANCES (DFI)
+  - DG | DIRECTEUR GENERAL (DG)
+  - DOS | DEPART.  DE L' ORGANISATION ET DES SYSTEMES D' INFORMATIONS ( DOS)
+  - DPR | DEPARTEMENT DE PRODUCTION ( DPR)
+  - DRH | DEPARTEMENT DES RESSOURCES HUMAINES( DRH)
+  - DSG | DEPARTEMENT DU SECRETARIAT GENERAL (DSG)
+  - DTR | DEPARTEMENT DU TRANSPORT (DTR)
+
+## 3. Les 41 relations Entité → Département
+  - AC → CA
+  - AC → DAM
+  - AC → DCG
+  - AC → DDI
+  - AC → DEC
+  - AC → DEP
+  - AC → DEQ
+  - AC → DFI
+  - AC → DG
+  - AC → DOS
+  - AC → DPR
+  - AC → DRH
+  - AC → DSG
+  - AC → DTR
+  - DBD → DDI
+  - DDK → DDK
+  - DDK → DEC
+  - DNE → DDI
+  - DNE → DEC
+  - DNE → DPR
+  - DNK → DDI
+  - DNK → DEC
+  - DNK → DPR
+  - DNK → DTR
+  - DOC → DDI
+  - DOC → DTR
+  - DPE → DDI
+  - DPE → DPR
+  - DRK → DDI
+  - DRK → DEC
+  - DRK → DPR
+  - DRK → DTR
+  - DRO → DDI
+  - DRS → DDI
+  - DRS → DEC
+  - DRS → DPR
+  - DRS → DTR
+  - DSK → DDI
+  - DSK → DEC
+  - DSK → DPR
+  - DSK → DTR
+
+## 4. Structures par TypeStructure
+  - ENTITE: 11
+  - DEPARTEMENT: 41
+  - DIRECTION: 47
+  - DIVISION: 57
+  - SERVICE: 28
+  - SECTION: 6
+  - AUTRE: 62
+
+## 5 & 6. Exemples d'arborescence représentatifs
+
+### 6a. Entité contenant plusieurs départements : AC (14 départements)
+  AC → CA
+  AC → DAM
+  AC → DCG
+  AC → DDI
+  AC → DEC
+  AC → DEP
+  AC → DEQ
+  AC → DFI
+  AC → DG
+  AC → DOS
+  AC → DPR
+  AC → DRH
+  AC → DSG
+  AC → DTR
+
+  [Arbre UB A00000]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: CA — PRESIDENT DU CONSEIL D'ADMINISTRATION(PCA)
+        ↓ AUTRE: 1 — PCA, Assistance et secrétariat
+           ↓ UB: A00000 — PRESIDENT DU CONSEIL D'ADMINISTRATION(PCA) (Dept=CA)
+
+  [Arbre UB A00100]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DG — DIRECTEUR GENERAL (DG)
+        ↓ AUTRE: 2 — DG, Assistance, SOD,  Secrétariat
+           ↓ UB: A00100 — DIRECTEUR GENERAL (DG) (Dept=DG)
+
+### 6b / 9. DDI rattaché à plusieurs entités
+  DDI → AC : OK
+  DDI → DBD : OK
+  DDI → DRK : OK
+  DDI → DPE : OK
+  DDI → DOC : OK
+  DDI → DRO : OK
+  DDI → DRS : OK
+  DDI → DNK : OK
+  DDI → DNE : OK
+  DDI → DSK : OK
+  Total relations DDI : 10
+  - AC → DDI
+  - DBD → DDI
+  - DNE → DDI
+  - DNK → DDI
+  - DOC → DDI
+  - DPE → DDI
+  - DRK → DDI
+  - DRO → DDI
+  - DRS → DDI
+  - DSK → DDI
+
+  [Arbre UB D00000]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DDI — DEPARTEMENT DE DISTRIBUTION ( DDI)
+        ↓ UB: D00000 — DEPARTEMENT DE DISTRIBUTION ( DDI) (Dept=DDI)
+
+  [Arbre UB D00001]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DDI — DEPARTEMENT DE DISTRIBUTION ( DDI)
+        ↓ DIVISION: 55 — Administration et Finances
+           ↓ UB: D00001 — DIVISION ADMINISTRATIVE ET FINANCIÈRE (Dept=DDI)
+
+  [Arbre UB D00002]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DDI — DEPARTEMENT DE DISTRIBUTION ( DDI)
+        ↓ DIVISION: 56 — Chef de division, centralisation; statistiques commerciales
+           ↓ UB: D00002 — DIVISION COORDINATION COMMERCIALE DES PROVINCES (Dept=DDI)
+
+### 6c / 10. UB apparaissant plusieurs fois dans le fichier source
+  Codes UB répétés dans 07_ARBRE_SOURCE : 122
+  Exemple CodeUB=C06009 — 9 lignes source
+    L176: DRS/DTR | DIVISION | - Division Station de conversion de Kolwezi | TypeLigne=UB_PRINCIPALE
+    L177: DRS/DTR | AUTRE | * Exploitation Courant  Continu Sud | TypeLigne=ELEMENT_RATTACHE_A_UB
+    L178: DRS/DTR | AUTRE | * Station de conversion de Kolwezi | TypeLigne=ELEMENT_RATTACHE_A_UB
+    L179: DRS/DTR | AUTRE | * Poste de dispersion de Kolwezi | TypeLigne=ELEMENT_RATTACHE_A_UB
+    L180: DRS/DTR | AUTRE | * Courant Continu secteur de Kamina | TypeLigne=ELEMENT_RATTACHE_A_UB
+    L181: DRS/DTR | AUTRE | * Maintenance électrique | TypeLigne=ELEMENT_RATTACHE_A_UB
+    L182: DRS/DTR | AUTRE | * Maintenance valves, contrôle, protections, …. | TypeLigne=ELEMENT_RATTACHE_A_UB
+    L183: DRS/DTR | AUTRE | * Maintenance mécanique | TypeLigne=ELEMENT_RATTACHE_A_UB
+  → UB unique construite : CodeUB=C06009 | Dept=DTR | Structure=ENTITE|DRS>DEPARTEMENT|DTR>SERVICE|50 | LignesSource=9
+
+  [Arbre UB C06009]
+  ENTITE: DRS — DIRECTION REGIONALE SUD
+     ↓ DEPARTEMENT: DTR — DEPARTEMENT DU TRANSPORT (DTR)
+        ↓ SERVICE: 50 — * Service  Admnistratif
+           ↓ UB: C06009 — * Service  Admnistratif (Dept=DTR)
+  Doublons CodeUB dans le graphe d'import : 0 (attendu: 0)
+  UB uniques construites : 556
+  Distinct CodeUB dans 07_ARBRE_SOURCE : 556
+  Total lignes 07_ARBRE_SOURCE avec CodeUB : 977
+
+### 6d. UB avec plusieurs éléments organisationnels (feuille 05)
+  UB avec >1 élément rattaché : 108
+  Exemple CodeUB=C06009 — 8 éléments
+    L177: DRS/DTR | AUTRE | Div=50 | Contenu=
+    L178: DRS/DTR | AUTRE | Div=50 | Contenu=
+    L179: DRS/DTR | AUTRE | Div=50 | Contenu=
+    L180: DRS/DTR | AUTRE | Div=50 | Contenu=
+    L181: DRS/DTR | AUTRE | Div=50 | Contenu=
+    L182: DRS/DTR | AUTRE | Div=50 | Contenu=
+    L183: DRS/DTR | AUTRE | Div=50 | Contenu=
+    L184: DRS/DTR | SERVICE | Div=50 | Contenu=
+
+  [Arbre UB C06009]
+  ENTITE: DRS — DIRECTION REGIONALE SUD
+     ↓ DEPARTEMENT: DTR — DEPARTEMENT DU TRANSPORT (DTR)
+        ↓ SERVICE: 50 — * Service  Admnistratif
+           ↓ UB: C06009 — * Service  Admnistratif (Dept=DTR)
+
+### 6e. Exemple de ligne sans Code_UB
+
+  [Structure ENTITE|DDK>DEPARTEMENT|DEC>DIVISION|GCC]   (sans UB)
+  ENTITE: DDK — DEPARTEMENT DE DISTRIBUTION DE KINSHASA
+     ↓ DEPARTEMENT: DEC — DEPARTEMENT COMMERCIAL (DEC )
+        ↓ DIVISION: GCC — DIVISION GESTION COMMERCIALE CENTRE (GCC)
+
+  [Structure ENTITE|DDK>DEPARTEMENT|DEC>DIVISION|GCE]   (sans UB)
+  ENTITE: DDK — DEPARTEMENT DE DISTRIBUTION DE KINSHASA
+     ↓ DEPARTEMENT: DEC — DEPARTEMENT COMMERCIAL (DEC )
+        ↓ DIVISION: GCE — DIVISION GESTION COMMERCIALE KINSHASA EST (GCE)
+
+  [Structure ENTITE|DDK>DEPARTEMENT|DEC>DIVISION|GCN]   (sans UB)
+  ENTITE: DDK — DEPARTEMENT DE DISTRIBUTION DE KINSHASA
+     ↓ DEPARTEMENT: DEC — DEPARTEMENT COMMERCIAL (DEC )
+        ↓ DIVISION: GCN — DIVISION GESTION COMMERCIALE KINSHASA NORD  (GCN)
+
+### Arbres complémentaires (échantillons diversifiés)
+
+  [Arbre UB A00000]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: CA — PRESIDENT DU CONSEIL D'ADMINISTRATION(PCA)
+        ↓ AUTRE: 1 — PCA, Assistance et secrétariat
+           ↓ UB: A00000 — PRESIDENT DU CONSEIL D'ADMINISTRATION(PCA) (Dept=CA)
+
+  [Arbre UB A00100]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DG — DIRECTEUR GENERAL (DG)
+        ↓ AUTRE: 2 — DG, Assistance, SOD,  Secrétariat
+           ↓ UB: A00100 — DIRECTEUR GENERAL (DG) (Dept=DG)
+
+  [Arbre UB A00300]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DEP — DEPARTEMENT ETUDES, PLANIFICATION, NORMES ET STANDARDS (DEP)
+        ↓ UB: A00300 — DEPARTEMENT ETUDES, PLANIFICATION, NORMES ET STANDARDS (DEP) (Dept=DEP)
+
+  [Arbre UB A00400]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DCG — DEPARTEMENT DU CONTRÔLE GENERAL (DCG)
+        ↓ UB: A00400 — DEPARTEMENT DU CONTRÔLE GENERAL (DCG) (Dept=DCG)
+
+  [Arbre UB A00301]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DEP — DEPARTEMENT ETUDES, PLANIFICATION, NORMES ET STANDARDS (DEP)
+        ↓ DIVISION: 5 — Chef de Division, Nomenclature et standardisation des Matériels, Méthodes Techniques, Normes et Réglementation
+           ↓ UB: A00301 — DIVISION DES NORMES ET STANDARDS (Dept=DEP)
+
+  [Arbre UB A00310]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DEP — DEPARTEMENT ETUDES, PLANIFICATION, NORMES ET STANDARDS (DEP)
+        ↓ DIVISION: 6 — Chef de Division, Analyse des Projets, Etudes de la Demande et Analyses Macro-économiques
+           ↓ UB: A00310 — - Division Planification de Développement (Dept=DEP)
+
+  [Arbre UB A00420]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DCG — DEPARTEMENT DU CONTRÔLE GENERAL (DCG)
+        ↓ DIRECTION: 10 — DIRECTION DE L' AUDIT TECHNIQUE
+           ↓ UB: A00420 — DIRECTION DE L' AUDIT TECHNIQUE (Dept=DCG)
+
+  [Arbre UB A00430]
+  ENTITE: AC — ADMINISTRATION CENTRALE
+     ↓ DEPARTEMENT: DCG — DEPARTEMENT DU CONTRÔLE GENERAL (DCG)
+        ↓ DIRECTION: 11 — DIRECTION DE L' AUDIT ADMINISTRATIF ET FINANCIER
+           ↓ UB: A00430 — DIRECTION DE L' AUDIT ADMINISTRATIF ET FINANCIER (Dept=DCG)
+
+  [Arbre UB B02004]
+  ENTITE: DRK — DIRECTION REGIONALE DU KONGO CENTRALE
+     ↓ DEPARTEMENT: DPR — DEPARTEMENT DE PRODUCTION ( DPR)
+        ↓ SERVICE: Arb — Chef de service, Génie civil, Sécurité et propreté barrages
+           ↓ UB: B02004 — Services Barrages et environnement (Dept=DPR)
+
+  [Arbre UB B02007]
+  ENTITE: DRK — DIRECTION REGIONALE DU KONGO CENTRALE
+     ↓ DEPARTEMENT: DPR — DEPARTEMENT DE PRODUCTION ( DPR)
+        ↓ SERVICE: 36 — Chef de service, Etudes et  Travaux Hydrologiques, Génie civil,  Génie Civil, Statistiques, Barragistes PR, HE
+           ↓ UB: B02007 — Service Technique (Dept=DPR)
+
+## 7. Les 12 lignes sans Code_UB
+  Feuille 06 count: 12
+  - L710
+      Entité            : DDK
+      Département       : DEC
+      Libellé           : DIVISION GESTION COMMERCIALE CENTRE (GCC)
+      TypeStructure     : DIVISION
+      Parent retenu     : ENTITE|DDK>DEPARTEMENT|DEC
+      CleMetier         : ENTITE|DDK>DEPARTEMENT|DEC>DIVISION|GCC
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L754
+      Entité            : DDK
+      Département       : DEC
+      Libellé           : DIVISION GESTION COMMERCIALE KINSHASA EST (GCE)
+      TypeStructure     : DIVISION
+      Parent retenu     : ENTITE|DDK>DEPARTEMENT|DEC
+      CleMetier         : ENTITE|DDK>DEPARTEMENT|DEC>DIVISION|GCE
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L813
+      Entité            : DDK
+      Département       : DEC
+      Libellé           : DIVISION GESTION COMMERCIALE KINSHASA NORD  (GCN)
+      TypeStructure     : DIVISION
+      Parent retenu     : ENTITE|DDK>DEPARTEMENT|DEC
+      CleMetier         : ENTITE|DDK>DEPARTEMENT|DEC>DIVISION|GCN
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L849
+      Entité            : DDK
+      Département       : DEC
+      Libellé           : DIVISION GESTION COMMERCIALE KINSHASA OUEST (GCO)
+      TypeStructure     : DIVISION
+      Parent retenu     : ENTITE|DDK>DEPARTEMENT|DEC
+      CleMetier         : ENTITE|DDK>DEPARTEMENT|DEC>DIVISION|GCO
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L893
+      Entité            : DDK
+      Département       : DEC
+      Libellé           : DIVISION GESTION COMMERCIALE KINSHASA SUD (GCS)
+      TypeStructure     : DIVISION
+      Parent retenu     : ENTITE|DDK>DEPARTEMENT|DEC
+      CleMetier         : ENTITE|DDK>DEPARTEMENT|DEC>DIVISION|GCS
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L202
+      Entité            : DOC
+      Département       : DTR
+      Libellé           : Transport Nord
+      TypeStructure     : AUTRE
+      Parent retenu     : ENTITE|DOC>DEPARTEMENT|DTR
+      CleMetier         : ENTITE|DOC>DEPARTEMENT|DTR>AUTRE|53
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L269
+      Entité            : DPE
+      Département       : DDI
+      Libellé           : CENTRES THERMIQUES DE GEMENA, LIBENGE ET GEMENA (PROV. DU SUD-UBANGI)
+      TypeStructure     : AUTRE
+      Parent retenu     : ENTITE|DPE>DEPARTEMENT|DDI
+      CleMetier         : ENTITE|DPE>DEPARTEMENT|DDI>AUTRE|63
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L275
+      Entité            : DPE
+      Département       : DDI
+      Libellé           : CENTRES THERMIQUES DE LISALA, BUMBA ET BOENDE ( PROV. DE LA MONGALA)
+      TypeStructure     : AUTRE
+      Parent retenu     : ENTITE|DPE>DEPARTEMENT|DDI
+      CleMetier         : ENTITE|DPE>DEPARTEMENT|DDI>AUTRE|65
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L68
+      Entité            : DRK
+      Département       : DPR
+      Libellé           : Production Thermique du Bas-Congo
+      TypeStructure     : AUTRE
+      Parent retenu     : ENTITE|DRK>DEPARTEMENT|DPR
+      CleMetier         : ENTITE|DRK>DEPARTEMENT|DPR>AUTRE|36
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L330
+      Entité            : DRS
+      Département       : DDI
+      Libellé           : Centres isolés
+      TypeStructure     : AUTRE
+      Parent retenu     : ENTITE|DRS>DEPARTEMENT|DDI
+      CleMetier         : ENTITE|DRS>DEPARTEMENT|DDI>AUTRE|68
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L110
+      Entité            : DSK
+      Département       : DPR
+      Libellé           : Production Thermique du Maniema
+      TypeStructure     : AUTRE
+      Parent retenu     : ENTITE|DSK>DEPARTEMENT|DPR
+      CleMetier         : ENTITE|DSK>DEPARTEMENT|DPR>AUTRE|38
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+  - L186
+      Entité            : DSK
+      Département       : DTR
+      Libellé           : TRANSPORT DU SUD KIVU
+      TypeStructure     : AUTRE
+      Parent retenu     : ENTITE|DSK>DEPARTEMENT|DTR
+      CleMetier         : ENTITE|DSK>DEPARTEMENT|DTR>AUTRE|51
+      Raison sans UB    : présente en feuille 06 / TypeLigne STRUCTURE_SANS_CODE_UB — structure organisationnelle conservée sans rattachement UB.
+
+## 8. Unités budgétaires (556)
+  Count UB : 556
+  Distinct CodeUB : 556
+  Doublons CodeUB : 0 (attendu: 0)
+  --- 20 exemples ---
+  - CodeUB=A00000 | Libellé=PRESIDENT DU CONSEIL D'ADMINISTRATION(PCA)
+      Département=CA
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|CA>AUTRE|1
+      LignesSource=1
+  - CodeUB=A00100 | Libellé=DIRECTEUR GENERAL (DG)
+      Département=DG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DG>AUTRE|2
+      LignesSource=1
+  - CodeUB=A00200 | Libellé=DIRECTEUR GENERAL ADJOINT( DGA)
+      Département=DG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DG>AUTRE|3
+      LignesSource=1
+  - CodeUB=A00300 | Libellé=DEPARTEMENT ETUDES, PLANIFICATION, NORMES ET STANDARDS (DEP)
+      Département=DEP
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DEP
+      LignesSource=1
+  - CodeUB=A00301 | Libellé=DIVISION DES NORMES ET STANDARDS
+      Département=DEP
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DEP>DIVISION|5
+      LignesSource=1
+  - CodeUB=A00310 | Libellé=- Division Planification de Développement
+      Département=DEP
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DEP>DIVISION|6
+      LignesSource=3
+  - CodeUB=A00320 | Libellé=- Division Topographie
+      Département=DEP
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DEP>DIVISION|7
+      LignesSource=6
+  - CodeUB=A00400 | Libellé=DEPARTEMENT DU CONTRÔLE GENERAL (DCG)
+      Département=DCG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DCG
+      LignesSource=1
+  - CodeUB=A00410 | Libellé=- Division Etudes prospectives et Analyse de Gestion
+      Département=DCG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DCG>DIVISION|9
+      LignesSource=3
+  - CodeUB=A00420 | Libellé=DIRECTION DE L' AUDIT TECHNIQUE
+      Département=DCG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DCG>DIRECTION|10
+      LignesSource=1
+  - CodeUB=A00430 | Libellé=DIRECTION DE L' AUDIT ADMINISTRATIF ET FINANCIER
+      Département=DCG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DCG>DIRECTION|11
+      LignesSource=1
+  - CodeUB=A00440 | Libellé=DIRECTION DE L' AUDIT COMMERCIAL
+      Département=DCG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DCG>DIRECTION|12
+      LignesSource=1
+  - CodeUB=A00450 | Libellé=DIRECTION DE L' AUDIT INFORMATIQUE
+      Département=DCG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DCG>DIRECTION|13
+      LignesSource=1
+  - CodeUB=A00500 | Libellé=DEPART.  DE L' ORGANISATION ET DES SYSTEMES D' INFORMATIONS ( DOS)
+      Département=DOS
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DOS>AUTRE|14
+      LignesSource=1
+  - CodeUB=A00510 | Libellé=- Division Organisation du travail
+      Département=DOS
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DOS>DIVISION|15
+      LignesSource=3
+  - CodeUB=A00520 | Libellé=- Division Réseaux et Télécommunications
+      Département=DOS
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DOS>DIVISION|16
+      LignesSource=5
+  - CodeUB=A00600 | Libellé=DEPARTEMENT DU SECRETARIAT GENERAL (DSG)
+      Département=DSG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DSG
+      LignesSource=1
+  - CodeUB=A00610 | Libellé=- Division Etudes et Questions juridiques
+      Département=DSG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DSG>DIVISION|18
+      LignesSource=3
+  - CodeUB=A00620 | Libellé=Division Sécurité et Prévention
+      Département=DCG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DCG>DIVISION|19
+      LignesSource=4
+  - CodeUB=A00630 | Libellé=Division Inspection de la Garde Industrielle
+      Département=DCG
+      FK_StructureOrganisationnelle (clé logique)=ENTITE|AC>DEPARTEMENT|DCG>DIVISION|20
+      LignesSource=6
+
+## 11. Rattachement parent des structures
+  Structures nécessitant un parent : 241
+  Parents manquants / invalides     : 0
+  Entités racines (sans parent) : 11
+
+## 12. Résumé final
+  Entités                : 11
+  Départements           : 15
+  Relations              : 41
+  Structures             : 252
+  UB                     : 556
+  Lignes sans CodeUB     : 12
+  Anomalies critiques    : 0
+  Anomalies avertissement: 0
+  PeutImporter           : True
+
+Aucune anomalie détectée.
+
+=== FIN PRÉVISUALISATION — AUCUNE ÉCRITURE SQL EFFECTUÉE ===

@@ -1,0 +1,60 @@
+## Build
+bin/
+obj/
+out/
+dist/
+build/
+
+## .NET
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+[Dd]ebug/
+[Rr]elease/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Node / Frontend
+node_modules/
+frontend/budget-web/dist/
+*.local
+
+## IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+## Secrets & environment
+.env
+.env.*
+!.env.example
+appsettings.*.local.json
+**/secrets.json
+
+## OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+## Logs
+*.log
+logs/
+
+## Test results
+TestResults/
+coverage/
+*.trx
+*.coverage
+*.coveragexml
+
+## EF Core migrations (non utilisées pour l'instant)
+**/Migrations/
+
+## Solution .NET SDK 10+ (BudgetWeb.sln est la référence)
+*.slnx
