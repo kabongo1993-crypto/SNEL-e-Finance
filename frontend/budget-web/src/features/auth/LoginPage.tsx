@@ -173,7 +173,7 @@ export function LoginPage() {
       const axiosErr = err as { response?: { status?: number; data?: { message?: string } }; code?: string; message?: string };
       if (!axiosErr.response) {
         setError(
-          "Impossible de joindre l'API (http://localhost:5257). Vérifiez que BudgetWeb.API est démarrée, puis réessayez.",
+          "Impossible de joindre l'API. Vérifiez que le serveur est accessible, puis réessayez.",
         );
       } else {
         setError(

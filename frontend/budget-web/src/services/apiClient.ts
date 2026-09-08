@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AUTH_TOKEN_KEY, AUTH_USER_KEY, clearStoredAuthKeys } from './authStorage';
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:5257';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? '';
 
 export const apiClient = axios.create({
   baseURL: apiBaseUrl,
