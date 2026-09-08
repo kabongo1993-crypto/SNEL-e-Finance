@@ -37,6 +37,50 @@ public class RedirectUriPolicyTests
             ["https://app.snel.cd/oauth/callback"]));
 }
 
+public class OAuthResourceTests
+{
+    [Fact]
+    public void AccepteResourceCanoniqueEtOrigine()
+    {
+        const string pub = "https://mcp-snel.christresfort.app";
+        Assert.True(OAuthResource.IsAllowed(pub + "/mcp", pub));
+        Assert.True(OAuthResource.IsAllowed(pub, pub));
+        Assert.False(OAuthResource.IsAllowed("https://evil.example/mcp", pub));
+    }
+
+    [Fact]
+    public void NormalizeScope_OfflineAccessSansPouvoirMetier()
+    {
+        Assert.Equal("budgetweb.read", OAuthResource.NormalizeScope(null));
+        Assert.Equal("budgetweb.read", OAuthResource.NormalizeScope("budgetweb.read"));
+        Assert.Equal("budgetweb.read offline_access", OAuthResource.NormalizeScope("offline_access budgetweb.read"));
+        Assert.False(OAuthResource.WantsOfflineAccess("budgetweb.read"));
+        Assert.True(OAuthResource.WantsOfflineAccess("budgetweb.read offline_access"));
+    }
+}
+
+public class OAuthAuthorizationStoreTests
+{
+    [Fact]
+    public void Refresh_HasheEtUsageUnique()
+    {
+        var store = new OAuthAuthorizationStore();
+        var plaintext = store.IssueRefresh(new RefreshTokenRecord
+        {
+            TokenHash = string.Empty,
+            ClientId = "c1",
+            AccessToken = "jwt",
+            JwtExpiresAtUtc = DateTime.UtcNow.AddHours(1),
+            Resource = "http://localhost/mcp",
+            Scope = "budgetweb.read offline_access"
+        });
+        Assert.DoesNotContain('.', plaintext);
+        var first = store.ConsumeRefresh(plaintext);
+        Assert.NotNull(first);
+        Assert.Null(store.ConsumeRefresh(plaintext));
+    }
+}
+
 public class PkceTests
 {
     [Fact]

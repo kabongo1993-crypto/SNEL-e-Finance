@@ -14,18 +14,18 @@ BudgetWeb.API  → permissions, périmètre, règles métier existantes
 
 ## Instance unique (v1)
 
-- **Une seule instance MCP.** Pas de load balancing multi-instance : clients OAuth, tickets et codes d’autorisation sont **en mémoire**.
-- Un redémarrage MCP **perd** les sessions OAuth temporaires (DCR, codes). ChatGPT doit refaire OAuth.
-- **Pas de refresh token.** Après expiration du JWT Budget Web, ChatGPT doit refaire OAuth.
-- Le JWT n’est conservé en mémoire que le temps d’échanger le code (`authorization_code`, TTL 2 minutes), jamais écrit dans un fichier ni dans les logs.
+- **Une seule instance MCP.** Pas de load balancing multi-instance : clients OAuth, tickets, codes et refresh tokens sont **en mémoire**.
+- Un redémarrage MCP **perd** les sessions OAuth temporaires (DCR, codes, refresh). ChatGPT doit refaire OAuth.
+- **Refresh token opaque** (pas le JWT Budget Web). Émis seulement si le client demande `offline_access`. L’access token reste le JWT Budget Web.
+- Le JWT n’est conservé en mémoire que le temps d’échanger le code (`authorization_code`, TTL 2 minutes) puis, si `offline_access`, associé au refresh token hashé. Jamais écrit dans un fichier ni dans les logs.
 
 ## Authentification
 
-1. ChatGPT découvre `/.well-known/oauth-protected-resource` puis `/.well-known/oauth-authorization-server`.
-2. Enregistrement client : **DCR uniquement** (`POST /oauth/register`). Le serveur **n’annonce pas** CIMD et **n’implémente pas** OpenID Connect (`/.well-known/openid-configuration` n’existe pas).
-3. Login Budget Web sur `/oauth/authorize` → `POST /api/v1/auth/login`.
-4. Le jeton renvoyé à ChatGPT **est** le JWT Budget Web (`uid` = `IdUtilisateur`).
-5. `client_id` obligatoire à `/oauth/token`, cohérent avec le client DCR. PKCE S256 obligatoire. Code à usage unique.
+1. ChatGPT découvre `/.well-known/oauth-protected-resource` (et `/mcp/.well-known/oauth-protected-resource`) puis `/.well-known/oauth-authorization-server`.
+2. Un `GET`/`POST` `/mcp` sans Bearer répond **401** avec `WWW-Authenticate: Bearer resource_metadata="…"`.
+3. Enregistrement client : **DCR uniquement** (`POST /oauth/register`). Le serveur **n’annonce pas** CIMD et **n’implémente pas** OpenID Connect (`/.well-known/openid-configuration` n’existe pas).
+4. Login Budget Web sur `/oauth/authorize` → `POST /api/v1/auth/login`.
+5. Le jeton d’accès renvoyé à ChatGPT **est** le JWT Budget Web (`uid` = `IdUtilisateur`). Un refresh token opaque est émis si `offline_access` est demandé. `client_id` obligatoire à `/oauth/token`. PKCE S256 obligatoire. Code à usage unique.
 6. Redirect URI : allowlist ChatGPT. Loopback **uniquement en Development**.
 
 ## Outils (lecture seule)
@@ -39,13 +39,13 @@ Pas d’`execute_sql`. Pagination `take` max 50.
 | Méthode | Chemin | Auth |
 |---|---|---|
 | GET | `/health` | anonyme |
-| GET | `/.well-known/oauth-authorization-server` (+ `/mcp`) | anonyme |
-| GET | `/.well-known/oauth-protected-resource` (+ `/mcp`) | anonyme |
+| GET | `/.well-known/oauth-authorization-server` (+ `/mcp` et `/mcp/.well-known/…`) | anonyme |
+| GET | `/.well-known/oauth-protected-resource` (+ `/mcp` et `/mcp/.well-known/…`) | anonyme |
 | POST | `/oauth/register` | anonyme (DCR) |
 | GET | `/oauth/authorize` | anonyme (login) |
 | POST | `/oauth/authorize/login` | anonyme |
-| POST | `/oauth/token` | anonyme (code + PKCE + `client_id`) |
-| POST | `/mcp` | **JWT Budget Web** |
+| POST | `/oauth/token` | anonyme (code + PKCE + `client_id`, ou `refresh_token`) |
+| GET/POST | `/mcp` | **JWT Budget Web** (sans Bearer : 401 + `WWW-Authenticate`) |
 
 ## Configuration
 

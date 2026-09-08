@@ -29,7 +29,7 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<OAuthClientStore>();
-builder.Services.AddSingleton<OAuthAuthorizationStore>();
+builder.Services.AddSingleton<IOAuthAuthorizationStore, OAuthAuthorizationStore>();
 builder.Services.AddTransient<BearerForwardingHandler>();
 
 builder.Services.AddHttpClient<BudgetWebApiClient>((sp, client) =>
@@ -73,8 +73,7 @@ builder.Services
                 var mcp = context.HttpContext.RequestServices.GetRequiredService<IOptions<McpOptions>>().Value;
                 var publicBase = OAuthEndpoints.PublicBase(context.HttpContext, mcp, env);
                 context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                context.Response.Headers.WWWAuthenticate =
-                    $"Bearer resource_metadata=\"{publicBase}/.well-known/oauth-protected-resource\", scope=\"budgetweb.read\"";
+                context.Response.Headers.WWWAuthenticate = OAuthEndpoints.WwwAuthenticate(publicBase);
                 return Task.CompletedTask;
             }
         };
@@ -96,7 +95,8 @@ builder.Services.AddCors(options =>
                 "https://chat.openai.com",
                 "http://localhost:5173")
             .AllowAnyHeader()
-            .AllowAnyMethod();
+            .AllowAnyMethod()
+            .WithExposedHeaders("WWW-Authenticate");
     });
 });
 
@@ -161,6 +161,23 @@ if (app.Environment.IsProduction())
 app.UseCors("ChatGpt");
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.Use(async (ctx, next) =>
+{
+    var isMcpDiscovery = ctx.Request.Path.Equals("/mcp", StringComparison.OrdinalIgnoreCase)
+        && (HttpMethods.IsGet(ctx.Request.Method) || HttpMethods.IsHead(ctx.Request.Method));
+    if (isMcpDiscovery && ctx.User.Identity?.IsAuthenticated != true)
+    {
+        var env = ctx.RequestServices.GetRequiredService<IHostEnvironment>();
+        var mcp = ctx.RequestServices.GetRequiredService<IOptions<McpOptions>>().Value;
+        var publicBase = OAuthEndpoints.PublicBase(ctx, mcp, env);
+        ctx.Response.StatusCode = StatusCodes.Status401Unauthorized;
+        ctx.Response.Headers.WWWAuthenticate = OAuthEndpoints.WwwAuthenticate(publicBase);
+        return;
+    }
+
+    await next();
+});
 
 app.MapGet("/health", () => Results.Json(new
 {

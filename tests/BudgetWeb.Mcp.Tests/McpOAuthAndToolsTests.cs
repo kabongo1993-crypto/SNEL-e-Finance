@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
@@ -9,8 +10,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using BudgetWeb.Mcp.Auth;
 using Xunit;
 
 namespace BudgetWeb.Mcp.Tests;
@@ -145,6 +148,7 @@ public sealed class FakeBudgetWebApi : IAsyncDisposable
 public sealed class McpFactory : WebApplicationFactory<Program>
 {
     private readonly string _apiBase;
+    public ConcurrentBag<string> Logs { get; } = new();
 
     public McpFactory(string apiBase) => _apiBase = apiBase;
 
@@ -156,6 +160,40 @@ public sealed class McpFactory : WebApplicationFactory<Program>
         builder.UseSetting("Jwt:Issuer", "BudgetWeb-SNEL");
         builder.UseSetting("Jwt:Audience", "BudgetWeb-Client");
         builder.UseSetting("Jwt:SecretKey", FakeBudgetWebApi.JwtSecret);
+        builder.ConfigureLogging(logging =>
+        {
+            logging.ClearProviders();
+            logging.AddProvider(new CapturingLoggerProvider(Logs));
+        });
+    }
+}
+
+internal sealed class CapturingLoggerProvider : ILoggerProvider
+{
+    private readonly ConcurrentBag<string> _logs;
+    public CapturingLoggerProvider(ConcurrentBag<string> logs) => _logs = logs;
+    public ILogger CreateLogger(string categoryName) => new CapturingLogger(_logs, categoryName);
+    public void Dispose() { }
+}
+
+internal sealed class CapturingLogger : ILogger
+{
+    private readonly ConcurrentBag<string> _logs;
+    private readonly string _category;
+    public CapturingLogger(ConcurrentBag<string> logs, string category)
+    {
+        _logs = logs;
+        _category = category;
+    }
+
+    public IDisposable? BeginScope<TState>(TState state) where TState : notnull => null;
+    public bool IsEnabled(LogLevel logLevel) => true;
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
+    {
+        var line = $"{_category}: {formatter(state, exception)}";
+        if (exception is not null)
+            line += " " + exception;
+        _logs.Add(line);
     }
 }
 
@@ -187,13 +225,27 @@ public class McpOAuthAndToolsTests : IAsyncLifetime
         health.EnsureSuccessStatusCode();
         var meta = await _client.GetAsync("/.well-known/oauth-authorization-server");
         meta.EnsureSuccessStatusCode();
+        Assert.Equal("application/json", meta.Content.Headers.ContentType?.MediaType);
         var pr = await _client.GetAsync("/.well-known/oauth-protected-resource");
         pr.EnsureSuccessStatusCode();
+        Assert.Equal("application/json", pr.Content.Headers.ContentType?.MediaType);
         var mcpPath = await _client.GetAsync("/.well-known/oauth-authorization-server/mcp");
         mcpPath.EnsureSuccessStatusCode();
+        var prMcp = await _client.GetAsync("/.well-known/oauth-protected-resource/mcp");
+        prMcp.EnsureSuccessStatusCode();
+        var asUnderMcp = await _client.GetAsync("/mcp/.well-known/oauth-authorization-server");
+        asUnderMcp.EnsureSuccessStatusCode();
+        var prUnderMcp = await _client.GetAsync("/mcp/.well-known/oauth-protected-resource");
+        prUnderMcp.EnsureSuccessStatusCode();
         var metaBody = await meta.Content.ReadAsStringAsync();
         Assert.DoesNotContain("client_id_metadata_document_supported", metaBody, StringComparison.Ordinal);
         Assert.DoesNotContain("openid", metaBody, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("offline_access", metaBody, StringComparison.Ordinal);
+        Assert.Contains("refresh_token", metaBody, StringComparison.Ordinal);
+        Assert.Contains("budgetweb.read", metaBody, StringComparison.Ordinal);
+        var prBody = await pr.Content.ReadAsStringAsync();
+        Assert.Contains("\"resource\":\"http://localhost/mcp\"", prBody.Replace(" ", ""), StringComparison.Ordinal);
+        Assert.Contains("offline_access", prBody, StringComparison.Ordinal);
         var oidc = await _client.GetAsync("/.well-known/openid-configuration");
         Assert.Equal(HttpStatusCode.NotFound, oidc.StatusCode);
     }
@@ -204,6 +256,204 @@ public class McpOAuthAndToolsTests : IAsyncLifetime
         var res = await _client!.PostAsync("/mcp", new StringContent("{}", Encoding.UTF8, "application/json"));
         Assert.Equal(HttpStatusCode.Unauthorized, res.StatusCode);
         Assert.Contains("resource_metadata", res.Headers.WwwAuthenticate.ToString(), StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("/.well-known/oauth-protected-resource", res.Headers.WwwAuthenticate.ToString(), StringComparison.Ordinal);
+
+        var get = await _client.GetAsync("/mcp");
+        Assert.Equal(HttpStatusCode.Unauthorized, get.StatusCode);
+        Assert.Contains("resource_metadata", get.Headers.WwwAuthenticate.ToString(), StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("budgetweb.read", get.Headers.WwwAuthenticate.ToString(), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task Register_AccepteClientPublicPkce()
+    {
+        var res = await _client!.PostAsync("/oauth/register", new StringContent(
+            """
+            {"client_name":"ChatGPT","redirect_uris":["http://127.0.0.1:9/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none"}
+            """, Encoding.UTF8, "application/json"));
+        Assert.Equal(HttpStatusCode.Created, res.StatusCode);
+        using var doc = JsonDocument.Parse(await res.Content.ReadAsStringAsync());
+        Assert.False(string.IsNullOrWhiteSpace(doc.RootElement.GetProperty("client_id").GetString()));
+        Assert.Equal("none", doc.RootElement.GetProperty("token_endpoint_auth_method").GetString());
+        Assert.Contains("offline_access", doc.RootElement.GetProperty("scope").GetString(), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task AuthorizationCode_UsageUniqueEtPkce()
+    {
+        var (verifier, challenge) = MakePkce();
+        var code = await TryLoginAsync("alice", "ok", verifier, challenge);
+        Assert.NotNull(code);
+
+        var first = await ExchangeCodeAsync(code!, verifier, _lastClientId);
+        first.EnsureSuccessStatusCode();
+        using var firstDoc = JsonDocument.Parse(await first.Content.ReadAsStringAsync());
+        Assert.False(firstDoc.RootElement.TryGetProperty("refresh_token", out _));
+
+        var reuse = await ExchangeCodeAsync(code!, verifier, _lastClientId);
+        Assert.Equal(HttpStatusCode.BadRequest, reuse.StatusCode);
+
+        var (verifier2, challenge2) = MakePkce();
+        var code2 = await TryLoginAsync("alice", "ok", verifier2, challenge2);
+        var badPkce = await ExchangeCodeAsync(code2!, verifier, _lastClientId);
+        Assert.Equal(HttpStatusCode.BadRequest, badPkce.StatusCode);
+        Assert.Contains("invalid_grant", await badPkce.Content.ReadAsStringAsync(), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task AuthorizationCode_Expire()
+    {
+        var (verifier, challenge) = MakePkce();
+        await TryLoginAsync("alice", "ok", verifier, challenge);
+        var store = _factory!.Services.GetRequiredService<IOAuthAuthorizationStore>();
+        var expiredCode = "expiredcode" + Guid.NewGuid().ToString("N");
+        store.StoreCode(new AuthorizationCodeRecord
+        {
+            Code = expiredCode,
+            ClientId = _lastClientId,
+            RedirectUri = "http://127.0.0.1:9/callback",
+            CodeChallenge = challenge,
+            AccessToken = FakeBudgetWebApi.CreateJwt(7, "alice", ["paiements.lire"], []),
+            ExpiresAtUtc = DateTime.UtcNow.AddHours(8),
+            Resource = "http://localhost/mcp",
+            Scope = "budgetweb.read",
+            CreatedAt = DateTimeOffset.UtcNow.AddMinutes(-5)
+        });
+        var res = await ExchangeCodeAsync(expiredCode, verifier, _lastClientId);
+        Assert.Equal(HttpStatusCode.BadRequest, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task RefreshToken_EmetEtTourne()
+    {
+        var (verifier, challenge) = MakePkce();
+        var code = await TryLoginAsync("alice", "ok", verifier, challenge, "budgetweb.read offline_access");
+        var tokenRes = await ExchangeCodeAsync(code!, verifier, _lastClientId);
+        tokenRes.EnsureSuccessStatusCode();
+        using var doc = JsonDocument.Parse(await tokenRes.Content.ReadAsStringAsync());
+        var access = doc.RootElement.GetProperty("access_token").GetString()!;
+        var refresh = doc.RootElement.GetProperty("refresh_token").GetString()!;
+        Assert.False(string.IsNullOrWhiteSpace(refresh));
+        Assert.DoesNotContain('.', refresh);
+
+        var mcp = await McpAsync(access, """{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"tests","version":"1"}}}""");
+        mcp.EnsureSuccessStatusCode();
+
+        var refreshed = await _client!.PostAsync("/oauth/token", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "refresh_token",
+            ["refresh_token"] = refresh,
+            ["client_id"] = _lastClientId
+        }));
+        refreshed.EnsureSuccessStatusCode();
+        using var doc2 = JsonDocument.Parse(await refreshed.Content.ReadAsStringAsync());
+        var access2 = doc2.RootElement.GetProperty("access_token").GetString();
+        var refresh2 = doc2.RootElement.GetProperty("refresh_token").GetString();
+        Assert.Equal(access, access2);
+        Assert.False(string.IsNullOrWhiteSpace(refresh2));
+        Assert.NotEqual(refresh, refresh2);
+
+        var reused = await _client.PostAsync("/oauth/token", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "refresh_token",
+            ["refresh_token"] = refresh,
+            ["client_id"] = _lastClientId
+        }));
+        Assert.Equal(HttpStatusCode.BadRequest, reused.StatusCode);
+    }
+
+    [Fact]
+    public async Task RefreshToken_ExpireOuMauvaisClient_Refuse()
+    {
+        var store = _factory!.Services.GetRequiredService<IOAuthAuthorizationStore>();
+        var jwt = FakeBudgetWebApi.CreateJwt(7, "alice", ["paiements.lire"], []);
+        var expired = store.IssueRefresh(new RefreshTokenRecord
+        {
+            TokenHash = string.Empty,
+            ClientId = "client-x",
+            AccessToken = jwt,
+            JwtExpiresAtUtc = DateTime.UtcNow.AddHours(8),
+            Resource = "http://localhost/mcp",
+            Scope = "budgetweb.read offline_access",
+            ExpiresAt = DateTimeOffset.UtcNow.AddMinutes(-1)
+        });
+        var res = await _client!.PostAsync("/oauth/token", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "refresh_token",
+            ["refresh_token"] = expired,
+            ["client_id"] = "client-x"
+        }));
+        Assert.Equal(HttpStatusCode.BadRequest, res.StatusCode);
+
+        var live = store.IssueRefresh(new RefreshTokenRecord
+        {
+            TokenHash = string.Empty,
+            ClientId = "client-x",
+            AccessToken = jwt,
+            JwtExpiresAtUtc = DateTime.UtcNow.AddHours(8),
+            Resource = "http://localhost/mcp",
+            Scope = "budgetweb.read offline_access"
+        });
+        var wrongClient = await _client.PostAsync("/oauth/token", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "refresh_token",
+            ["refresh_token"] = live,
+            ["client_id"] = "autre-client"
+        }));
+        Assert.Equal(HttpStatusCode.BadRequest, wrongClient.StatusCode);
+    }
+
+    [Fact]
+    public async Task Token_MauvaisRedirectOuResource_Refuse()
+    {
+        var (verifier, challenge) = MakePkce();
+        var code = await TryLoginAsync("alice", "ok", verifier, challenge);
+        var badRedirect = await _client!.PostAsync("/oauth/token", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "authorization_code",
+            ["code"] = code!,
+            ["redirect_uri"] = "http://127.0.0.1:9/other",
+            ["code_verifier"] = verifier,
+            ["client_id"] = _lastClientId
+        }));
+        Assert.Equal(HttpStatusCode.BadRequest, badRedirect.StatusCode);
+
+        var (verifier2, challenge2) = MakePkce();
+        var code2 = await TryLoginAsync("alice", "ok", verifier2, challenge2);
+        var badResource = await _client.PostAsync("/oauth/token", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "authorization_code",
+            ["code"] = code2!,
+            ["redirect_uri"] = "http://127.0.0.1:9/callback",
+            ["code_verifier"] = verifier2,
+            ["client_id"] = _lastClientId,
+            ["resource"] = "https://evil.example/mcp"
+        }));
+        Assert.Equal(HttpStatusCode.BadRequest, badResource.StatusCode);
+        Assert.Contains("invalid_target", await badResource.Content.ReadAsStringAsync(), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task Authorize_MauvaisResource_Refuse()
+    {
+        var (verifier, challenge) = MakePkce();
+        await TryLoginAsync("alice", "ok", verifier, challenge);
+        var authorize = await _client!.GetAsync(
+            $"/oauth/authorize?response_type=code&client_id={_lastClientId}&redirect_uri={Uri.EscapeDataString("http://127.0.0.1:9/callback")}&state=st&code_challenge={challenge}&code_challenge_method=S256&resource={Uri.EscapeDataString("https://evil.example/mcp")}");
+        Assert.Equal(HttpStatusCode.BadRequest, authorize.StatusCode);
+    }
+
+    [Fact]
+    public async Task OAuth_NeJournalisePasSecrets()
+    {
+        var (verifier, challenge) = MakePkce();
+        await CompleteOAuthAsync("alice", "ok", verifier, challenge);
+        var joined = string.Join('\n', _factory!.Logs);
+        Assert.DoesNotContain("eyJ", joined, StringComparison.Ordinal);
+        Assert.DoesNotContain("motDePasse", joined, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("password=", joined, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("Jwt:SecretKey", joined, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("refresh_token", joined, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]
@@ -349,16 +599,34 @@ public class McpOAuthAndToolsTests : IAsyncLifetime
 
     private string _lastClientId = string.Empty;
 
-    private async Task<string?> TryLoginAsync(string user, string password, string verifier, string challenge)
+    private async Task<HttpResponseMessage> ExchangeCodeAsync(string code, string verifier, string clientId)
+        => await _client!.PostAsync("/oauth/token", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "authorization_code",
+            ["code"] = code,
+            ["redirect_uri"] = "http://127.0.0.1:9/callback",
+            ["code_verifier"] = verifier,
+            ["client_id"] = clientId
+        }));
+
+    private async Task<string?> TryLoginAsync(
+        string user,
+        string password,
+        string verifier,
+        string challenge,
+        string? scope = null)
     {
         var reg = await _client!.PostAsync("/oauth/register", new StringContent(
-            """{"redirect_uris":["http://127.0.0.1:9/callback"]}""", Encoding.UTF8, "application/json"));
+            """{"redirect_uris":["http://127.0.0.1:9/callback"],"token_endpoint_auth_method":"none"}""", Encoding.UTF8, "application/json"));
         Assert.Equal(HttpStatusCode.Created, reg.StatusCode);
         using var regDoc = JsonDocument.Parse(await reg.Content.ReadAsStringAsync());
         _lastClientId = regDoc.RootElement.GetProperty("client_id").GetString()!;
 
-        var authorize = await _client.GetAsync(
-            $"/oauth/authorize?response_type=code&client_id={_lastClientId}&redirect_uri={Uri.EscapeDataString("http://127.0.0.1:9/callback")}&state=st&code_challenge={challenge}&code_challenge_method=S256&resource=http://localhost/mcp");
+        var authorizeUrl =
+            $"/oauth/authorize?response_type=code&client_id={_lastClientId}&redirect_uri={Uri.EscapeDataString("http://127.0.0.1:9/callback")}&state=st&code_challenge={challenge}&code_challenge_method=S256&resource=http://localhost/mcp";
+        if (!string.IsNullOrWhiteSpace(scope))
+            authorizeUrl += "&scope=" + Uri.EscapeDataString(scope);
+        var authorize = await _client.GetAsync(authorizeUrl);
         var html = await authorize.Content.ReadAsStringAsync();
         var ticket = Regex.Match(html, "name=\"ticket\" value=\"([^\"]+)\"").Groups[1].Value;
         if (string.IsNullOrEmpty(ticket))

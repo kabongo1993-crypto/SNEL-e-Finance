@@ -48,8 +48,19 @@ public class McpProductionHardeningTests : IAsyncLifetime
         meta.EnsureSuccessStatusCode();
         var body = await meta.Content.ReadAsStringAsync();
         Assert.Contains("https://mcp.test.example", body, StringComparison.Ordinal);
+        Assert.Contains("offline_access", body, StringComparison.Ordinal);
+        Assert.Contains("refresh_token", body, StringComparison.Ordinal);
         Assert.DoesNotContain("client_id_metadata_document_supported", body, StringComparison.Ordinal);
         Assert.DoesNotContain("\"http://", body, StringComparison.Ordinal);
+
+        var pr = await _client.GetAsync("/.well-known/oauth-protected-resource");
+        pr.EnsureSuccessStatusCode();
+        var prBody = await pr.Content.ReadAsStringAsync();
+        Assert.Contains("https://mcp.test.example/mcp", prBody, StringComparison.Ordinal);
+
+        var getMcp = await _client.GetAsync("/mcp");
+        Assert.Equal(HttpStatusCode.Unauthorized, getMcp.StatusCode);
+        Assert.Contains("https://mcp.test.example/.well-known/oauth-protected-resource", getMcp.Headers.WwwAuthenticate.ToString(), StringComparison.Ordinal);
     }
 
     [Fact]

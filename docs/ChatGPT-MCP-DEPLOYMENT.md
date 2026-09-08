@@ -1,6 +1,6 @@
 # Déploiement — Budget Web MCP (ChatGPT)
 
-MCP v1 = **instance unique**, lecture seule, identité Budget Web. Pas de Redis / SQL OAuth. Redémarrage = OAuth à refaire. Pas de refresh token : expiration JWT → nouvel OAuth ChatGPT.
+MCP v1 = **instance unique**, lecture seule, identité Budget Web. Pas de Redis / SQL OAuth. Redémarrage = OAuth à refaire. Refresh tokens opaques en mémoire (hashés) ; expiration JWT Budget Web → nouvel OAuth ChatGPT.
 
 Aucun secret dans Git.
 
@@ -23,8 +23,8 @@ Service Windows / systemd : `BudgetWeb.Mcp.dll`. Une **seule** instance. Écoute
 ```text
 ASPNETCORE_ENVIRONMENT=Production
 ASPNETCORE_URLS=http://127.0.0.1:5260
-Mcp__PublicBaseUrl=https://mcp.mon-domaine.com
-Mcp__ApiBaseUrl=https://api-budget.interne
+Mcp__PublicBaseUrl=https://mcp-snel.christresfort.app
+Mcp__ApiBaseUrl=http://127.0.0.1:5100
 Mcp__ApiTimeoutSeconds=30
 Jwt__SecretKey=<secret HMAC identique à BudgetWeb.API, jamais la clé DEV>
 Jwt__Issuer=BudgetWeb-SNEL
@@ -77,10 +77,13 @@ Attendu : `{"status":"ok",...}`
 
 ```powershell
 curl https://mcp.mon-domaine.com/.well-known/oauth-authorization-server
+curl https://mcp.mon-domaine.com/.well-known/oauth-authorization-server/mcp
 curl https://mcp.mon-domaine.com/.well-known/oauth-protected-resource
+curl https://mcp.mon-domaine.com/.well-known/oauth-protected-resource/mcp
+curl https://mcp.mon-domaine.com/mcp/.well-known/oauth-protected-resource
 ```
 
-`issuer` = `Mcp__PublicBaseUrl`. Pas de CIMD, pas d’OpenID (`/.well-known/openid-configuration` = 404).
+`issuer` = `Mcp__PublicBaseUrl`. `scopes_supported` inclut `budgetweb.read` et `offline_access`. Pas de CIMD, pas d’OpenID (`/.well-known/openid-configuration` = 404).
 
 ### 7. Vérifier `/mcp`
 

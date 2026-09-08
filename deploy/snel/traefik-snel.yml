@@ -1,0 +1,57 @@
+# Traefik v3 dynamic config — SNEL e-Finance ONLY.
+# Install on the server as: /data/coolify/proxy/dynamic/snel-e-finance.yml
+# Does not replace Coolify default config. Remove this file to roll back SNEL HTTPS.
+#
+# Before installing: confirm Coolify certResolver name (often letsencrypt)
+# and that coolify-proxy can reach host.docker.internal.
+#
+# Backends are host ports (Budget Web nginx :1107, MCP :5260).
+# host.docker.internal is provided by Coolify/Traefik extra_hosts / Docker host-gateway.
+
+http:
+  routers:
+    snel-finance-http:
+      rule: Host(`snel-finance.christresfort.app`)
+      entryPoints:
+        - http
+      middlewares:
+        - snel-https-redirect
+      service: snel-finance
+    snel-finance-https:
+      rule: Host(`snel-finance.christresfort.app`)
+      entryPoints:
+        - https
+      service: snel-finance
+      tls:
+        certResolver: letsencrypt
+    mcp-snel-http:
+      rule: Host(`mcp-snel.christresfort.app`)
+      entryPoints:
+        - http
+      middlewares:
+        - snel-https-redirect
+      service: mcp-snel
+    mcp-snel-https:
+      rule: Host(`mcp-snel.christresfort.app`)
+      entryPoints:
+        - https
+      service: mcp-snel
+      tls:
+        certResolver: letsencrypt
+
+  middlewares:
+    snel-https-redirect:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    snel-finance:
+      loadBalancer:
+        servers:
+          - url: http://host.docker.internal:1107
+    mcp-snel:
+      loadBalancer:
+        servers:
+          - url: http://host.docker.internal:5260
+        passHostHeader: true
