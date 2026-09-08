@@ -97,7 +97,50 @@ public sealed class FakeBudgetWebApi : IAsyncDisposable
         app.MapGet("/api/v1/demandes-paiement", (HttpContext ctx) =>
         {
             if (!IsBearer(ctx)) return Results.Unauthorized();
-            return Results.Json(new[] { new { idDemande = 1, reference = "DPM-1" } });
+            var idUb = ctx.Request.Query["idUB"].ToString();
+            if (idUb == "99")
+                return Results.Json(new { message = "Vous n'avez pas accès à cette unité budgétaire." }, statusCode: 401);
+            var statut = ctx.Request.Query["statut"].ToString();
+            if (string.Equals(statut, "VIDE", StringComparison.OrdinalIgnoreCase))
+                return Results.Json(Array.Empty<object>());
+
+            var rows = new List<object>();
+            for (var i = 1; i <= 60; i++)
+            {
+                rows.Add(new
+                {
+                    idDemandePaiement = i,
+                    reference = $"DPM-{i:0000}",
+                    dateEmission = $"2026-01-{(i % 28) + 1:D2}",
+                    dateCreation = DateTime.UtcNow.AddDays(-i).ToString("o"),
+                    objet = "Paiement " + new string('x', 200) + " " + i,
+                    montantBrut = 1000m + i,
+                    montantUsd = 1000m + i,
+                    devise = "USD",
+                    codeUB = "UB10",
+                    libelleUB = "Direction Test",
+                    statut = i == 1 ? "SOUMISE" : "BROUILLON",
+                    libelleDemandeur = "Demandeur " + i
+                });
+            }
+
+            return Results.Json(rows);
+        });
+
+        app.MapGet("/api/v1/demandes-paiement/{id:long}", (HttpContext ctx, long id) =>
+        {
+            if (!IsBearer(ctx)) return Results.Unauthorized();
+            if (id == 99)
+                return Results.Json(new { message = "Vous n'avez pas accès à cette demande de paiement." }, statusCode: 401);
+            return Results.Json(new
+            {
+                idDemandePaiement = id,
+                reference = $"DPM-{id:0000}",
+                beneficiaires = new[]
+                {
+                    new { nomComplet = "ACME SARL", estPrincipal = true, raisonSociale = "ACME SARL" }
+                }
+            });
         });
 
         app.MapPost("/api/v1/mcp/journal", () => Results.NoContent());
@@ -543,6 +586,8 @@ public class McpOAuthAndToolsTests : IAsyncLifetime
         var body = await list.Content.ReadAsStringAsync();
         Assert.Contains("get_budget_situation", body, StringComparison.Ordinal);
         Assert.Contains("search_demandes_paiement", body, StringComparison.Ordinal);
+        Assert.Contains("get_latest_demande_paiement", body, StringComparison.Ordinal);
+        Assert.Contains("get_demande_paiement", body, StringComparison.Ordinal);
         Assert.Contains("list_referentiels", body, StringComparison.Ordinal);
         Assert.DoesNotContain("execute_sql", body, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain("query_database", body, StringComparison.OrdinalIgnoreCase);
@@ -566,6 +611,142 @@ public class McpOAuthAndToolsTests : IAsyncLifetime
             || body.Contains("refus", StringComparison.OrdinalIgnoreCase),
             "Une UB hors périmètre ne doit pas renvoyer les totaux budgétaires.");
 
+    }
+
+    [Fact]
+    public async Task SearchDemandesPaiement_RetournePageCompacteSansTroncature()
+    {
+        var token = FakeBudgetWebApi.CreateJwt(7, "alice", ["paiements.lire"], []);
+        await InitializeMcpAsync(token);
+        var text = await CallToolTextAsync(token, "search_demandes_paiement", """{"take":5,"skip":0}""");
+        Assert.DoesNotContain("réponse tronquée", text, StringComparison.Ordinal);
+        using var doc = JsonDocument.Parse(text);
+        var pag = doc.RootElement.GetProperty("pagination");
+        Assert.Equal(60, pag.GetProperty("total").GetInt32());
+        Assert.Equal(5, pag.GetProperty("returned").GetInt32());
+        Assert.Equal("dateCreation DESC", pag.GetProperty("orderBy").GetString());
+        var items = doc.RootElement.GetProperty("items");
+        Assert.Equal(5, items.GetArrayLength());
+        Assert.Equal(1, items[0].GetProperty("id").GetInt64());
+        Assert.Equal("DPM-0001", items[0].GetProperty("reference").GetString());
+        Assert.True(text.Length < 8000);
+    }
+
+    [Fact]
+    public async Task SearchDemandesPaiement_PaginationPagesDistinctes()
+    {
+        var token = FakeBudgetWebApi.CreateJwt(7, "alice", ["paiements.lire"], []);
+        await InitializeMcpAsync(token);
+        var p1 = await CallToolTextAsync(token, "search_demandes_paiement", """{"take":5,"skip":0}""");
+        var p2 = await CallToolTextAsync(token, "search_demandes_paiement", """{"take":5,"skip":5}""");
+        var p3 = await CallToolTextAsync(token, "search_demandes_paiement", """{"take":5,"skip":10}""");
+        using var d1 = JsonDocument.Parse(p1);
+        using var d2 = JsonDocument.Parse(p2);
+        using var d3 = JsonDocument.Parse(p3);
+        var id1 = d1.RootElement.GetProperty("items")[0].GetProperty("id").GetInt64();
+        var id2 = d2.RootElement.GetProperty("items")[0].GetProperty("id").GetInt64();
+        var id3 = d3.RootElement.GetProperty("items")[0].GetProperty("id").GetInt64();
+        Assert.Equal(1, id1);
+        Assert.Equal(6, id2);
+        Assert.Equal(11, id3);
+        Assert.NotEqual(id1, id2);
+        Assert.NotEqual(id2, id3);
+    }
+
+    [Fact]
+    public async Task GetLatestDemandePaiement_RetourneLaPlusRecente()
+    {
+        var token = FakeBudgetWebApi.CreateJwt(7, "alice", ["paiements.lire"], []);
+        await InitializeMcpAsync(token);
+        var text = await CallToolTextAsync(token, "get_latest_demande_paiement", "{}");
+        using var doc = JsonDocument.Parse(text);
+        Assert.True(doc.RootElement.GetProperty("found").GetBoolean());
+        var dpm = doc.RootElement.GetProperty("demandePaiement");
+        Assert.Equal(1, dpm.GetProperty("id").GetInt64());
+        Assert.Equal("DPM-0001", dpm.GetProperty("reference").GetString());
+        Assert.Equal("SOUMISE", dpm.GetProperty("statut").GetString());
+        Assert.Equal("ACME SARL", dpm.GetProperty("beneficiaire").GetString());
+        Assert.False(string.IsNullOrWhiteSpace(dpm.GetProperty("dateEnregistrement").GetString()));
+        Assert.DoesNotContain("\"items\"", text, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task GetLatestDemandePaiement_AucunResultat_FoundFalse()
+    {
+        var token = FakeBudgetWebApi.CreateJwt(7, "alice", ["paiements.lire"], []);
+        await InitializeMcpAsync(token);
+        var text = await CallToolTextAsync(token, "get_latest_demande_paiement", """{"statut":"VIDE"}""");
+        using var doc = JsonDocument.Parse(text);
+        Assert.False(doc.RootElement.GetProperty("found").GetBoolean());
+        Assert.False(doc.RootElement.TryGetProperty("demandePaiement", out _));
+    }
+
+    [Fact]
+    public async Task SearchDemandesPaiement_UbHorsPerimetre_RefuseeParApi()
+    {
+        var token = FakeBudgetWebApi.CreateJwt(7, "alice", ["paiements.lire"], []);
+        await InitializeMcpAsync(token);
+        var text = await CallToolTextAsync(token, "search_demandes_paiement", """{"idUB":99}""");
+        Assert.DoesNotContain("DPM-", text, StringComparison.Ordinal);
+        Assert.True(
+            text.Contains("avez", StringComparison.OrdinalIgnoreCase)
+            || text.Contains("authentifi", StringComparison.OrdinalIgnoreCase)
+            || text.Contains("unité", StringComparison.OrdinalIgnoreCase),
+            "Une UB hors périmètre ne doit pas lister de DPM.");
+    }
+
+    [Fact]
+    public async Task GetLatestDemandePaiement_UbHorsPerimetre_RefuseeParApi()
+    {
+        var token = FakeBudgetWebApi.CreateJwt(7, "alice", ["paiements.lire"], []);
+        await InitializeMcpAsync(token);
+        var text = await CallToolTextAsync(token, "get_latest_demande_paiement", """{"idUB":99}""");
+        Assert.DoesNotContain("\"found\":true", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("DPM-", text, StringComparison.Ordinal);
+    }
+
+    private async Task InitializeMcpAsync(string token)
+    {
+        var init = await McpAsync(token, """{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"tests","version":"1"}}}""");
+        init.EnsureSuccessStatusCode();
+    }
+
+    private async Task<string> CallToolTextAsync(string token, string name, string argumentsJson)
+    {
+        var payload = "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/call\",\"params\":{\"name\":\""
+            + name + "\",\"arguments\":" + argumentsJson + "}}";
+        var call = await McpAsync(token, payload);
+        call.EnsureSuccessStatusCode();
+        return ExtractMcpText(await call.Content.ReadAsStringAsync());
+    }
+
+    private static string ExtractMcpText(string body)
+    {
+        var json = body;
+        if (body.Contains("data:", StringComparison.Ordinal))
+        {
+            var sb = new StringBuilder();
+            foreach (var line in body.Split('\n'))
+            {
+                var t = line.TrimEnd('\r');
+                if (t.StartsWith("data:", StringComparison.Ordinal))
+                    sb.Append(t[5..].Trim());
+            }
+            if (sb.Length > 0)
+                json = sb.ToString();
+        }
+
+        using var doc = JsonDocument.Parse(json);
+        if (doc.RootElement.TryGetProperty("result", out var result)
+            && result.TryGetProperty("content", out var content)
+            && content.ValueKind == JsonValueKind.Array
+            && content.GetArrayLength() > 0
+            && content[0].TryGetProperty("text", out var textEl))
+        {
+            return textEl.GetString() ?? json;
+        }
+
+        return json;
     }
 
     private async Task<HttpResponseMessage> McpAsync(string token, string json)

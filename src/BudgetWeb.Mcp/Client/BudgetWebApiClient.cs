@@ -24,7 +24,13 @@ public sealed class BudgetWebApiClient
 
     public string RequireAuthMessage() => "Utilisateur non authentifié. Connectez votre compte Budget Web via OAuth.";
 
-    public async Task<string> GetJsonAsync(string relativeUrl, CancellationToken cancellationToken)
+    public Task<string> GetJsonAsync(string relativeUrl, CancellationToken cancellationToken)
+        => GetJsonAsync(relativeUrl, truncateResponse: true, cancellationToken);
+
+    public async Task<string> GetJsonAsync(
+        string relativeUrl,
+        bool truncateResponse,
+        CancellationToken cancellationToken)
     {
         if (!HasBearer)
             return RequireAuthMessage();
@@ -33,7 +39,7 @@ public sealed class BudgetWebApiClient
         var body = await response.Content.ReadAsStringAsync(cancellationToken);
         if (!response.IsSuccessStatusCode)
             return ApiErrorMapper.ToUserMessage(response.StatusCode, body);
-        return Truncate(body);
+        return truncateResponse ? Truncate(body) : body;
     }
 
     public async Task<T?> GetAsync<T>(string relativeUrl, CancellationToken cancellationToken)

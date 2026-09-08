@@ -30,7 +30,7 @@ BudgetWeb.API  → permissions, périmètre, règles métier existantes
 
 ## Outils (lecture seule)
 
-`get_budget_situation`, `get_credits_disponibles`, `get_budget_execution`, `get_engagements`, `get_imputations`, `search_demandes_paiement`, `get_demande_paiement`, `get_previsions`, `get_rapport_previsions`, `list_referentiels`.
+`get_budget_situation`, `get_credits_disponibles`, `get_budget_execution`, `get_engagements`, `get_imputations`, `search_demandes_paiement`, `get_latest_demande_paiement`, `get_demande_paiement`, `get_previsions`, `get_rapport_previsions`, `list_referentiels`.
 
 Pas d’`execute_sql`. Pagination `take` max 50.
 

@@ -11,8 +11,11 @@ public sealed class DemandesPaiementTools(BudgetWebApiClient api)
     [McpServerTool(Name = "search_demandes_paiement"), Description(
         "Recherche les demandes de paiement (DPM) réellement accessibles à l'utilisateur. " +
         "L'API applique permissions, périmètre, routage et propriété. " +
+        "Tri métier : DateCreation (date d'enregistrement) décroissante. " +
         "Filtres : exercice, UB, département, statut, référence, bénéficiaire, dates. " +
-        "scope optionnel selon les modes de liste Budget Web. Pagination 1-50.")]
+        "scope optionnel selon les modes de liste Budget Web. " +
+        "Pagination skip/take sur cette liste déjà triée (1-50 par page). " +
+        "Réponse compacte : id, référence, dateEnregistrement, montant, devise, UB, statut.")]
     public Task<string> SearchDemandes(
         [Description("Exercice.")] long? idExercice = null,
         [Description("UB.")] long? idUB = null,
@@ -39,9 +42,47 @@ public sealed class DemandesPaiementTools(BudgetWebApiClient api)
                     ("beneficiaire", ParameterGuard.SanitizeSearch(beneficiaire)),
                     ("dateDebut", ParameterGuard.SanitizeSearch(dateDebut)),
                     ("dateFin", ParameterGuard.SanitizeSearch(dateFin))),
+                truncateResponse: false,
                 cancellationToken);
+            if (!DemandePaiementMcpFormat.LooksLikeJsonPayload(json))
+                return json;
             var page = ToolRunner.Page(skip, take);
-            return JsonSlice.Paginate(json, page.Skip, page.Take, out _, out _);
+            return DemandePaiementMcpFormat.Search(json, page.Skip, page.Take);
+        }, cancellationToken);
+
+    [McpServerTool(Name = "get_latest_demande_paiement"), Description(
+        "Retourne la dernière DPM enregistrée (DateCreation la plus récente) parmi celles " +
+        "réellement accessibles à l'utilisateur connecté. Lecture seule. " +
+        "Mêmes permissions, périmètre et isolation que search_demandes_paiement. " +
+        "Réponse compacte : found + une seule DPM (référence, date, bénéficiaire, montant, UB, statut).")]
+    public Task<string> GetLatestDemande(
+        [Description("Exercice (optionnel).")] long? idExercice = null,
+        [Description("UB (optionnel, refusée si hors périmètre).")] long? idUB = null,
+        [Description("Département (optionnel).")] long? idDepartement = null,
+        [Description("Statut métier DPM (optionnel).")] string? statut = null,
+        [Description("Scope de liste Budget Web si applicable.")] string? scope = null,
+        CancellationToken cancellationToken = default)
+        => ToolRunner.Run(api, "get_latest_demande_paiement", new { idExercice, idUB, idDepartement, statut, scope }, async () =>
+        {
+            var listJson = await api.GetJsonAsync(
+                "/api/v1/demandes-paiement" + BudgetWebApiClient.Query(
+                    ("scope", ParameterGuard.SanitizeSearch(scope)),
+                    ("idExercice", idExercice),
+                    ("idUB", idUB),
+                    ("idDepartement", idDepartement),
+                    ("statut", ParameterGuard.SanitizeSearch(statut))),
+                truncateResponse: false,
+                cancellationToken);
+            if (!DemandePaiementMcpFormat.LooksLikeJsonPayload(listJson))
+                return listJson;
+            if (!DemandePaiementMcpFormat.TryGetLatestId(listJson, out var id))
+                return DemandePaiementMcpFormat.Latest(listJson, null);
+
+            var detail = await api.GetJsonAsync(
+                $"/api/v1/demandes-paiement/{id}",
+                truncateResponse: false,
+                cancellationToken);
+            return DemandePaiementMcpFormat.Latest(listJson, detail);
         }, cancellationToken);
 
     [McpServerTool(Name = "get_demande_paiement"), Description(
