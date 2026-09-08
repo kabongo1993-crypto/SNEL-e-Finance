@@ -20,16 +20,23 @@ public class JwtTokenService : IJwtTokenService
         _configuration = configuration;
     }
 
+    public static string ResolveSecret(IConfiguration configuration)
+    {
+        var secret = configuration["Jwt:SecretKey"];
+        if (string.IsNullOrWhiteSpace(secret) || secret.Length < 32)
+        {
+            throw new InvalidOperationException(
+                "Jwt:SecretKey doit être configuré (minimum 32 caractères) dans appsettings ou les variables d'environnement.");
+        }
+
+        return secret;
+    }
+
     public (string Token, DateTime ExpiresAtUtc) CreateToken(AuthUserDto utilisateur)
     {
         var issuer = _configuration["Jwt:Issuer"] ?? "BudgetWeb-SNEL";
         var audience = _configuration["Jwt:Audience"] ?? "BudgetWeb-Client";
-        var secret = _configuration["Jwt:SecretKey"];
-        if (string.IsNullOrWhiteSpace(secret) || secret.Length < 32)
-        {
-            throw new InvalidOperationException(
-                "Jwt:SecretKey est manquant ou trop court (minimum 32 caractères). Configurez-le dans appsettings ou les variables d'environnement.");
-        }
+        var secret = ResolveSecret(_configuration);
 
         var expiresMinutes = 480;
         if (int.TryParse(_configuration["Jwt:ExpiresMinutes"], out var configured) && configured > 0)

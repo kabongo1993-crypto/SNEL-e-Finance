@@ -4,6 +4,7 @@ using BudgetWeb.API.Services;
 using BudgetWeb.Application;
 using BudgetWeb.Application.Interfaces;
 using BudgetWeb.Infrastructure;
+using BudgetWeb.Infrastructure.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Features;
@@ -61,12 +62,7 @@ builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-var jwtSecret = builder.Configuration["Jwt:SecretKey"];
-if (string.IsNullOrWhiteSpace(jwtSecret) || jwtSecret.Length < 32)
-{
-    throw new InvalidOperationException(
-        "Jwt:SecretKey doit être configuré (minimum 32 caractères) dans appsettings ou les variables d'environnement.");
-}
+var jwtSecret = JwtTokenService.ResolveSecret(builder.Configuration);
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
