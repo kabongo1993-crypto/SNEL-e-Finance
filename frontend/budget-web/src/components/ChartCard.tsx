@@ -1,27 +1,32 @@
 import { Box, Paper, Typography } from '@mui/material';
 import type { ReactNode } from 'react';
+import { useResponsive } from '../theme/useResponsive';
 
 interface ChartCardProps {
   title: string;
   subtitle?: string;
   children: ReactNode;
+  /** Hauteur de la zone graphique sur grand écran ; réduite d'office sous `md`. */
   height?: number;
   action?: ReactNode;
 }
 
 export function ChartCard({ title, subtitle, children, height = 280, action }: ChartCardProps) {
+  const { isMobile } = useResponsive();
+  const chartHeight = isMobile ? Math.min(height, 220) : height;
+
   return (
-    <Paper sx={{ p: 2.25, height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <Paper sx={{ p: { xs: 2, sm: 2.5 }, height: '100%', display: 'flex', flexDirection: 'column' }}>
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
-          mb: 1.5,
+          mb: 2,
           gap: 1,
         }}
       >
-        <Box>
+        <Box sx={{ minWidth: 0 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
             {title}
           </Typography>
@@ -31,9 +36,9 @@ export function ChartCard({ title, subtitle, children, height = 280, action }: C
             </Typography>
           )}
         </Box>
-        {action}
+        {action && <Box sx={{ flexShrink: 0 }}>{action}</Box>}
       </Box>
-      <Box sx={{ flex: 1, minHeight: height, width: '100%' }}>{children}</Box>
+      <Box sx={{ flex: 1, minHeight: chartHeight, width: '100%' }}>{children}</Box>
     </Paper>
   );
 }

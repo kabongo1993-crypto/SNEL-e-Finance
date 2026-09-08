@@ -4,8 +4,8 @@
   "description": "Plateforme intégrée de gestion financière et de traitement des paiements",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B2540",
-  "theme_color": "#0B2540",
+  "background_color": "#0B2947",
+  "theme_color": "#06439B",
   "icons": [
     {
       "src": "/icon-192.png",

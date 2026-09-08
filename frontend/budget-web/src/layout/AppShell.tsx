@@ -1,8 +1,8 @@
-import { Box, Toolbar } from '@mui/material';
+import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar, SIDEBAR_COLLAPSED_WIDTH, SIDEBAR_WIDTH } from './Sidebar';
-import { TopBar } from './TopBar';
+import { TOPBAR_HEIGHT, TopBar } from './TopBar';
 
 const COLLAPSE_KEY = 'efinance-sidebar-collapsed';
 
@@ -41,13 +41,13 @@ export function AppShell() {
           flexGrow: 1,
           width: { md: `calc(100% - ${sidebarWidth}px)` },
           minWidth: 0,
-          px: { xs: 1.5, sm: 2.5 },
-          pb: 3,
+          px: { xs: 1.5, sm: 2, md: 3 },
+          pb: { xs: 4, md: 5 },
           transition: 'width 180ms ease',
         }}
       >
-        <Toolbar sx={{ minHeight: { xs: 56 } }} />
-        <Box sx={{ pt: 2, maxWidth: 1400, mx: 'auto' }}>
+        <Box sx={{ height: `${TOPBAR_HEIGHT}px`, flexShrink: 0 }} />
+        <Box sx={{ pt: { xs: 2, md: 2.5 }, maxWidth: 1560, mx: 'auto' }}>
           <Outlet />
         </Box>
       </Box>

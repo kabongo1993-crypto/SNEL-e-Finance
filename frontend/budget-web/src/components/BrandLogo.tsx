@@ -8,12 +8,13 @@ interface BrandLogoProps {
 
 /**
  * Identité sidebar : logo officiel SNEL + nom plateforme e-finance.
- * Le titre d’onglet navigateur reste « SNEL e-Finance » (DOCUMENT_TITLE).
+ * Le titre d’onglet navigateur reste « SNEL Online — e-Finance » (DOCUMENT_TITLE).
  */
 export function BrandLogo({ compact = false, inverted = true }: BrandLogoProps) {
-  const textColor = inverted ? 'var(--ef-sidebar-text)' : 'var(--ef-text)';
+  /** Charte : nom « e-finance » blanc en sidebar ; sous-titre atténué. */
+  const textColor = inverted ? '#FFFFFF' : 'var(--ef-text)';
   const mutedColor = inverted ? 'var(--ef-sidebar-text-muted)' : 'var(--ef-text-secondary)';
-  const size = compact ? 28 : 34;
+  const size = compact ? 28 : 36;
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, minWidth: 0 }}>

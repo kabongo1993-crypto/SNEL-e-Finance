@@ -1,0 +1,342 @@
+dbug: Microsoft.Extensions.Hosting.Internal.Host[1]
+      Hosting starting
+info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[63]
+      User profile is available. Using 'C:\Users\kabon\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://127.0.0.1:5257
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\InstantFLOW\Instant_Flow\src\BudgetWeb.API
+dbug: Microsoft.Extensions.Hosting.Internal.Host[2]
+      Hosting started
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:5257/api/v1/auth/status - - -
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.AuthController.Status (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Status", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Status(System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.AuthController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [UTILISATEUR] AS [u]
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'BudgetWeb.Application.DTOs.AuthStatusDto'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.AuthController.Status (BudgetWeb.API) in 1053.6284ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.AuthController.Status (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:5257/api/v1/auth/status - 200 - application/json;+charset=utf-8 1124.0532ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:5257/api/v1/classements-ae?idVersion=4&idUB=1 - - -
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[1]
+      Failed to validate the token.
+      Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14122: JWT is not a well formed JWE, there are more than four dots (.) a JWE can have at most 4 dots.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[7]
+      Bearer was not authenticated. Failure message: IDX14122: JWT is not a well formed JWE, there are more than four dots (.) a JWE can have at most 4 dots.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+info: Microsoft.AspNetCore.Authorization.DefaultAuthorizationService[2]
+      Authorization failed. These requirements were not met:
+      DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:5257/api/v1/classements-ae?idVersion=4&idUB=1 - 401 0 - 61.2035ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:5257/api/v1/classements-ae/initialiser - application/x-www-form-urlencoded 0
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[1]
+      Failed to validate the token.
+      Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14122: JWT is not a well formed JWE, there are more than four dots (.) a JWE can have at most 4 dots.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[7]
+      Bearer was not authenticated. Failure message: IDX14122: JWT is not a well formed JWE, there are more than four dots (.) a JWE can have at most 4 dots.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+info: Microsoft.AspNetCore.Authorization.DefaultAuthorizationService[2]
+      Authorization failed. These requirements were not met:
+      DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:5257/api/v1/classements-ae/initialiser - 401 0 - 2.8698ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:5257/api/v1/classements-ae/reorder - application/json 184
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[1]
+      Failed to validate the token.
+      Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14122: JWT is not a well formed JWE, there are more than four dots (.) a JWE can have at most 4 dots.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[7]
+      Bearer was not authenticated. Failure message: IDX14122: JWT is not a well formed JWE, there are more than four dots (.) a JWE can have at most 4 dots.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+info: Microsoft.AspNetCore.Authorization.DefaultAuthorizationService[2]
+      Authorization failed. These requirements were not met:
+      DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:5257/api/v1/classements-ae/reorder - 401 0 - 1.1671ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:5257/api/v1/classements-ae/reorder - application/json 184
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[1]
+      Failed to validate the token.
+      Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14122: JWT is not a well formed JWE, there are more than four dots (.) a JWE can have at most 4 dots.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[7]
+      Bearer was not authenticated. Failure message: IDX14122: JWT is not a well formed JWE, there are more than four dots (.) a JWE can have at most 4 dots.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+info: Microsoft.AspNetCore.Authorization.DefaultAuthorizationService[2]
+      Authorization failed. These requirements were not met:
+      DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:5257/api/v1/classements-ae/reorder - 401 0 - 0.5608ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:5257/api/v1/classements-ae?idVersion=4&idUB=1 - - -
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[1]
+      Failed to validate the token.
+      Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+         at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[7]
+      Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+info: Microsoft.AspNetCore.Authorization.DefaultAuthorizationService[2]
+      Authorization failed. These requirements were not met:
+      DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:5257/api/v1/classements-ae?idVersion=4&idUB=1 - 401 0 - 0.5570ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:5257/api/v1/classements-ae?idVersion=4&idUB=1 - - -
+info: Microsoft.AspNetCore.Authorization.DefaultAuthorizationService[2]
+      Authorization failed. These requirements were not met:
+      DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+info: Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:5257/api/v1/classements-ae?idVersion=4&idUB=1 - 401 0 - 1.4667ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:5257/api/v1/classements-ae?idVersion=4&idUB=1 - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.ClassementsAeController.Get (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Get", controller = "ClassementsAe"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(Int64, Int64, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.ClassementsAeController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (52ms) [Parameters=[@__idVersion_0='?' (DbType = Int64), @__idUB_1='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [c].[IdClassementAE], [c].[TypeLigne], [c].[FK_GroupeItemAE], [g].[Libelle] AS [LibelleGroupe], [c].[LibelleItemAE], [c].[OrdreAffichage]
+      FROM [CLASSEMENT_AE] AS [c]
+      LEFT JOIN [GROUPE_ITEM_AE] AS [g] ON [c].[FK_GroupeItemAE] = [g].[IdGroupeItemAE]
+      WHERE [c].[FK_VersionBudgetaire] = @__idVersion_0 AND [c].[FK_UniteBudgetaire] = @__idUB_1
+      ORDER BY [c].[OrdreAffichage]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (27ms) [Parameters=[@__idVersion_0='?' (DbType = Int64), @__idUB_1='?' (DbType = Int64), @__items_2='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[LibelleItemAE] AS [Libelle], [p].[FK_GroupeItemAE], [g].[Libelle] AS [LibelleGroupe]
+      FROM [PREVISION_BUDGETAIRE] AS [p]
+      INNER JOIN [TYPE_BUDGET] AS [t] ON [p].[FK_TypeBudget] = [t].[IdTypeBudget]
+      LEFT JOIN [GROUPE_ITEM_AE] AS [g] ON [p].[FK_GroupeItemAE] = [g].[IdGroupeItemAE]
+      WHERE [p].[FK_VersionBudgetaire] = @__idVersion_0 AND [p].[FK_UniteBudgetaire] = @__idUB_1 AND [t].[CodeType] = 'AE' AND [p].[LibelleItemAE] IS NOT NULL AND [p].[LibelleItemAE] IN (
+          SELECT [i].[value]
+          FROM OPENJSON(@__items_2) WITH ([value] nvarchar(500) '$') AS [i]
+      )
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[BudgetWeb.Application.DTOs.ClassementAeLigneDto, BudgetWeb.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.ClassementsAeController.Get (BudgetWeb.API) in 225.7091ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.ClassementsAeController.Get (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:5257/api/v1/classements-ae?idVersion=4&idUB=1 - 200 - application/json;+charset=utf-8 259.2656ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:5257/api/v1/classements-ae/initialiser - application/x-www-form-urlencoded 0
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.ClassementsAeController.Initialiser (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Initialiser", controller = "ClassementsAe"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Initialiser(System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.ClassementsAeController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[FK_VersionBudgetaire], [p].[FK_UniteBudgetaire], [p].[LibelleItemAE] AS [Libelle], [p].[FK_GroupeItemAE], [p].[IdPrevision]
+      FROM [PREVISION_BUDGETAIRE] AS [p]
+      INNER JOIN [TYPE_BUDGET] AS [t] ON [p].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [t].[CodeType] = 'AE' AND [p].[LibelleItemAE] IS NOT NULL AND [p].[LibelleItemAE] <> N''
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idVersion_0='?' (DbType = Int64), @__idUB_1='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [CLASSEMENT_AE] AS [c]
+              WHERE [c].[FK_VersionBudgetaire] = @__idVersion_0 AND [c].[FK_UniteBudgetaire] = @__idUB_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'BudgetWeb.Application.DTOs.ClassementAeInitResultDto'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.ClassementsAeController.Initialiser (BudgetWeb.API) in 44.7773ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.ClassementsAeController.Initialiser (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:5257/api/v1/classements-ae/initialiser - 200 - application/json;+charset=utf-8 47.5336ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:5257/api/v1/classements-ae/reorder - application/json 54
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.ClassementsAeController.Reorder (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Reorder", controller = "ClassementsAe"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Reorder(BudgetWeb.Application.DTOs.ReorderClassementAeRequest, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.ClassementsAeController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idVersion_0='?' (DbType = Int64), @__idUB_1='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [c].[IdClassementAE], [c].[DateCreation], [c].[DateModification], [c].[FK_GroupeItemAE], [c].[FK_UniteBudgetaire], [c].[FK_VersionBudgetaire], [c].[LibelleItemAE], [c].[OrdreAffichage], [c].[TypeLigne]
+      FROM [CLASSEMENT_AE] AS [c]
+      WHERE [c].[FK_VersionBudgetaire] = @__idVersion_0 AND [c].[FK_UniteBudgetaire] = @__idUB_1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p5='?' (DbType = Int64), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET NOCOUNT ON;
+      UPDATE [CLASSEMENT_AE] SET [DateModification] = @p0, [OrdreAffichage] = @p1
+      OUTPUT 1
+      WHERE [IdClassementAE] = @p2;
+      UPDATE [CLASSEMENT_AE] SET [DateModification] = @p3, [OrdreAffichage] = @p4
+      OUTPUT 1
+      WHERE [IdClassementAE] = @p5;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@p1='?' (DbType = Int64), @p0='?' (DbType = Int32), @p3='?' (DbType = Int64), @p2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET NOCOUNT ON;
+      UPDATE [CLASSEMENT_AE] SET [OrdreAffichage] = @p0
+      OUTPUT 1
+      WHERE [IdClassementAE] = @p1;
+      UPDATE [CLASSEMENT_AE] SET [OrdreAffichage] = @p2
+      OUTPUT 1
+      WHERE [IdClassementAE] = @p3;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[@__idVersion_0='?' (DbType = Int64), @__idUB_1='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [c].[IdClassementAE], [c].[TypeLigne], [c].[FK_GroupeItemAE], [g].[Libelle] AS [LibelleGroupe], [c].[LibelleItemAE], [c].[OrdreAffichage]
+      FROM [CLASSEMENT_AE] AS [c]
+      LEFT JOIN [GROUPE_ITEM_AE] AS [g] ON [c].[FK_GroupeItemAE] = [g].[IdGroupeItemAE]
+      WHERE [c].[FK_VersionBudgetaire] = @__idVersion_0 AND [c].[FK_UniteBudgetaire] = @__idUB_1
+      ORDER BY [c].[OrdreAffichage]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (30ms) [Parameters=[@__idVersion_0='?' (DbType = Int64), @__idUB_1='?' (DbType = Int64), @__items_2='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[LibelleItemAE] AS [Libelle], [p].[FK_GroupeItemAE], [g].[Libelle] AS [LibelleGroupe]
+      FROM [PREVISION_BUDGETAIRE] AS [p]
+      INNER JOIN [TYPE_BUDGET] AS [t] ON [p].[FK_TypeBudget] = [t].[IdTypeBudget]
+      LEFT JOIN [GROUPE_ITEM_AE] AS [g] ON [p].[FK_GroupeItemAE] = [g].[IdGroupeItemAE]
+      WHERE [p].[FK_VersionBudgetaire] = @__idVersion_0 AND [p].[FK_UniteBudgetaire] = @__idUB_1 AND [t].[CodeType] = 'AE' AND [p].[LibelleItemAE] IS NOT NULL AND [p].[LibelleItemAE] IN (
+          SELECT [i].[value]
+          FROM OPENJSON(@__items_2) WITH ([value] nvarchar(500) '$') AS [i]
+      )
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[BudgetWeb.Application.DTOs.ClassementAeLigneDto, BudgetWeb.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.ClassementsAeController.Reorder (BudgetWeb.API) in 256.9773ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.ClassementsAeController.Reorder (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:5257/api/v1/classements-ae/reorder - 200 - application/json;+charset=utf-8 259.7846ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:5257/api/v1/classements-ae/reorder - application/json 54
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.ClassementsAeController.Reorder (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Reorder", controller = "ClassementsAe"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Reorder(BudgetWeb.Application.DTOs.ReorderClassementAeRequest, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.ClassementsAeController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idVersion_0='?' (DbType = Int64), @__idUB_1='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [c].[IdClassementAE], [c].[DateCreation], [c].[DateModification], [c].[FK_GroupeItemAE], [c].[FK_UniteBudgetaire], [c].[FK_VersionBudgetaire], [c].[LibelleItemAE], [c].[OrdreAffichage], [c].[TypeLigne]
+      FROM [CLASSEMENT_AE] AS [c]
+      WHERE [c].[FK_VersionBudgetaire] = @__idVersion_0 AND [c].[FK_UniteBudgetaire] = @__idUB_1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p5='?' (DbType = Int64), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET NOCOUNT ON;
+      UPDATE [CLASSEMENT_AE] SET [DateModification] = @p0, [OrdreAffichage] = @p1
+      OUTPUT 1
+      WHERE [IdClassementAE] = @p2;
+      UPDATE [CLASSEMENT_AE] SET [DateModification] = @p3, [OrdreAffichage] = @p4
+      OUTPUT 1
+      WHERE [IdClassementAE] = @p5;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Int64), @p0='?' (DbType = Int32), @p3='?' (DbType = Int64), @p2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET NOCOUNT ON;
+      UPDATE [CLASSEMENT_AE] SET [OrdreAffichage] = @p0
+      OUTPUT 1
+      WHERE [IdClassementAE] = @p1;
+      UPDATE [CLASSEMENT_AE] SET [OrdreAffichage] = @p2
+      OUTPUT 1
+      WHERE [IdClassementAE] = @p3;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__idVersion_0='?' (DbType = Int64), @__idUB_1='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [c].[IdClassementAE], [c].[TypeLigne], [c].[FK_GroupeItemAE], [g].[Libelle] AS [LibelleGroupe], [c].[LibelleItemAE], [c].[OrdreAffichage]
+      FROM [CLASSEMENT_AE] AS [c]
+      LEFT JOIN [GROUPE_ITEM_AE] AS [g] ON [c].[FK_GroupeItemAE] = [g].[IdGroupeItemAE]
+      WHERE [c].[FK_VersionBudgetaire] = @__idVersion_0 AND [c].[FK_UniteBudgetaire] = @__idUB_1
+      ORDER BY [c].[OrdreAffichage]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__idVersion_0='?' (DbType = Int64), @__idUB_1='?' (DbType = Int64), @__items_2='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[LibelleItemAE] AS [Libelle], [p].[FK_GroupeItemAE], [g].[Libelle] AS [LibelleGroupe]
+      FROM [PREVISION_BUDGETAIRE] AS [p]
+      INNER JOIN [TYPE_BUDGET] AS [t] ON [p].[FK_TypeBudget] = [t].[IdTypeBudget]
+      LEFT JOIN [GROUPE_ITEM_AE] AS [g] ON [p].[FK_GroupeItemAE] = [g].[IdGroupeItemAE]
+      WHERE [p].[FK_VersionBudgetaire] = @__idVersion_0 AND [p].[FK_UniteBudgetaire] = @__idUB_1 AND [t].[CodeType] = 'AE' AND [p].[LibelleItemAE] IS NOT NULL AND [p].[LibelleItemAE] IN (
+          SELECT [i].[value]
+          FROM OPENJSON(@__items_2) WITH ([value] nvarchar(500) '$') AS [i]
+      )
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[BudgetWeb.Application.DTOs.ClassementAeLigneDto, BudgetWeb.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.ClassementsAeController.Reorder (BudgetWeb.API) in 20.3979ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.ClassementsAeController.Reorder (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:5257/api/v1/classements-ae/reorder - 200 - application/json;+charset=utf-8 22.4595ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:5257/api/v1/auth/status - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.AuthController.Status (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Status", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Status(System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.AuthController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [UTILISATEUR] AS [u]
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'BudgetWeb.Application.DTOs.AuthStatusDto'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.AuthController.Status (BudgetWeb.API) in 5.0061ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.AuthController.Status (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:5257/api/v1/auth/status - 200 - application/json;+charset=utf-8 6.4064ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:5257/api/v1/auth/status - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.AuthController.Status (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Status", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Status(System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.AuthController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [UTILISATEUR] AS [u]
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'BudgetWeb.Application.DTOs.AuthStatusDto'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.AuthController.Status (BudgetWeb.API) in 6.4413ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.AuthController.Status (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:5257/api/v1/auth/status - 200 - application/json;+charset=utf-8 7.1036ms

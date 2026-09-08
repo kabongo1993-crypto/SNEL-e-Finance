@@ -16,12 +16,30 @@ public static class ExceptionHandlingExtensions
                 var exceptionFeature = context.Features.Get<IExceptionHandlerFeature>();
                 var exception = exceptionFeature?.Error;
 
+                var logger = context.RequestServices.GetService<ILoggerFactory>()
+                    ?.CreateLogger("BudgetWeb.API.ExceptionHandler");
+                if (exception is not null)
+                {
+                    logger?.LogError(exception, "Unhandled exception on {Method} {Path}",
+                        context.Request.Method, context.Request.Path);
+                }
+
                 context.Response.ContentType = "application/json";
+
+                var isDev = string.Equals(
+                    context.RequestServices.GetService<IHostEnvironment>()?.EnvironmentName,
+                    "Development",
+                    StringComparison.OrdinalIgnoreCase);
 
                 var (statusCode, message) = exception switch
                 {
+                    UnauthorizedAccessException => (HttpStatusCode.Unauthorized, exception!.Message),
+                    KeyNotFoundException => (HttpStatusCode.NotFound, exception!.Message),
                     InvalidOperationException => (HttpStatusCode.BadRequest, exception!.Message),
-                    _ => (HttpStatusCode.InternalServerError, "Une erreur interne est survenue.")
+                    _ => (HttpStatusCode.InternalServerError,
+                        isDev && exception is not null
+                            ? exception.GetBaseException().Message
+                            : "Une erreur interne est survenue.")
                 };
 
                 context.Response.StatusCode = (int)statusCode;

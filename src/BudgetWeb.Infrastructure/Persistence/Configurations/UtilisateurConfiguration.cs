@@ -23,5 +23,27 @@ public class UtilisateurConfiguration : IEntityTypeConfiguration<Utilisateur>
         builder.Property(e => e.Actif).HasColumnName("Actif");
         builder.Property(e => e.DateCreation).HasColumnName("DateCreation");
         builder.Property(e => e.DateDerniereConnexion).HasColumnName("DateDerniereConnexion");
+        builder.Property(e => e.FK_StructureOrganisationnelle).HasColumnName("FK_StructureOrganisationnelle");
+        builder.Property(e => e.FK_DepartementPrincipal).HasColumnName("FK_DepartementPrincipal");
+        builder.Property(e => e.FK_StructureService).HasColumnName("FK_StructureService");
+
+        // Aligné sur le script SQL OPTIONAL (FK sans ON DELETE → NO ACTION / Restrict).
+        builder.HasOne(e => e.StructureOrganisationnelle)
+            .WithMany()
+            .HasForeignKey(e => e.FK_StructureOrganisationnelle)
+            .OnDelete(DeleteBehavior.Restrict)
+            .HasConstraintName("FK_UTILISATEUR_STRUCTURE");
+
+        builder.HasOne(e => e.DepartementPrincipal)
+            .WithMany()
+            .HasForeignKey(e => e.FK_DepartementPrincipal)
+            .OnDelete(DeleteBehavior.Restrict)
+            .HasConstraintName("FK_UTILISATEUR_DEPT_PRINCIPAL");
+
+        builder.HasOne(e => e.StructureService)
+            .WithMany()
+            .HasForeignKey(e => e.FK_StructureService)
+            .OnDelete(DeleteBehavior.Restrict)
+            .HasConstraintName("FK_UTILISATEUR_STRUCTURE_SERVICE");
     }
 }

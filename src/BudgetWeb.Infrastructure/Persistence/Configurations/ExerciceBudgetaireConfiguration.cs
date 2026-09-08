@@ -12,7 +12,7 @@ public class ExerciceBudgetaireConfiguration : IEntityTypeConfiguration<Exercice
 
         builder.HasKey(e => e.IdExercice);
 
-        builder.Property(e => e.IdExercice).HasColumnName("IdExercice");
+        builder.Property(e => e.IdExercice).HasColumnName("IdExercice").ValueGeneratedOnAdd();
         builder.Property(e => e.Annee).HasColumnName("Annee");
         builder.Property(e => e.Statut).HasColumnName("Statut").HasMaxLength(30).IsUnicode(false);
         builder.Property(e => e.DateOuverture).HasColumnName("DateOuverture");

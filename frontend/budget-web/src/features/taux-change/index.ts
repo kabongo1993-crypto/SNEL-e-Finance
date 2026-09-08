@@ -1,0 +1,1 @@
+export { TauxChangePage } from './TauxChangePage';

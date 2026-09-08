@@ -48,39 +48,35 @@ export function BudgetDashboardPage() {
         unite={unite}
         onUniteChange={setUnite}
       />
-      <Grid container spacing={2} sx={{ mb: 2 }}>
-        <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
-          <StatCard title="Budget initial" value={formatMontant(budgetKpis.budgetInitial)} />
-        </Grid>
-        <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
-          <StatCard title="Révisé" value={formatMontant(budgetKpis.revise)} />
-        </Grid>
-        <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
-          <StatCard title="Engagé" value={formatMontant(budgetKpis.engage)} />
-        </Grid>
-        <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
-          <StatCard title="Exécuté" value={formatMontant(budgetKpis.execute)} />
-        </Grid>
-        <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
-          <StatCard title="Disponible" value={formatMontant(budgetKpis.disponible)} />
-        </Grid>
+      <Grid container spacing={2} sx={{ mb: 2.5 }}>
+        {[
+          { title: 'Budget initial', value: budgetKpis.budgetInitial },
+          { title: 'Révisé', value: budgetKpis.revise },
+          { title: 'Engagé', value: budgetKpis.engage },
+          { title: 'Exécuté', value: budgetKpis.execute },
+          { title: 'Disponible', value: budgetKpis.disponible },
+        ].map((kpi) => (
+          <Grid key={kpi.title} size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
+            <StatCard title={kpi.title} value={formatMontant(kpi.value)} />
+          </Grid>
+        ))}
       </Grid>
-      <Grid container spacing={2} sx={{ mb: 2 }}>
-        <Grid size={{ xs: 12, md: 6 }}>
-          <ChartCard title="Pipeline budgétaire" subtitle="Milliards CDF (mock)">
-            <ResponsiveContainer width="100%" height={260}>
-              <BarChart data={budgetPipelineChart}>
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--ef-border)" />
-                <XAxis dataKey="etape" tick={{ fontSize: 12 }} />
-                <YAxis tick={{ fontSize: 12 }} />
+      <Grid container spacing={2.5} sx={{ alignItems: 'flex-start' }}>
+        <Grid size={{ xs: 12, lg: 8 }} sx={{ minWidth: 0 }}>
+          <BudgetSuiviTable embedded />
+        </Grid>
+        <Grid size={{ xs: 12, lg: 4 }} sx={{ minWidth: 0 }}>
+          <ChartCard title="Pipeline budgétaire" subtitle="Milliards CDF (mock)" height={260}>
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={budgetPipelineChart} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--ef-border-subtle)" vertical={false} />
+                <XAxis dataKey="etape" tick={{ fontSize: 12 }} tickLine={false} axisLine={false} />
+                <YAxis tick={{ fontSize: 12 }} tickLine={false} axisLine={false} />
                 <Tooltip />
-                <Bar dataKey="montant" fill="var(--ef-chart-1)" radius={[3, 3, 0, 0]} name="Montant" />
+                <Bar dataKey="montant" fill="var(--ef-chart-1)" radius={[6, 6, 0, 0]} name="Montant" />
               </BarChart>
             </ResponsiveContainer>
           </ChartCard>
-        </Grid>
-        <Grid size={{ xs: 12, md: 6 }}>
-          <BudgetSuiviTable embedded />
         </Grid>
       </Grid>
     </Box>
@@ -100,16 +96,16 @@ function BudgetSuiviTable({ embedded }: { embedded?: boolean }) {
   );
 
   const columns: DataTableColumn<MockLigneBudget>[] = [
-    { id: 'code', label: 'Code', sortable: true, sortValue: (r) => r.code, render: (r) => <Typography variant="body2" sx={{ fontWeight: 700 }}>{r.code}</Typography> },
-    { id: 'libelle', label: 'Libellé', render: (r) => r.libelle },
-    { id: 'dept', label: 'Département', render: (r) => r.departement },
-    { id: 'ub', label: 'UB', render: (r) => r.uniteBudgetaire },
-    { id: 'initial', label: 'Budget initial', align: 'right', render: (r) => formatMontant(r.budgetInitial) },
-    { id: 'rev', label: 'Révisions', align: 'right', render: (r) => formatMontant(r.revisions) },
-    { id: 'dispo', label: 'Disponible', align: 'right', render: (r) => formatMontant(r.budgetDisponible) },
-    { id: 'eng', label: 'Engagé', align: 'right', render: (r) => formatMontant(r.engage) },
-    { id: 'exe', label: 'Exécuté', align: 'right', render: (r) => formatMontant(r.execute) },
-    { id: 'taux', label: 'Taux', align: 'right', sortable: true, sortValue: (r) => r.tauxExecution, render: (r) => `${r.tauxExecution} %` },
+    { id: 'code', label: 'Code', sortable: true, sortValue: (r) => r.code, mobile: 'title', render: (r) => <Typography variant="body2" sx={{ fontWeight: 700 }}>{r.code}</Typography> },
+    { id: 'libelle', label: 'Libellé', mobile: 'subtitle', render: (r) => r.libelle },
+    { id: 'dept', label: 'Département', mobile: 'meta', render: (r) => r.departement },
+    { id: 'ub', label: 'UB', mobile: 'hidden', render: (r) => r.uniteBudgetaire },
+    { id: 'initial', label: 'Budget initial', align: 'right', mobile: 'hidden', render: (r) => formatMontant(r.budgetInitial) },
+    { id: 'rev', label: 'Révisions', align: 'right', mobile: 'hidden', render: (r) => formatMontant(r.revisions) },
+    { id: 'dispo', label: 'Disponible', align: 'right', mobile: 'meta', render: (r) => formatMontant(r.budgetDisponible) },
+    { id: 'eng', label: 'Engagé', align: 'right', mobile: 'hidden', render: (r) => formatMontant(r.engage) },
+    { id: 'exe', label: 'Exécuté', align: 'right', mobile: 'hidden', render: (r) => formatMontant(r.execute) },
+    { id: 'taux', label: 'Taux', align: 'right', sortable: true, sortValue: (r) => r.tauxExecution, mobile: 'meta', render: (r) => `${r.tauxExecution} %` },
   ];
 
   return (
@@ -129,11 +125,10 @@ function BudgetSuiviTable({ embedded }: { embedded?: boolean }) {
         </>
       )}
       {embedded && (
-        <Typography sx={{ fontWeight: 700,  mb: 1.5 }}>
+        <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1.5 }}>
           Lignes budgétaires
         </Typography>
       )}
-      {!embedded && null}
       <DataTable columns={columns} rows={rows} actions={[{ id: 'voir', label: 'Voir', onClick: () => undefined }]} />
     </Box>
   );

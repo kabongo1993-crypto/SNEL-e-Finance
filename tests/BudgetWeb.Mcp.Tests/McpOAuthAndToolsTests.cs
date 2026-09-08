@@ -1,0 +1,417 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using Xunit;
+
+namespace BudgetWeb.Mcp.Tests;
+
+public sealed class FakeBudgetWebApi : IAsyncDisposable
+{
+    private WebApplication? _app;
+    public string BaseUrl { get; private set; } = string.Empty;
+    public const string JwtSecret = "DEV-ONLY-BudgetWeb-SNEL-JwtSigningKey-ChangeInProd-64chars!!";
+
+    public async Task StartAsync()
+    {
+        var builder = WebApplication.CreateBuilder();
+        builder.WebHost.UseUrls("http://127.0.0.1:0");
+        builder.Logging.ClearProviders();
+        var app = builder.Build();
+
+        app.MapPost("/api/v1/auth/login", async (HttpContext ctx) =>
+        {
+            using var doc = await JsonDocument.ParseAsync(ctx.Request.Body);
+            var user = doc.RootElement.GetProperty("nomUtilisateur").GetString();
+            var pwd = doc.RootElement.GetProperty("motDePasse").GetString();
+            if (user == "inactive")
+            {
+                ctx.Response.StatusCode = 401;
+                await ctx.Response.WriteAsJsonAsync(new { message = "Ce compte utilisateur est désactivé." });
+                return;
+            }
+
+            if (user == "missing" || pwd != "ok")
+            {
+                ctx.Response.StatusCode = 401;
+                await ctx.Response.WriteAsJsonAsync(new { message = "Nom d'utilisateur ou mot de passe incorrect." });
+                return;
+            }
+
+            var perms = user == "admin"
+                ? new[] { "admin.all" }
+                : user == "controle"
+                    ? new[] { "versions.controler" }
+                    : new[] { "paiements.lire" };
+            var uid = user == "admin" ? 99L : 7L;
+            var jwt = CreateJwt(uid, user ?? "user", perms, user == "admin" ? ["User Admin Full"] : []);
+            await ctx.Response.WriteAsJsonAsync(new
+            {
+                accessToken = jwt,
+                tokenType = "Bearer",
+                expiresAtUtc = DateTime.UtcNow.AddHours(8),
+                utilisateur = new { idUtilisateur = uid, nomUtilisateur = user, permissions = perms }
+            });
+        });
+
+        app.MapGet("/api/v1/auth/me", (HttpContext ctx) =>
+        {
+            if (!IsBearer(ctx)) return Results.Unauthorized();
+            var perms = IsAdmin(ctx) ? new[] { "admin.all" } : new[] { "paiements.lire" };
+            return Results.Json(new { utilisateur = new { idUtilisateur = 7, permissions = perms } });
+        });
+
+        app.MapGet("/api/v1/unites-budgetaires", (HttpContext ctx) =>
+        {
+            if (!IsBearer(ctx)) return Results.Unauthorized();
+            return Results.Json(new[] { new { idUB = 10L, codeUB = "UB10" } });
+        });
+
+        app.MapGet("/api/v1/suivi-previsions/mes-previsions", (HttpContext ctx) =>
+        {
+            if (!IsBearer(ctx)) return Results.Unauthorized();
+            return Results.Json(new { lignes = new[] { new { idUB = 10, montantTotal = 1000 } } });
+        });
+
+        app.MapGet("/api/v1/suivi-previsions/ub-detail", (HttpContext ctx) =>
+        {
+            if (!IsBearer(ctx)) return Results.Unauthorized();
+            var idUb = ctx.Request.Query["idUB"].ToString();
+            if (idUb == "99")
+                return Results.Json(new { message = "Vous n'avez pas accès au détail de cette unité budgétaire." }, statusCode: 401);
+            return Results.Json(new { idUB = 10, montantDC = 100m, montantAE = 50m, montantBI = 20m, montantTotal = 170m });
+        });
+
+        app.MapGet("/api/v1/demandes-paiement", (HttpContext ctx) =>
+        {
+            if (!IsBearer(ctx)) return Results.Unauthorized();
+            return Results.Json(new[] { new { idDemande = 1, reference = "DPM-1" } });
+        });
+
+        app.MapPost("/api/v1/mcp/journal", () => Results.NoContent());
+
+        await app.StartAsync();
+        _app = app;
+        BaseUrl = app.Urls.First();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_app is not null)
+            await _app.DisposeAsync();
+    }
+
+    public static string CreateJwt(long userId, string username, string[] permissions, string[] roles)
+    {
+        var claims = new List<Claim>
+        {
+            new(JwtRegisteredClaimNames.Sub, userId.ToString()),
+            new("uid", userId.ToString()),
+            new("uname", username),
+            new(ClaimTypes.NameIdentifier, userId.ToString()),
+            new(ClaimTypes.Name, username)
+        };
+        foreach (var r in roles)
+            claims.Add(new Claim(ClaimTypes.Role, r));
+        foreach (var p in permissions)
+            claims.Add(new Claim("permission", p));
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtSecret));
+        var token = new JwtSecurityToken(
+            issuer: "BudgetWeb-SNEL",
+            audience: "BudgetWeb-Client",
+            claims: claims,
+            expires: DateTime.UtcNow.AddHours(8),
+            signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256));
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
+    private static bool IsBearer(HttpContext ctx)
+        => ctx.Request.Headers.Authorization.ToString().StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase);
+
+    private static bool IsAdmin(HttpContext ctx)
+        => ctx.Request.Headers.Authorization.ToString().Contains("admin", StringComparison.OrdinalIgnoreCase);
+}
+
+public sealed class McpFactory : WebApplicationFactory<Program>
+{
+    private readonly string _apiBase;
+
+    public McpFactory(string apiBase) => _apiBase = apiBase;
+
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
+    {
+        builder.UseEnvironment("Development");
+        builder.UseSetting("Mcp:ApiBaseUrl", _apiBase);
+        builder.UseSetting("Mcp:PublicBaseUrl", "http://localhost");
+        builder.UseSetting("Jwt:Issuer", "BudgetWeb-SNEL");
+        builder.UseSetting("Jwt:Audience", "BudgetWeb-Client");
+        builder.UseSetting("Jwt:SecretKey", FakeBudgetWebApi.JwtSecret);
+    }
+}
+
+public class McpOAuthAndToolsTests : IAsyncLifetime
+{
+    private readonly FakeBudgetWebApi _api = new();
+    private McpFactory? _factory;
+    private HttpClient? _client;
+
+    public async Task InitializeAsync()
+    {
+        await _api.StartAsync();
+        _factory = new McpFactory(_api.BaseUrl);
+        _client = _factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+    }
+
+    public async Task DisposeAsync()
+    {
+        _client?.Dispose();
+        if (_factory is not null)
+            await _factory.DisposeAsync();
+        await _api.DisposeAsync();
+    }
+
+    [Fact]
+    public async Task HealthEtWellKnown_SontPublics()
+    {
+        var health = await _client!.GetAsync("/health");
+        health.EnsureSuccessStatusCode();
+        var meta = await _client.GetAsync("/.well-known/oauth-authorization-server");
+        meta.EnsureSuccessStatusCode();
+        var pr = await _client.GetAsync("/.well-known/oauth-protected-resource");
+        pr.EnsureSuccessStatusCode();
+        var mcpPath = await _client.GetAsync("/.well-known/oauth-authorization-server/mcp");
+        mcpPath.EnsureSuccessStatusCode();
+        var metaBody = await meta.Content.ReadAsStringAsync();
+        Assert.DoesNotContain("client_id_metadata_document_supported", metaBody, StringComparison.Ordinal);
+        Assert.DoesNotContain("openid", metaBody, StringComparison.OrdinalIgnoreCase);
+        var oidc = await _client.GetAsync("/.well-known/openid-configuration");
+        Assert.Equal(HttpStatusCode.NotFound, oidc.StatusCode);
+    }
+
+    [Fact]
+    public async Task McpSansToken_Retourne401AvecResourceMetadata()
+    {
+        var res = await _client!.PostAsync("/mcp", new StringContent("{}", Encoding.UTF8, "application/json"));
+        Assert.Equal(HttpStatusCode.Unauthorized, res.StatusCode);
+        Assert.Contains("resource_metadata", res.Headers.WwwAuthenticate.ToString(), StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public async Task TokenExpireOuSignatureInvalide_Refuse()
+    {
+        var bad = new HttpRequestMessage(HttpMethod.Post, "/mcp");
+        bad.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "not-a-jwt");
+        var res = await _client!.SendAsync(bad);
+        Assert.Equal(HttpStatusCode.Unauthorized, res.StatusCode);
+
+        var expired = CreateExpiredJwt();
+        var req = new HttpRequestMessage(HttpMethod.Post, "/mcp");
+        req.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", expired);
+        var res2 = await _client.SendAsync(req);
+        Assert.Equal(HttpStatusCode.Unauthorized, res2.StatusCode);
+    }
+
+    [Fact]
+    public async Task LoginInactifEtInconnu_Bloques()
+    {
+        var (verifier, challenge) = MakePkce();
+        var codeInactif = await TryLoginAsync("inactive", "ok", verifier, challenge);
+        Assert.Null(codeInactif);
+        var codeMissing = await TryLoginAsync("missing", "ok", verifier, challenge);
+        Assert.Null(codeMissing);
+    }
+
+    [Fact]
+    public async Task OAuthPkce_ProduitJwtBudgetWeb()
+    {
+        var (verifier, challenge) = MakePkce();
+        var token = await CompleteOAuthAsync("alice", "ok", verifier, challenge);
+        Assert.False(string.IsNullOrWhiteSpace(token));
+        var handler = new JwtSecurityTokenHandler();
+        var jwt = handler.ReadJwtToken(token);
+        Assert.Equal("7", jwt.Claims.First(c => c.Type == "uid").Value);
+    }
+
+    [Fact]
+    public async Task TokenSansClientId_Refuse()
+    {
+        var (verifier, challenge) = MakePkce();
+        var code = await TryLoginAsync("alice", "ok", verifier, challenge);
+        Assert.NotNull(code);
+        var tokenRes = await _client!.PostAsync("/oauth/token", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "authorization_code",
+            ["code"] = code!,
+            ["redirect_uri"] = "http://127.0.0.1:9/callback",
+            ["code_verifier"] = verifier
+        }));
+        Assert.Equal(HttpStatusCode.BadRequest, tokenRes.StatusCode);
+        var body = await tokenRes.Content.ReadAsStringAsync();
+        Assert.Contains("invalid_grant", body, StringComparison.Ordinal);
+        Assert.DoesNotContain("eyJ", body, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task TokenClientIdIncoherent_Refuse()
+    {
+        var (verifier, challenge) = MakePkce();
+        var code = await TryLoginAsync("alice", "ok", verifier, challenge);
+        Assert.NotNull(code);
+        var tokenRes = await _client!.PostAsync("/oauth/token", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "authorization_code",
+            ["code"] = code!,
+            ["redirect_uri"] = "http://127.0.0.1:9/callback",
+            ["code_verifier"] = verifier,
+            ["client_id"] = "client-inconnu"
+        }));
+        Assert.Equal(HttpStatusCode.BadRequest, tokenRes.StatusCode);
+        var body = await tokenRes.Content.ReadAsStringAsync();
+        Assert.Contains("invalid_grant", body, StringComparison.Ordinal);
+        Assert.DoesNotContain("eyJ", body, StringComparison.Ordinal);
+    }
+
+
+    [Fact]
+    public async Task ToolsList_ExposeOutilsMetierSansSql()
+    {
+        var token = FakeBudgetWebApi.CreateJwt(7, "alice", ["paiements.lire"], []);
+        var init = await McpAsync(token, """{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"tests","version":"1"}}}""");
+        init.EnsureSuccessStatusCode();
+        var list = await McpAsync(token, """{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}""");
+        list.EnsureSuccessStatusCode();
+        var body = await list.Content.ReadAsStringAsync();
+        Assert.Contains("get_budget_situation", body, StringComparison.Ordinal);
+        Assert.Contains("search_demandes_paiement", body, StringComparison.Ordinal);
+        Assert.Contains("list_referentiels", body, StringComparison.Ordinal);
+        Assert.DoesNotContain("execute_sql", body, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("query_database", body, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("run_sql", body, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public async Task UbHorsPerimetre_EstRefuseeParApi()
+    {
+        var token = FakeBudgetWebApi.CreateJwt(7, "alice", ["paiements.lire"], []);
+        var call = await McpAsync(token, """
+{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_budget_situation","arguments":{"idVersion":1,"idUB":99}}}
+""");
+        call.EnsureSuccessStatusCode();
+        var body = await call.Content.ReadAsStringAsync();
+        Assert.DoesNotContain("montantDC", body, StringComparison.Ordinal);
+        Assert.True(
+            body.Contains("authentifi", StringComparison.OrdinalIgnoreCase)
+            || body.Contains("avez", StringComparison.OrdinalIgnoreCase)
+            || body.Contains("isError", StringComparison.OrdinalIgnoreCase)
+            || body.Contains("refus", StringComparison.OrdinalIgnoreCase),
+            "Une UB hors périmètre ne doit pas renvoyer les totaux budgétaires.");
+
+    }
+
+    private async Task<HttpResponseMessage> McpAsync(string token, string json)
+    {
+        var req = new HttpRequestMessage(HttpMethod.Post, "/mcp")
+        {
+            Content = new StringContent(json, Encoding.UTF8, "application/json")
+        };
+        req.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        req.Headers.Accept.ParseAdd("application/json");
+        req.Headers.Accept.ParseAdd("text/event-stream");
+        return await _client!.SendAsync(req);
+    }
+
+    private async Task<string> CompleteOAuthAsync(string user, string password, string verifier, string challenge)
+    {
+        var code = await TryLoginAsync(user, password, verifier, challenge);
+        Assert.NotNull(code);
+        var tokenRes = await _client!.PostAsync("/oauth/token", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "authorization_code",
+            ["code"] = code!,
+            ["redirect_uri"] = "http://127.0.0.1:9/callback",
+            ["code_verifier"] = verifier,
+            ["client_id"] = _lastClientId
+        }));
+        tokenRes.EnsureSuccessStatusCode();
+        using var doc = JsonDocument.Parse(await tokenRes.Content.ReadAsStringAsync());
+        return doc.RootElement.GetProperty("access_token").GetString()!;
+    }
+
+    private string _lastClientId = string.Empty;
+
+    private async Task<string?> TryLoginAsync(string user, string password, string verifier, string challenge)
+    {
+        var reg = await _client!.PostAsync("/oauth/register", new StringContent(
+            """{"redirect_uris":["http://127.0.0.1:9/callback"]}""", Encoding.UTF8, "application/json"));
+        Assert.Equal(HttpStatusCode.Created, reg.StatusCode);
+        using var regDoc = JsonDocument.Parse(await reg.Content.ReadAsStringAsync());
+        _lastClientId = regDoc.RootElement.GetProperty("client_id").GetString()!;
+
+        var authorize = await _client.GetAsync(
+            $"/oauth/authorize?response_type=code&client_id={_lastClientId}&redirect_uri={Uri.EscapeDataString("http://127.0.0.1:9/callback")}&state=st&code_challenge={challenge}&code_challenge_method=S256&resource=http://localhost/mcp");
+        var html = await authorize.Content.ReadAsStringAsync();
+        var ticket = Regex.Match(html, "name=\"ticket\" value=\"([^\"]+)\"").Groups[1].Value;
+        if (string.IsNullOrEmpty(ticket))
+            return null;
+
+        var login = await _client.PostAsync("/oauth/authorize/login", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["ticket"] = ticket,
+            ["username"] = user,
+            ["password"] = password
+        }));
+        if (login.StatusCode != HttpStatusCode.Redirect)
+            return null;
+        var location = login.Headers.Location?.ToString() ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(location))
+            return null;
+        if (!Uri.TryCreate(location, UriKind.Absolute, out var locUri)
+            && !Uri.TryCreate(new Uri("http://localhost"), location, out locUri))
+            return null;
+        return GetQuery(locUri, "code");
+    }
+
+    private static string? GetQuery(Uri uri, string key)
+    {
+        foreach (var part in uri.Query.TrimStart('?').Split('&', StringSplitOptions.RemoveEmptyEntries))
+        {
+            var kv = part.Split('=', 2);
+            if (kv.Length == 2 && string.Equals(kv[0], key, StringComparison.Ordinal))
+                return Uri.UnescapeDataString(kv[1]);
+        }
+        return null;
+    }
+
+    private static (string Verifier, string Challenge) MakePkce()
+    {
+        var verifier = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32))
+            .TrimEnd('=').Replace('+', '-').Replace('/', '_');
+        if (verifier.Length < 43)
+            verifier = verifier.PadRight(43, 'a');
+        var challenge = Base64UrlEncoder.Encode(SHA256.HashData(Encoding.ASCII.GetBytes(verifier)));
+        return (verifier, challenge);
+    }
+
+    private static string CreateExpiredJwt()
+    {
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(FakeBudgetWebApi.JwtSecret));
+        var token = new JwtSecurityToken(
+            issuer: "BudgetWeb-SNEL",
+            audience: "BudgetWeb-Client",
+            claims: [new Claim("uid", "7")],
+            notBefore: DateTime.UtcNow.AddHours(-5),
+            expires: DateTime.UtcNow.AddHours(-1),
+            signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256));
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+}

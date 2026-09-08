@@ -12,10 +12,11 @@ public class RubriqueBudgetaireConfiguration : IEntityTypeConfiguration<Rubrique
 
         builder.HasKey(e => e.IdRB);
 
-        builder.Property(e => e.IdRB).HasColumnName("IdRB");
+        builder.Property(e => e.IdRB).HasColumnName("IdRB").ValueGeneratedOnAdd();
         builder.Property(e => e.CodeRB).HasColumnName("CodeRB").HasMaxLength(30).IsUnicode(false);
         builder.Property(e => e.Libelle).HasColumnName("Libelle").HasMaxLength(300);
         builder.Property(e => e.FK_RubriqueBudgetaireParent).HasColumnName("FK_RubriqueBudgetaireParent");
+        builder.Property(e => e.FK_GroupeRubriqueBudgetaire).HasColumnName("FK_GroupeRubriqueBudgetaire");
         builder.Property(e => e.Niveau).HasColumnName("Niveau");
         builder.Property(e => e.Actif).HasColumnName("Actif");
         builder.Property(e => e.DateCreation).HasColumnName("DateCreation");
@@ -24,5 +25,10 @@ public class RubriqueBudgetaireConfiguration : IEntityTypeConfiguration<Rubrique
             .WithMany(e => e.RubriquesEnfants)
             .HasForeignKey(e => e.FK_RubriqueBudgetaireParent)
             .HasConstraintName("FK_RB_PARENT");
+
+        builder.HasOne(e => e.GroupeRubriqueBudgetaire)
+            .WithMany(e => e.RubriquesBudgetaires)
+            .HasForeignKey(e => e.FK_GroupeRubriqueBudgetaire)
+            .HasConstraintName("FK_RB_GROUPE");
     }
 }

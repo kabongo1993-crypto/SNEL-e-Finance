@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\BudgetWeb.Infrastructure\BudgetWeb.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\BudgetWeb.Application\BudgetWeb.Application.csproj" />
+  </ItemGroup>
+</Project>

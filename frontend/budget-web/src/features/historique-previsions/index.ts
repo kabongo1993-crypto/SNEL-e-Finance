@@ -1,0 +1,1 @@
+export { HistoriquePrevisionsPage } from './HistoriquePrevisionsPage';

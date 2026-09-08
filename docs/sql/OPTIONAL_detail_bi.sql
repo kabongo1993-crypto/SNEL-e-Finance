@@ -1,0 +1,86 @@
+/*
+  Migration DetailBI structurée (FK_DetailBI) — ÉVOLUTION FUTURE, NON REQUISE.
+  L'imputation BI actuelle utilise FK_ItemBI + DetailBI (texte), comme les prévisions.
+  Ne pas exécuter ce script sauf décision explicite de basculer vers un référentiel structuré.
+*/
+IF OBJECT_ID(N'dbo.DETAIL_BI', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.DETAIL_BI
+    (
+        IdDetailBI            BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+        FK_ItemBI             BIGINT NOT NULL,
+        Libelle               NVARCHAR(1000) NOT NULL,
+        Actif                 BIT NOT NULL CONSTRAINT DF_DETAIL_BI_ACTIF DEFAULT (1),
+        DateCreation          DATETIME2 NOT NULL CONSTRAINT DF_DETAIL_BI_DATE DEFAULT (SYSUTCDATETIME()),
+        FK_UtilisateurCreation BIGINT NOT NULL,
+        CONSTRAINT FK_DETAIL_BI_ITEM_BI FOREIGN KEY (FK_ItemBI) REFERENCES dbo.ITEM_BI (IdItemBI),
+        CONSTRAINT FK_DETAIL_BI_UTILISATEUR FOREIGN KEY (FK_UtilisateurCreation) REFERENCES dbo.UTILISATEUR (IdUtilisateur)
+    );
+
+    CREATE UNIQUE INDEX UX_DETAIL_BI_ITEM_LIBELLE ON dbo.DETAIL_BI (FK_ItemBI, Libelle);
+END
+GO
+
+IF COL_LENGTH('dpm.DEMANDE_PAIEMENT_IMPUTATION', 'FK_DetailBI') IS NULL
+BEGIN
+    ALTER TABLE dpm.DEMANDE_PAIEMENT_IMPUTATION ADD FK_DetailBI BIGINT NULL;
+    ALTER TABLE dpm.DEMANDE_PAIEMENT_IMPUTATION
+        ADD CONSTRAINT FK_DPM_IMPUT_DETAIL_BI FOREIGN KEY (FK_DetailBI) REFERENCES dbo.DETAIL_BI (IdDetailBI);
+END
+GO
+
+IF COL_LENGTH('dbo.PREVISION_BUDGETAIRE', 'FK_DetailBI') IS NULL
+BEGIN
+    ALTER TABLE dbo.PREVISION_BUDGETAIRE ADD FK_DetailBI BIGINT NULL;
+    ALTER TABLE dbo.PREVISION_BUDGETAIRE
+        ADD CONSTRAINT FK_PREVISION_DETAIL_BI FOREIGN KEY (FK_DetailBI) REFERENCES dbo.DETAIL_BI (IdDetailBI);
+END
+GO
+
+/* Backfill depuis PREVISION_BUDGETAIRE puis imputations BI */
+DECLARE @systemUser BIGINT = (SELECT TOP 1 IdUtilisateur FROM dbo.UTILISATEUR ORDER BY IdUtilisateur);
+
+INSERT INTO dbo.DETAIL_BI (FK_ItemBI, Libelle, Actif, DateCreation, FK_UtilisateurCreation)
+SELECT DISTINCT p.FK_ItemBI, LTRIM(RTRIM(p.DetailBI)), 1, SYSUTCDATETIME(), @systemUser
+FROM dbo.PREVISION_BUDGETAIRE p
+WHERE p.FK_ItemBI IS NOT NULL
+  AND p.DetailBI IS NOT NULL
+  AND LTRIM(RTRIM(p.DetailBI)) <> N''
+  AND NOT EXISTS (
+      SELECT 1 FROM dbo.DETAIL_BI d
+      WHERE d.FK_ItemBI = p.FK_ItemBI
+        AND LTRIM(RTRIM(d.Libelle)) = LTRIM(RTRIM(p.DetailBI)) COLLATE Latin1_General_CI_AI);
+
+INSERT INTO dbo.DETAIL_BI (FK_ItemBI, Libelle, Actif, DateCreation, FK_UtilisateurCreation)
+SELECT DISTINCT i.FK_ItemBI, LTRIM(RTRIM(i.DetailBI)), 1, SYSUTCDATETIME(), @systemUser
+FROM dpm.DEMANDE_PAIEMENT_IMPUTATION i
+WHERE i.FK_ItemBI IS NOT NULL
+  AND i.DetailBI IS NOT NULL
+  AND LTRIM(RTRIM(i.DetailBI)) <> N''
+  AND NOT EXISTS (
+      SELECT 1 FROM dbo.DETAIL_BI d
+      WHERE d.FK_ItemBI = i.FK_ItemBI
+        AND LTRIM(RTRIM(d.Libelle)) = LTRIM(RTRIM(i.DetailBI)) COLLATE Latin1_General_CI_AI);
+GO
+
+UPDATE p
+SET p.FK_DetailBI = d.IdDetailBI
+FROM dbo.PREVISION_BUDGETAIRE p
+INNER JOIN dbo.DETAIL_BI d
+    ON d.FK_ItemBI = p.FK_ItemBI
+   AND LTRIM(RTRIM(d.Libelle)) = LTRIM(RTRIM(p.DetailBI)) COLLATE Latin1_General_CI_AI
+WHERE p.FK_ItemBI IS NOT NULL
+  AND p.DetailBI IS NOT NULL
+  AND p.FK_DetailBI IS NULL;
+GO
+
+UPDATE i
+SET i.FK_DetailBI = d.IdDetailBI
+FROM dpm.DEMANDE_PAIEMENT_IMPUTATION i
+INNER JOIN dbo.DETAIL_BI d
+    ON d.FK_ItemBI = i.FK_ItemBI
+   AND LTRIM(RTRIM(d.Libelle)) = LTRIM(RTRIM(i.DetailBI)) COLLATE Latin1_General_CI_AI
+WHERE i.FK_ItemBI IS NOT NULL
+  AND i.DetailBI IS NOT NULL
+  AND i.FK_DetailBI IS NULL;
+GO

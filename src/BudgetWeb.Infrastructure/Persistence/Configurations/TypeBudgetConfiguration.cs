@@ -12,7 +12,7 @@ public class TypeBudgetConfiguration : IEntityTypeConfiguration<TypeBudget>
 
         builder.HasKey(e => e.IdTypeBudget);
 
-        builder.Property(e => e.IdTypeBudget).HasColumnName("IdTypeBudget");
+        builder.Property(e => e.IdTypeBudget).HasColumnName("IdTypeBudget").ValueGeneratedOnAdd();
         builder.Property(e => e.CodeType).HasColumnName("CodeType").HasMaxLength(10).IsUnicode(false);
         builder.Property(e => e.Libelle).HasColumnName("Libelle").HasMaxLength(100);
         builder.Property(e => e.OrdreAffichage).HasColumnName("OrdreAffichage");

@@ -1,0 +1,1 @@
+export { CategoriesComptesPage } from './CategoriesComptesPage';

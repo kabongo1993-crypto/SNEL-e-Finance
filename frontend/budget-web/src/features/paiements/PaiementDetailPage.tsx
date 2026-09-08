@@ -1,14 +1,12 @@
-import DownloadIcon from '@mui/icons-material/Download';
-import PrintIcon from '@mui/icons-material/Print';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import {
+  Alert,
   Box,
   Button,
   Chip,
-  Grid,
+  Divider,
   Stack,
-  Step,
-  StepLabel,
-  Stepper,
   Table,
   TableBody,
   TableCell,
@@ -16,244 +14,508 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import { useMemo, useState } from 'react';
-import { Link as RouterLink, useParams } from 'react-router-dom';
-import { ConfirmDialog, DetailPanel, ErrorState, PageHeader, StatusBadge } from '../../components';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link as RouterLink, useNavigate, useParams } from 'react-router-dom';
 import {
-  getPaiementById,
-  paiementCircuit,
-  paiementCommentaires,
-  paiementPieces,
-} from '../../mocks/paiements';
-import { formatDateFr, formatMontant } from '../../mocks/types';
-import type { EntityStatus } from '../../types/status';
+  DetailPanel,
+  DocumentActions,
+  ErrorState,
+  LoadingState,
+  PageHeader,
+  useMsgBox,
+} from '../../components';
+import { useAuth } from '../auth';
+import {
+  deleteDemandePaiement,
+  fetchDemandePaiement,
+  previewDemandePaiementPiece,
+  downloadDemandePaiementPiece,
+  type DemandePaiementDetailComplet,
+} from '../../services/apiClient';
+import { DemandeDetailSummaryRail } from './DemandeDetailSummaryRail';
+import { buildAssignationViewFromDetail } from './demandePaiementAssignationFromApi';
+import { DemandePaiementACorrigerAlert } from './DemandePaiementACorrigerAlert';
+import { labelTimelineRetourDemandeur } from './demandePaiementRetourLabels';
+import { DemandePaiementStatusBadge } from './DemandePaiementStatusBadge';
+import { DemandePaiementWorkflowBlock } from './DemandePaiementWorkflowBlock';
+import { DetailFieldGrid } from './DetailFieldGrid';
+import { EntiteValidationSection } from './EntiteValidationSection';
+import { NumberedSectionBlock } from './NumberedSectionBlock';
+import { useDemandePaiementRoutageLecture } from './useDemandePaiementRoutageLecture';
+import { DemandePaiementMutationLockProvider } from './useDemandePaiementMutationLock';
+import { useNotifyDemandePaiementMutated } from './useDemandePaiementListInvalidation';
+import { labelOperationAudit } from './paiementBudgetUtils';
+import {
+  apiErrorMessage,
+  canChargeDpm,
+  canEcrirePaiements,
+  canLirePaiements,
+  canSupprimerBrouillon,
+  estModifiableDemandeur,
+  formatDateFr,
+  formatMontantDevise,
+  formatMontantUsd,
+  normalizeStatutDpm,
+} from './paiementUtils';
 
-function actionsForStatus(statut: EntityStatus) {
-  const base = [
-    { id: 'download', label: 'Télécharger', icon: <DownloadIcon />, variant: 'outlined' as const },
-    { id: 'print', label: 'Imprimer', icon: <PrintIcon />, variant: 'outlined' as const },
-  ];
-  switch (statut) {
-    case 'brouillon':
-      return [
-        { id: 'edit', label: 'Modifier', variant: 'outlined' as const },
-        { id: 'submit', label: 'Soumettre', variant: 'contained' as const },
-        { id: 'cancel', label: 'Annuler', variant: 'outlined' as const, color: 'error' as const },
-        ...base,
-      ];
-    case 'soumis':
-    case 'en_validation':
-      return [
-        { id: 'validate', label: 'Valider', variant: 'contained' as const, color: 'success' as const },
-        { id: 'reject', label: 'Rejeter', variant: 'outlined' as const, color: 'error' as const },
-        { id: 'cancel', label: 'Annuler', variant: 'outlined' as const, color: 'error' as const },
-        ...base,
-      ];
-    case 'valide':
-      return [
-        { id: 'cancel', label: 'Annuler', variant: 'outlined' as const, color: 'error' as const },
-        ...base,
-      ];
-    default:
-      return base;
-  }
+function isRequestAborted(err: unknown): boolean {
+  return (
+    axios.isCancel(err) ||
+    (axios.isAxiosError(err) &&
+      (err.code === 'ERR_CANCELED' || err.message === 'canceled'))
+  );
 }
 
 export function PaiementDetailPage() {
   const { id } = useParams();
-  const paiement = useMemo(() => (id ? getPaiementById(id) : undefined), [id]);
-  const [confirm, setConfirm] = useState<{ title: string; message: string } | null>(null);
+  const idDemande = Number(id);
+  const navigate = useNavigate();
+  const msgBox = useMsgBox();
+  const notifyMutated = useNotifyDemandePaiementMutated();
+  const { user } = useAuth();
+  const canRead = canLirePaiements(user);
+  const canWrite = canEcrirePaiements(user);
+  const isChargeDpm = canChargeDpm(user);
 
-  if (!paiement) {
-    return (
-      <ErrorState
-        title="Paiement introuvable"
-        message="La demande demandée n'existe pas dans les données mock."
-      />
-    );
+  const [data, setData] = useState<DemandePaiementDetailComplet | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState(false);
+  const routageLecture = useDemandePaiementRoutageLecture(idDemande, canRead);
+
+  useEffect(() => {
+    if (!canRead || !idDemande) return;
+
+    const controller = new AbortController();
+    setLoading(true);
+    setError(null);
+
+    void (async () => {
+      try {
+        const [detail] = await Promise.all([
+          fetchDemandePaiement(idDemande, { signal: controller.signal }),
+          routageLecture.reload(),
+        ]);
+        if (controller.signal.aborted) return;
+        setData(detail);
+      } catch (err) {
+        if (isRequestAborted(err) || controller.signal.aborted) return;
+        setError(apiErrorMessage(err, 'Impossible de charger la demande.'));
+        setData(null);
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    })();
+
+    return () => controller.abort();
+  }, [canRead, idDemande, routageLecture.reload]);
+
+  const d = data?.demande;
+  const editable = estModifiableDemandeur(d?.statut);
+
+  const reload = () => {
+    if (!canRead || !idDemande) return;
+    setLoading(true);
+    setError(null);
+    void Promise.all([fetchDemandePaiement(idDemande), routageLecture.reload()])
+      .then(([detail]) => setData(detail))
+      .catch((err) => {
+        setError(apiErrorMessage(err, 'Impossible de charger la demande.'));
+        setData(null);
+      })
+      .finally(() => setLoading(false));
+  };
+
+  const handleDelete = async () => {
+    const demande = data?.demande;
+    if (!demande || !canSupprimerBrouillon(user, demande.statut) || deleting) return;
+
+    const ok = await msgBox.confirm({
+      title: 'Supprimer définitivement ?',
+      message: `La demande « ${demande.reference} » sera supprimée de façon permanente avec toutes ses pièces jointes. Cette action est irréversible.`,
+      confirmLabel: 'Supprimer définitivement',
+    });
+    if (!ok) return;
+
+    setDeleting(true);
+    try {
+      await deleteDemandePaiement(demande.idDemandePaiement);
+      notifyMutated();
+      void msgBox.success('Demande supprimée définitivement.');
+      navigate('/paiements', { replace: true });
+    } catch (err) {
+      void msgBox.error(apiErrorMessage(err, 'Suppression impossible.'));
+    } finally {
+      setDeleting(false);
+    }
+  };
+
+  if (!canRead) {
+    return <Alert severity="warning">Permission insuffisante (`paiements.lire`).</Alert>;
+  }
+  if (loading) return <LoadingState label="Chargement de la demande…" />;
+  if (error || !d) {
+    return <ErrorState message={error ?? 'Demande introuvable.'} onRetry={reload} />;
   }
 
-  const actions = actionsForStatus(paiement.statut);
+  const timelineStops = [
+    { key: 'creation', label: 'Création', date: d.dateCreation, done: true },
+    { key: 'soumission', label: 'Soumission', date: d.dateSoumission, done: !!d.dateSoumission },
+    { key: 'reception', label: 'Réception Budgets', date: d.dateReception, done: !!d.dateReception },
+    { key: 'controle', label: 'Contrôle budgétaire', date: d.dateControle, done: !!d.dateControle },
+    {
+      key: 'retour',
+      label: labelTimelineRetourDemandeur(),
+      date: d.dateRetour,
+      done: !!d.dateRetour && (d.statut ?? '').toUpperCase() === 'A_CORRIGER',
+    },
+    { key: 'visa', label: 'Visa budgétaire', date: d.dateVisa, done: !!d.dateVisa },
+  ];
+
+  const destinationLabel =
+    d.destinationSolliciteeAffichage ??
+    (d.typeBudgetSollicite === 'BI'
+      ? `BI / IVT${d.itemSollicite ? ` — Item N° ${d.itemSollicite}` : ''}`
+      : d.itemSollicite
+        ? `${d.typeBudgetSollicite} — Item N° ${d.itemSollicite}`
+        : d.typeBudgetSollicite) ??
+    '—';
+
+  const modePaiementLabel =
+    d.modePaiementSollicite === 'CAISSE'
+      ? 'Caisse'
+      : d.modePaiementSollicite === 'BANQUE'
+        ? 'Banque'
+        : d.modePaiementSollicite ?? '—';
+
+  const demandeurLabel =
+    d.codeDemandeur || d.libelleDemandeur
+      ? [d.codeDemandeur, d.libelleDemandeur].filter(Boolean).join(' — ')
+      : '—';
+
+  const assignationView = buildAssignationViewFromDetail(d, user?.idUtilisateur);
 
   return (
-    <Box>
+    <>
       <PageHeader
-        title={paiement.numero}
-        subtitle={paiement.objet}
+        entityLabel={d.reference}
+        entityCaption={d.objet}
         breadcrumbs={[
           { label: 'e-Finance', to: '/dashboard' },
-          { label: 'Paiements', to: '/paiements/demandes' },
-          { label: paiement.numero },
+          { label: 'Paiements', to: '/paiements' },
+          { label: d.reference },
         ]}
         actions={
-          <>
-            <StatusBadge status={paiement.statut} size="medium" />
-            {actions.map((a) => (
+          <Stack
+            direction="row"
+            spacing={1}
+            useFlexGap
+            sx={{ alignItems: 'center', flexWrap: 'wrap' }}
+          >
+            <DemandePaiementStatusBadge statut={d.statut} size="medium" />
+            {isChargeDpm &&
+              ['SOUMISE', 'EN_TRAITEMENT_DPM', 'BROUILLON'].includes(normalizeStatutDpm(d.statut)) && (
+                <Button
+                  variant="contained"
+                  component={RouterLink}
+                  to={`/paiements/charge-dpm/${d.idDemandePaiement}`}
+                >
+                  Traiter (Chargé DP)
+                </Button>
+              )}
+            {canWrite && editable && (
               <Button
-                key={a.id}
-                variant={a.variant}
-                color={'color' in a ? a.color : 'primary'}
-                startIcon={'icon' in a ? a.icon : undefined}
-                onClick={() =>
-                  setConfirm({
-                    title: a.label,
-                    message: `Action « ${a.label} » — maquette UI (aucune écriture BD).`,
-                  })
-                }
+                variant="contained"
+                startIcon={<EditIcon />}
+                component={RouterLink}
+                to={`/paiements/${d.idDemandePaiement}/modifier`}
               >
-                {a.label}
+                Modifier la demande
               </Button>
-            ))}
-          </>
+            )}
+            {canSupprimerBrouillon(user, d.statut) && (
+              <Button
+                variant="outlined"
+                color="error"
+                startIcon={<DeleteOutlinedIcon />}
+                disabled={deleting}
+                onClick={() => void handleDelete()}
+              >
+                Supprimer définitivement
+              </Button>
+            )}
+          </Stack>
         }
       />
 
-      <Grid container spacing={2}>
-        <Grid size={{ xs: 12, md: 8 }}>
-          <DetailPanel title="Informations générales">
-            <Grid container spacing={2}>
-              {[
-                ['Numéro', paiement.numero],
-                ['Date', formatDateFr(paiement.date)],
-                ['Demandeur', paiement.demandeur],
-                ['Bénéficiaire', paiement.beneficiaire],
-                ['Montant', formatMontant(paiement.montant, paiement.devise)],
-                ['Devise', paiement.devise],
-                ['Département', paiement.departement],
-                ['Unité budgétaire', paiement.uniteBudgetaire],
-              ].map(([label, value]) => (
-                <Grid key={label} size={{ xs: 12, sm: 6 }}>
-                  <Typography variant="caption" color="text.secondary">
-                    {label}
+      {(d.statut ?? '').toUpperCase() === 'A_CORRIGER' && (
+        <DemandePaiementACorrigerAlert
+          demande={d}
+          retoursDestinataires={routageLecture.retoursDestinataires}
+          description="En tant que demandeur, vous pouvez modifier cette demande puis la resoumettre selon le circuit habituel."
+        />
+      )}
+
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          alignItems: 'flex-start',
+          gap: 2,
+          pb: 3,
+        }}
+      >
+        <Box sx={{ flex: '1 1 auto', minWidth: 0, width: '100%' }}>
+          <DemandePaiementMutationLockProvider>
+            <EntiteValidationSection
+              demande={d}
+              retoursDestinataires={routageLecture.retoursDestinataires}
+              onUpdated={(updated) => setData((prev) => (prev ? { ...prev, demande: updated } : prev))}
+            />
+          </DemandePaiementMutationLockProvider>
+
+          <Stack spacing={2} sx={{ mt: 2 }}>
+            <NumberedSectionBlock step={1} showConnector>
+              <DetailPanel title="Informations générales">
+                <DetailFieldGrid
+                  fields={[
+                    { label: "Date d'émission", value: formatDateFr(d.dateEmission) },
+                    { label: "Lieu d'émission", value: d.lieuEmission ?? '—' },
+                    { label: 'Exercice', value: String(d.anneeExercice) },
+                    { label: 'Demandeur', value: demandeurLabel },
+                    { label: 'Objet', value: d.objet, fullWidth: true },
+                    { label: 'Compte de section', value: d.compteSection ?? '—', fullWidth: true },
+                  ]}
+                />
+              </DetailPanel>
+            </NumberedSectionBlock>
+
+            <NumberedSectionBlock step={2} showConnector>
+              <DetailPanel title="Bénéficiaires">
+                {d.beneficiaires.length === 0 ? (
+                  <Typography variant="body2" color="text.secondary">
+                    Aucun bénéficiaire.
                   </Typography>
-                  <Typography sx={{ fontWeight: 600 }}>{value}</Typography>
-                </Grid>
-              ))}
-              <Grid size={{ xs: 12 }}>
-                <Typography variant="caption" color="text.secondary">
-                  Objet
-                </Typography>
-                <Typography sx={{ fontWeight: 600 }}>{paiement.objet}</Typography>
-              </Grid>
-            </Grid>
-          </DetailPanel>
+                ) : (
+                  <Table size="small">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>Type</TableCell>
+                        <TableCell>Nom</TableCell>
+                        <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>Coordonnées</TableCell>
+                        <TableCell>Principal</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {d.beneficiaires.map((b) => (
+                        <TableRow key={b.idBeneficiaire}>
+                          <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>
+                            {b.typeBeneficiaire}
+                          </TableCell>
+                          <TableCell sx={{ fontWeight: b.estPrincipal ? 650 : 400 }}>
+                            {b.nomComplet}
+                          </TableCell>
+                          <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>
+                            {[b.matricule, b.fonction, b.raisonSociale, b.banque, b.numeroCompte]
+                              .filter(Boolean)
+                              .join(' · ') || '—'}
+                          </TableCell>
+                          <TableCell>
+                            {b.estPrincipal ? (
+                              <Chip size="small" label="Principal" color="primary" variant="outlined" />
+                            ) : (
+                              '—'
+                            )}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                )}
+              </DetailPanel>
+            </NumberedSectionBlock>
 
-          <DetailPanel title="Informations financières">
-            <Grid container spacing={2}>
-              <Grid size={{ xs: 6, sm: 3 }}>
-                <Typography variant="caption" color="text.secondary">
-                  Montant TTC
-                </Typography>
-                <Typography sx={{ fontWeight: 700 }}>{formatMontant(paiement.montant)}</Typography>
-              </Grid>
-              <Grid size={{ xs: 6, sm: 3 }}>
-                <Typography variant="caption" color="text.secondary">
-                  Mode de paiement
-                </Typography>
-                <Typography sx={{ fontWeight: 600 }}>Virement</Typography>
-              </Grid>
-              <Grid size={{ xs: 6, sm: 3 }}>
-                <Typography variant="caption" color="text.secondary">
-                  Imputation
-                </Typography>
-                <Typography sx={{ fontWeight: 600 }}>61.01.001</Typography>
-              </Grid>
-              <Grid size={{ xs: 6, sm: 3 }}>
-                <Typography variant="caption" color="text.secondary">
-                  Disponible UB
-                </Typography>
-                <Typography sx={{ fontWeight: 600 }}>{formatMontant(180_000_000)}</Typography>
-              </Grid>
-            </Grid>
-          </DetailPanel>
+            <NumberedSectionBlock step={3} showConnector>
+              <DetailPanel title="Imputations">
+                {d.imputations.length === 0 ? (
+                  <Typography variant="body2" color="text.secondary">
+                    Aucune imputation enregistrée.
+                  </Typography>
+                ) : (
+                  <Table size="small">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>#</TableCell>
+                        <TableCell>Type</TableCell>
+                        <TableCell>Détail</TableCell>
+                        <TableCell align="right">Montant USD</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {d.imputations.map((i) => (
+                        <TableRow key={i.idImputation}>
+                          <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>{i.ordre}</TableCell>
+                          <TableCell>{i.codeTypeBudget}</TableCell>
+                          <TableCell>
+                            {i.libelleItemAE || i.detailBI || (i.mois ? `Mois ${i.mois}` : '—')}
+                            {!i.idBudgetLigne && (
+                              <Typography variant="caption" sx={{ display: 'block' }} color="text.secondary">
+                                Prévision : 0 USD
+                              </Typography>
+                            )}
+                          </TableCell>
+                          <TableCell align="right">{formatMontantUsd(i.montantUsd)}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                )}
+              </DetailPanel>
+            </NumberedSectionBlock>
 
-          <DetailPanel title="Pièces justificatives">
-            <Table size="small">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Document</TableCell>
-                  <TableCell>Type</TableCell>
-                  <TableCell>Taille</TableCell>
-                  <TableCell>Date</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {paiementPieces.map((p) => (
-                  <TableRow key={p.id}>
-                    <TableCell>{p.nom}</TableCell>
-                    <TableCell>{p.type}</TableCell>
-                    <TableCell>{p.taille}</TableCell>
-                    <TableCell>{formatDateFr(p.date)}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </DetailPanel>
-        </Grid>
+            <NumberedSectionBlock step={4} showConnector>
+              <DetailPanel title="Pièces justificatives">
+                {data.piecesManquantes.length > 0 && (
+                  <Alert severity="warning" sx={{ mb: 1.5 }}>
+                    Pièces manquantes : {data.piecesManquantes.map((p) => p.libelle).join(', ')}
+                  </Alert>
+                )}
+                <Table size="small">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Libellé</TableCell>
+                      <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>Type</TableCell>
+                      <TableCell>Actions</TableCell>
+                      <TableCell>Obligatoire</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {d.pieces.map((p) => (
+                      <TableRow key={p.idPieceJointe}>
+                        <TableCell>{p.libelle}</TableCell>
+                        <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>
+                          {p.codeTypePiece}
+                        </TableCell>
+                        <TableCell>
+                          <DocumentActions
+                            title={p.libelle}
+                            fileName={p.nomFichierOriginal || 'piece'}
+                            fileSizeBytes={p.tailleOctets}
+                            showFileName={false}
+                            loadPreview={() => previewDemandePaiementPiece(idDemande, p.idPieceJointe)}
+                            loadDownload={() => downloadDemandePaiementPiece(idDemande, p.idPieceJointe)}
+                          />
+                        </TableCell>
+                        <TableCell>
+                          <Chip
+                            size="small"
+                            label={p.estObligatoire ? 'Obligatoire' : 'Facultative'}
+                            color={p.estObligatoire ? 'warning' : 'default'}
+                            variant="outlined"
+                          />
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                    {d.pieces.length === 0 && (
+                      <TableRow>
+                        <TableCell colSpan={4}>
+                          <Typography variant="body2" color="text.secondary">
+                            Aucune pièce jointe.
+                          </Typography>
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </DetailPanel>
+            </NumberedSectionBlock>
 
-        <Grid size={{ xs: 12, md: 4 }}>
-          <DetailPanel title="Circuit de validation">
-            <Stepper orientation="vertical" activeStep={2}>
-              {paiementCircuit.map((step) => (
-                <Step key={step.etape} completed={step.statut === 'fait'}>
-                  <StepLabel
-                    optional={
-                      <Typography variant="caption">
-                        {step.acteur} · {step.date}
-                      </Typography>
-                    }
-                  >
-                    {step.role} — {step.action}
-                  </StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-          </DetailPanel>
-
-          <DetailPanel title="Commentaires">
-            <Stack spacing={1.5}>
-              {paiementCommentaires.map((c) => (
-                <Box key={c.id} sx={{ p: 1.5, bgcolor: 'action.hover', borderRadius: 1.5 }}>
-                  <Stack direction="row" spacing={1} sx={{ justifyContent: 'space-between' }}>
-                    <Typography variant="body2" sx={{ fontWeight: 700 }}>
-                      {c.auteur}
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      {c.date}
-                    </Typography>
+            <NumberedSectionBlock step={5} showConnector isLast>
+              <DetailPanel title="Historique">
+                <Stack spacing={1} sx={{ mb: 2 }}>
+                  <Typography variant="subtitle2">Parcours (jusqu’au visa budgétaire)</Typography>
+                  <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap' }}>
+                    {timelineStops.map((t) => (
+                      <Chip
+                        key={t.key}
+                        size="small"
+                        variant={t.done ? 'filled' : 'outlined'}
+                        color={t.done ? 'primary' : 'default'}
+                        label={`${t.label}${t.date ? ` · ${formatDateFr(t.date)}` : ''}`}
+                      />
+                    ))}
                   </Stack>
-                  <Typography variant="body2" sx={{ mt: 0.5 }}>
-                    {c.texte}
+                </Stack>
+                <Divider sx={{ mb: 1.5 }} />
+                {data.historique.length === 0 ? (
+                  <Typography variant="body2" color="text.secondary">
+                    Aucune entrée d’audit.
                   </Typography>
-                </Box>
-              ))}
-            </Stack>
-          </DetailPanel>
+                ) : (
+                  <Table size="small">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Date</TableCell>
+                        <TableCell>Opération</TableCell>
+                        <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>Détail</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {data.historique.map((h) => (
+                        <TableRow key={h.idAudit}>
+                          <TableCell>{formatDateFr(h.dateHeure)}</TableCell>
+                          <TableCell>{labelOperationAudit(h.operation)}</TableCell>
+                          <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>
+                            <Typography variant="caption" sx={{ wordBreak: 'break-all' }}>
+                              {h.nouvellesValeurs ?? h.anciennesValeurs ?? '—'}
+                            </Typography>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                )}
+              </DetailPanel>
+            </NumberedSectionBlock>
+          </Stack>
+        </Box>
 
-          <DetailPanel
-            title="Historique"
-            actions={
-              <Button size="small" component={RouterLink} to="/paiements/historique">
-                Voir tout
-              </Button>
-            }
-          >
-            <Stack spacing={1}>
-              {['Création', 'Visa hiérarchique', 'En contrôle'].map((h) => (
-                <Chip key={h} label={h} size="small" variant="outlined" sx={{ justifyContent: 'flex-start' }} />
-              ))}
-            </Stack>
-          </DetailPanel>
-        </Grid>
-      </Grid>
-
-      <ConfirmDialog
-        open={Boolean(confirm)}
-        title={confirm?.title ?? ''}
-        message={confirm?.message ?? ''}
-        onClose={() => setConfirm(null)}
-        onConfirm={() => setConfirm(null)}
-      />
-    </Box>
+        <Box
+          sx={{
+            flex: { xs: '1 1 auto', md: '0 0 320px' },
+            width: { xs: '100%', md: 320 },
+            position: { md: 'sticky' },
+            top: { md: 88 },
+            alignSelf: { md: 'flex-start' },
+            maxHeight: { md: 'calc(100vh - 104px)' },
+            overflowY: { md: 'auto' },
+          }}
+        >
+          <Stack spacing={2}>
+            <DemandePaiementWorkflowBlock
+              statut={d.statut}
+              assignation={assignationView}
+              routages={routageLecture.routages}
+              retoursDestinataires={routageLecture.retoursDestinataires}
+              routageLoading={routageLecture.loading}
+            />
+            <DemandeDetailSummaryRail
+              reference={d.reference}
+              montantLabel={formatMontantDevise(d.montantBrut, d.devise)}
+              montantUsdLabel={d.montantUsd != null ? formatMontantUsd(d.montantUsd) : 'Non converti'}
+              exerciceLabel={String(d.anneeExercice)}
+              destinationLabel={destinationLabel}
+              modePaiementLabel={modePaiementLabel}
+              beneficiairesCount={d.beneficiaires.length}
+              demandeurLabel={demandeurLabel}
+              ubLabel={`${d.codeUB} — ${d.libelleUB}`}
+              departementLabel={d.libelleDepartement ?? '—'}
+              casDossierLabel={d.libelleCasDossier}
+            />
+          </Stack>
+        </Box>
+      </Box>
+    </>
   );
 }

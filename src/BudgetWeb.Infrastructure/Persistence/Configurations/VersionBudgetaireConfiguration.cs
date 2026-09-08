@@ -12,7 +12,7 @@ public class VersionBudgetaireConfiguration : IEntityTypeConfiguration<VersionBu
 
         builder.HasKey(e => e.IdVersion);
 
-        builder.Property(e => e.IdVersion).HasColumnName("IdVersion");
+        builder.Property(e => e.IdVersion).HasColumnName("IdVersion").ValueGeneratedOnAdd();
         builder.Property(e => e.FK_ExerciceBudgetaire).HasColumnName("FK_ExerciceBudgetaire");
         builder.Property(e => e.NumeroVersion).HasColumnName("NumeroVersion");
         builder.Property(e => e.Libelle).HasColumnName("Libelle").HasMaxLength(200);
@@ -25,6 +25,13 @@ public class VersionBudgetaireConfiguration : IEntityTypeConfiguration<VersionBu
         builder.Property(e => e.FK_UtilisateurCreation).HasColumnName("FK_UtilisateurCreation");
         builder.Property(e => e.FK_UtilisateurValidation).HasColumnName("FK_UtilisateurValidation");
         builder.Property(e => e.DateValidation).HasColumnName("DateValidation");
+        builder.Property(e => e.FK_UtilisateurSoumission).HasColumnName("FK_UtilisateurSoumission");
+        builder.Property(e => e.DateSoumission).HasColumnName("DateSoumission");
+        builder.Property(e => e.FK_UtilisateurControle).HasColumnName("FK_UtilisateurControle");
+        builder.Property(e => e.DateControle).HasColumnName("DateControle");
+        builder.Property(e => e.FK_UtilisateurRejet).HasColumnName("FK_UtilisateurRejet");
+        builder.Property(e => e.DateRejet).HasColumnName("DateRejet");
+        builder.Property(e => e.MotifRejet).HasColumnName("MotifRejet").HasMaxLength(1000);
 
         builder.HasOne(e => e.ExerciceBudgetaire)
             .WithMany(e => e.VersionsBudgetaires)
@@ -45,5 +52,20 @@ public class VersionBudgetaireConfiguration : IEntityTypeConfiguration<VersionBu
             .WithMany(e => e.VersionsValidees)
             .HasForeignKey(e => e.FK_UtilisateurValidation)
             .HasConstraintName("FK_VERSION_UTILISATEUR_VALIDATION");
+
+        builder.HasOne(e => e.UtilisateurSoumission)
+            .WithMany(e => e.VersionsSoumises)
+            .HasForeignKey(e => e.FK_UtilisateurSoumission)
+            .HasConstraintName("FK_VERSION_UTILISATEUR_SOUMISSION");
+
+        builder.HasOne(e => e.UtilisateurControle)
+            .WithMany(e => e.VersionsControlees)
+            .HasForeignKey(e => e.FK_UtilisateurControle)
+            .HasConstraintName("FK_VERSION_UTILISATEUR_CONTROLE");
+
+        builder.HasOne(e => e.UtilisateurRejet)
+            .WithMany(e => e.VersionsRejetees)
+            .HasForeignKey(e => e.FK_UtilisateurRejet)
+            .HasConstraintName("FK_VERSION_UTILISATEUR_REJET");
     }
 }

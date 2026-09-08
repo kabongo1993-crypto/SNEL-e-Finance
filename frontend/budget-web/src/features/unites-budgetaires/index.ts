@@ -1,1 +1,1 @@
-export {};
+export { UnitesBudgetairesPage } from './UnitesBudgetairesPage';

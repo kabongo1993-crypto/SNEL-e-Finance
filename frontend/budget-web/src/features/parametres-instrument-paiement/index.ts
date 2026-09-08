@@ -1,0 +1,1 @@
+export { ParametresInstrumentPaiementPage } from './ParametresInstrumentPaiementPage';

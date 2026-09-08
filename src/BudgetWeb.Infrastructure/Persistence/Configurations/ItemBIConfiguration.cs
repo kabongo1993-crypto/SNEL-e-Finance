@@ -12,7 +12,7 @@ public class ItemBIConfiguration : IEntityTypeConfiguration<ItemBI>
 
         builder.HasKey(e => e.IdItemBI);
 
-        builder.Property(e => e.IdItemBI).HasColumnName("IdItemBI");
+        builder.Property(e => e.IdItemBI).HasColumnName("IdItemBI").ValueGeneratedOnAdd();
         builder.Property(e => e.CodeItem).HasColumnName("CodeItem").HasMaxLength(30).IsUnicode(false);
         builder.Property(e => e.Libelle).HasColumnName("Libelle").HasMaxLength(300);
         builder.Property(e => e.FK_ItemBIParent).HasColumnName("FK_ItemBIParent");

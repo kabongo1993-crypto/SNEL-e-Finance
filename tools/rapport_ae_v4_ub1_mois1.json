@@ -1,0 +1,110 @@
+﻿{
+    "enTete":  {
+                   "titre":  "BUDGET DÉTAILLÉ DES ACTIONS D\u0027EXPLOITATION PAR ITEM — EXERCICE 2026 EN USD",
+                   "annee":  2026,
+                   "idVersion":  4,
+                   "numeroVersion":  1,
+                   "libelleVersion":  "VERSION DE DEMARRAGE",
+                   "niveau":  "UB",
+                   "modeMois":  "1",
+                   "libelleMois":  "JANVIER",
+                   "idEntite":  80,
+                   "codeEntite":  "AC",
+                   "libelleEntite":  "ADMINISTRATION CENTRALE",
+                   "idDepartementStructure":  91,
+                   "codeDepartementStructure":  "E.AC.DP.CA",
+                   "libelleDepartementStructure":  "PRESIDENT DU CONSEIL D\u0027ADMINISTRATION(PCA)",
+                   "idDivision":  null,
+                   "codeDivision":  null,
+                   "libelleDivision":  null,
+                   "nbUB":  1,
+                   "montantTotalAe":  0,
+                   "devise":  "USD",
+                   "statutFiltre":  "VALIDEE",
+                   "dateImpression":  "2026-08-23T01:22:59.2040195+01:00",
+                   "referenceDocument":  "RAPPORT-AE/AC/2026/V01/UB/1"
+               },
+    "estTousLesMois":  false,
+    "blocsUb":  [
+                    {
+                        "identite":  {
+                                         "idEntite":  80,
+                                         "codeEntite":  "AC",
+                                         "libelleEntite":  "ADMINISTRATION CENTRALE",
+                                         "idDepartementStructure":  91,
+                                         "codeDepartementStructure":  "E.AC.DP.CA",
+                                         "libelleDepartementStructure":  "PRESIDENT DU CONSEIL D\u0027ADMINISTRATION(PCA)",
+                                         "codeDepartementTable":  "CA",
+                                         "libelleDepartementTable":  "PRESIDENT DU CONSEIL D\u0027ADMINISTRATION(PCA)",
+                                         "idDivision":  null,
+                                         "codeDivision":  null,
+                                         "libelleDivision":  "SANS DIVISION",
+                                         "idUB":  1,
+                                         "codeUB":  "A00000",
+                                         "libelleUB":  "PRESIDENT DU CONSEIL D\u0027ADMINISTRATION(PCA)",
+                                         "typeBudget":  "AE",
+                                         "statut":  "VALIDEE",
+                                         "devise":  "USD",
+                                         "annee":  2026,
+                                         "numeroVersion":  1,
+                                         "libelleVersion":  "VERSION DE DEMARRAGE"
+                                     },
+                        "detailsMensuels":  [
+                                                {
+                                                    "mois":  1,
+                                                    "libelleMois":  "JANVIER",
+                                                    "colonnesRb":  [
+                                                                       {
+                                                                           "idRB":  14,
+                                                                           "codeRB":  "00100",
+                                                                           "libelleRB":  "Achats énergie électrique",
+                                                                           "idGroupeRB":  1,
+                                                                           "ordreAffichage":  1
+                                                                       },
+                                                                       {
+                                                                           "idRB":  17,
+                                                                           "codeRB":  "00112",
+                                                                           "libelleRB":  "Achats Matières combustibles – Matériels de transport",
+                                                                           "idGroupeRB":  1,
+                                                                           "ordreAffichage":  1
+                                                                       }
+                                                                   ],
+                                                    "lignes":  [
+                                                                   {
+                                                                       "typeLigne":  "GROUPE",
+                                                                       "ordreAffichage":  1,
+                                                                       "idGroupeItemAE":  1,
+                                                                       "libelleGroupe":  "FORMATION",
+                                                                       "numero":  null,
+                                                                       "libelleItemAE":  null,
+                                                                       "montantsParRb":  [
+
+                                                                                         ],
+                                                                       "total":  null
+                                                                   },
+                                                                   {
+                                                                       "typeLigne":  "ITEM",
+                                                                       "ordreAffichage":  2,
+                                                                       "idGroupeItemAE":  null,
+                                                                       "libelleGroupe":  null,
+                                                                       "numero":  "01",
+                                                                       "libelleItemAE":  "FORMATION DES UTILISATEUR",
+                                                                       "montantsParRb":  [
+                                                                                             null,
+                                                                                             null
+                                                                                         ],
+                                                                       "total":  0
+                                                                   }
+                                                               ],
+                                                    "totauxParRb":  [
+                                                                        0,
+                                                                        0
+                                                                    ],
+                                                    "totalGeneral":  0
+                                                }
+                                            ]
+                    }
+                ],
+    "syntheseItem":  null,
+    "syntheseRb":  null
+}

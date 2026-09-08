@@ -1,1 +1,1 @@
-export {};
+export { PrevisionsBudgetairesPage } from './PrevisionsBudgetairesPage';

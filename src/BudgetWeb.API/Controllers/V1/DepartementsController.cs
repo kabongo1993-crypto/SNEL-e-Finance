@@ -22,12 +22,36 @@ public class DepartementsController : ControllerBase
         return Ok(departements);
     }
 
+    [HttpGet("{idDepartement:long}")]
+    public async Task<IActionResult> GetById(long idDepartement, CancellationToken cancellationToken)
+    {
+        var departement = await _departementService.GetByIdAsync(idDepartement, cancellationToken);
+        return departement is null ? NotFound() : Ok(departement);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create(
         [FromBody] CreateDepartementRequest request,
         CancellationToken cancellationToken)
     {
         var created = await _departementService.CreateAsync(request, cancellationToken);
-        return CreatedAtAction(nameof(GetAll), new { id = created.IdDepartement }, created);
+        return CreatedAtAction(nameof(GetById), new { idDepartement = created.IdDepartement }, created);
+    }
+
+    [HttpPut("{idDepartement:long}")]
+    public async Task<IActionResult> Update(
+        long idDepartement,
+        [FromBody] UpdateDepartementRequest request,
+        CancellationToken cancellationToken)
+    {
+        var updated = await _departementService.UpdateAsync(idDepartement, request, cancellationToken);
+        return updated is null ? NotFound() : Ok(updated);
+    }
+
+    [HttpDelete("{idDepartement:long}")]
+    public async Task<IActionResult> Delete(long idDepartement, CancellationToken cancellationToken)
+    {
+        var deleted = await _departementService.DeleteAsync(idDepartement, cancellationToken);
+        return deleted ? NoContent() : NotFound();
     }
 }

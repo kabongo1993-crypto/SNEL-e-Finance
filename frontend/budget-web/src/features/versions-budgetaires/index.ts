@@ -1,1 +1,1 @@
-export {};
+export { VersionsBudgetairesPage } from './VersionsBudgetairesPage';

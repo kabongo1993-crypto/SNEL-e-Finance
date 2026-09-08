@@ -1,1 +1,1 @@
-export {};
+export { ItemsBIPage } from './ItemsBIPage';

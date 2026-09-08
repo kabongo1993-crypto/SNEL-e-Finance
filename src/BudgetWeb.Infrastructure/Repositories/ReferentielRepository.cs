@@ -19,7 +19,7 @@ public class ReferentielRepository : IReferentielRepository
         return await _context.TypesBudget
             .AsNoTracking()
             .OrderBy(t => t.OrdreAffichage)
-            .Select(t => new TypeBudgetDto(t.IdTypeBudget, t.CodeType, t.Libelle, t.OrdreAffichage, t.Actif))
+            .Select(t => new TypeBudgetDto(t.IdTypeBudget, t.CodeType, t.Libelle, t.OrdreAffichage, t.Actif, t.PrevisionsBudgetaires.Count))
             .ToListAsync(cancellationToken);
     }
 

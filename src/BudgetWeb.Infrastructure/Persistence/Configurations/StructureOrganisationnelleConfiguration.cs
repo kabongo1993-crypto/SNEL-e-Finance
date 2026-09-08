@@ -12,7 +12,7 @@ public class StructureOrganisationnelleConfiguration : IEntityTypeConfiguration<
 
         builder.HasKey(e => e.IdStructure);
 
-        builder.Property(e => e.IdStructure).HasColumnName("IdStructure");
+        builder.Property(e => e.IdStructure).HasColumnName("IdStructure").ValueGeneratedOnAdd();
         builder.Property(e => e.FK_StructureOrganisationnelleParent).HasColumnName("FK_StructureOrganisationnelleParent");
         builder.Property(e => e.TypeStructure).HasColumnName("TypeStructure").HasMaxLength(30).IsUnicode(false);
         builder.Property(e => e.Code).HasColumnName("Code").HasMaxLength(30).IsUnicode(false);

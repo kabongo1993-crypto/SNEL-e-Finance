@@ -1,9 +1,11 @@
 using BudgetWeb.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetWeb.API.Controllers.V1;
 
 [ApiController]
+[AllowAnonymous]
 [Route("api/v1/health")]
 public class HealthController : ControllerBase
 {

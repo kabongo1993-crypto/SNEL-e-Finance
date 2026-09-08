@@ -39,6 +39,7 @@ export function OrgListView({ structures, selectedId, onSelect, onBackToTree }: 
       label: 'Type',
       sortable: true,
       sortValue: (r) => r.typeStructure,
+      mobile: 'meta',
       render: (r) => {
         const v = getTypeVisual(r.typeStructure);
         return (
@@ -51,6 +52,7 @@ export function OrgListView({ structures, selectedId, onSelect, onBackToTree }: 
       label: 'Code',
       sortable: true,
       sortValue: (r) => r.code,
+      mobile: 'title',
       render: (r) => (
         <Typography variant="body2" sx={{ fontFamily: 'ui-monospace, monospace', fontWeight: 700 }}>
           {r.code}
@@ -62,13 +64,15 @@ export function OrgListView({ structures, selectedId, onSelect, onBackToTree }: 
       label: 'Libellé',
       sortable: true,
       sortValue: (r) => r.libelle,
+      mobile: 'subtitle',
       render: (r) => r.libelle,
     },
-    { id: 'parent', label: 'Parent', render: (r) => r.parentCode ?? '—' },
-    { id: 'dept', label: 'Département', render: (r) => r.departementCode ?? '—' },
+    { id: 'parent', label: 'Parent', mobile: 'meta', render: (r) => r.parentCode ?? '—' },
+    { id: 'dept', label: 'Département', mobile: 'hidden', render: (r) => r.departementCode ?? '—' },
     {
       id: 'statut',
       label: 'Statut',
+      mobile: 'meta',
       render: () => <Chip size="small" label="Actif" color="success" variant="outlined" />,
     },
     {
@@ -77,6 +81,7 @@ export function OrgListView({ structures, selectedId, onSelect, onBackToTree }: 
       align: 'right',
       sortable: true,
       sortValue: (r) => r.nombreUnitesBudgetaires,
+      mobile: 'hidden',
       render: (r) => r.nombreUnitesBudgetaires,
     },
   ];

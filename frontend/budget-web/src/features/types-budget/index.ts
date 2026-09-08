@@ -1,0 +1,1 @@
+export { TypesBudgetPage } from './TypesBudgetPage';

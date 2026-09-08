@@ -1,0 +1,1 @@
+export { ProvincesPage } from './ProvincesPage';

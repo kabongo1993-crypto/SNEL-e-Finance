@@ -12,7 +12,7 @@ public class JournalAuditConfiguration : IEntityTypeConfiguration<JournalAudit>
 
         builder.HasKey(e => e.IdAudit);
 
-        builder.Property(e => e.IdAudit).HasColumnName("IdAudit");
+        builder.Property(e => e.IdAudit).HasColumnName("IdAudit").ValueGeneratedOnAdd();
         builder.Property(e => e.FK_Utilisateur).HasColumnName("FK_Utilisateur");
         builder.Property(e => e.DateHeure).HasColumnName("DateHeure");
         builder.Property(e => e.Operation).HasColumnName("Operation").HasMaxLength(50).IsUnicode(false);
@@ -26,5 +26,8 @@ public class JournalAuditConfiguration : IEntityTypeConfiguration<JournalAudit>
             .WithMany(e => e.JournalAudits)
             .HasForeignKey(e => e.FK_Utilisateur)
             .HasConstraintName("FK_AUDIT_UTILISATEUR");
+
+        builder.HasIndex(e => new { e.Entite, e.IdEntite })
+            .HasDatabaseName("IX_JOURNAL_AUDIT_Entite_IdEntite");
     }
 }

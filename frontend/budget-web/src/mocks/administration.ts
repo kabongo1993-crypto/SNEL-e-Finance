@@ -69,16 +69,6 @@ export const mockAuditLog = [
   { id: 'l4', date: '2026-08-15 14:10', utilisateur: 'p.mwamba', action: 'REJET', objet: 'ENG-2026-0290', detail: 'Pièces insuffisantes' },
 ];
 
-export const mockRapports = [
-  { id: 'rp1', categorie: 'Financier', titre: 'Situation financière consolidée', description: 'Vue d’ensemble soldes, flux et engagements.' },
-  { id: 'rp2', categorie: 'Budget', titre: 'Situation budgétaire', description: 'Consommation par département et UB.' },
-  { id: 'rp3', categorie: 'Trésorerie', titre: 'Situation de trésorerie', description: 'Soldes comptes et prévisions de liquidité.' },
-  { id: 'rp4', categorie: 'Paiements', titre: 'État des paiements', description: 'Suivi des demandes par statut.' },
-  { id: 'rp5', categorie: 'Budget', titre: 'Exécution budgétaire', description: 'Taux d’exécution et écarts.' },
-  { id: 'rp6', categorie: 'Engagements', titre: 'État des engagements', description: 'Engagements ouverts et restes à liquider.' },
-  { id: 'rp7', categorie: 'Audit', titre: 'Historique des opérations', description: 'Journal des opérations sur la période.' },
-];
-
 /** Placeholder référentiels (hors organisationnel réel). */
 export const mockDevises = [
   { code: 'CDF', libelle: 'Franc congolais', symbole: 'FC' },
@@ -92,15 +82,23 @@ export const mockModesPaiement = [
   { code: 'ESP', libelle: 'Espèces' },
 ];
 
-export const mockNatures = [
-  { code: 'FONCT', libelle: 'Fonctionnement' },
-  { code: 'PERS', libelle: 'Personnel' },
-  { code: 'INV', libelle: 'Investissement' },
-  { code: 'DETTE', libelle: 'Service de la dette' },
-];
-
 export const mockSources = [
   { code: 'REC', libelle: 'Recettes propres' },
   { code: 'SUB', libelle: 'Subventions' },
   { code: 'EMP', libelle: 'Emprunts' },
+];
+
+export const mockRapports = [
+  {
+    id: 'r1',
+    categorie: 'Budget',
+    titre: 'Exécution budgétaire',
+    description: 'Synthèse mensuelle des crédits et engagements.',
+  },
+  {
+    id: 'r2',
+    categorie: 'Paiements',
+    titre: 'Demandes de paiement',
+    description: 'Suivi des demandes par statut et par UB.',
+  },
 ];

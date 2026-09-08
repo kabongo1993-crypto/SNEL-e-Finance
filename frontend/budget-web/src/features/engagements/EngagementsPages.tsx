@@ -9,6 +9,7 @@ import {
   ModulePlaceholder,
   PageHeader,
   StatusBadge,
+  AmountField,
   type DataTableColumn,
 } from '../../components';
 import { mockEngagements } from '../../mocks/engagements';
@@ -38,14 +39,14 @@ export function EngagementsListPage({ title, statusFilter, hideHeader }: Engagem
   }, [search, statusFilter]);
 
   const columns: DataTableColumn<MockEngagement>[] = [
-    { id: 'numero', label: 'Numéro', sortable: true, sortValue: (r) => r.numero, render: (r) => <Typography variant="body2" sx={{ fontWeight: 700 }}>{r.numero}</Typography> },
-    { id: 'date', label: 'Date', render: (r) => formatDateFr(r.date) },
-    { id: 'objet', label: 'Objet', render: (r) => r.objet },
-    { id: 'fournisseur', label: 'Fournisseur / Bénéficiaire', render: (r) => r.fournisseur },
-    { id: 'montant', label: 'Montant', align: 'right', render: (r) => formatMontant(r.montant) },
-    { id: 'budget', label: 'Budget', render: (r) => r.budgetCode },
-    { id: 'dispo', label: 'Disponible', align: 'right', render: (r) => formatMontant(r.disponible) },
-    { id: 'statut', label: 'Statut', render: (r) => <StatusBadge status={r.statut} /> },
+    { id: 'numero', label: 'Numéro', sortable: true, sortValue: (r) => r.numero, mobile: 'title', render: (r) => <Typography variant="body2" sx={{ fontWeight: 700 }}>{r.numero}</Typography> },
+    { id: 'date', label: 'Date', mobile: 'meta', render: (r) => formatDateFr(r.date) },
+    { id: 'objet', label: 'Objet', mobile: 'subtitle', render: (r) => r.objet },
+    { id: 'fournisseur', label: 'Fournisseur / Bénéficiaire', mobile: 'meta', render: (r) => r.fournisseur },
+    { id: 'montant', label: 'Montant', align: 'right', mobile: 'meta', render: (r) => formatMontant(r.montant) },
+    { id: 'budget', label: 'Budget', mobile: 'hidden', render: (r) => r.budgetCode },
+    { id: 'dispo', label: 'Disponible', align: 'right', mobile: 'hidden', render: (r) => formatMontant(r.disponible) },
+    { id: 'statut', label: 'Statut', mobile: 'meta', render: (r) => <StatusBadge status={r.statut} /> },
   ];
 
   return (
@@ -133,18 +134,17 @@ export function NouvelEngagementPage() {
             />
           </Grid>
           <Grid size={{ xs: 12, sm: 4 }}>
-            <TextField
+            <AmountField
               fullWidth
               required
               label="Montant"
               value={form.montant}
-              onChange={(e) => setForm({ ...form, montant: e.target.value })}
+              onChange={(value) => setForm({ ...form, montant: value })}
+              currency={null}
             />
           </Grid>
           <Grid size={{ xs: 12, sm: 4 }}>
-            <TextField
-              select
-              fullWidth
+            <TextField select fullWidth
               label="Département"
               value={form.departement}
               onChange={(e) => setForm({ ...form, departement: e.target.value })}

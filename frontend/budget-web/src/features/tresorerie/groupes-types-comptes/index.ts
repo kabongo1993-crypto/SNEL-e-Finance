@@ -1,0 +1,1 @@
+export { GroupesTypesComptesPage } from './GroupesTypesComptesPage';

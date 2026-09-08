@@ -18,7 +18,6 @@ import {
   mockCircuits,
   mockDevises,
   mockModesPaiement,
-  mockNatures,
   mockRapports,
   mockRoles,
   mockSources,
@@ -200,20 +199,6 @@ export function ReferentielExercicesPage() {
         id: ex,
         statut: ex === '2026' ? 'Ouvert' : 'Clôturé',
       }))}
-    />
-  );
-}
-
-export function ReferentielNaturesPage() {
-  return (
-    <ReferentielTablePage
-      title="Natures de dépenses"
-      description="Nomenclature des natures (mock)."
-      columns={[
-        { id: 'id', label: 'Code', render: (r) => String(r.id) },
-        { id: 'libelle', label: 'Libellé', render: (r) => String(r.libelle) },
-      ]}
-      rows={mockNatures.map((n) => ({ id: n.code, libelle: n.libelle }))}
     />
   );
 }

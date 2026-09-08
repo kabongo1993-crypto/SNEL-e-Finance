@@ -1,0 +1,1475 @@
+﻿      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=4ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=206ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=23ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=25ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=722ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=78ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=82ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=266ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=372ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=1486ms SqlOps=11 Steps=Repo.AddAsync=722ms | MapperDetailApresCreation=372ms | Repo.GetTrackedAsync=266ms | Demandeur.GetById=206ms | Repo.GetByIdAsync=82ms | Repo.AddAuditAsync=78ms | Repo.GenererReferenceAsync=25ms | ResoudreDevise=23ms | Permission=4ms | AccesUb=1ms | Repo.SaveChangesAsync=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=39ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=7ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=9ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=52ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=5ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=20ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=34ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=55ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=172ms SqlOps=11 Steps=MapperDetailApresCreation=55ms | Repo.AddAsync=52ms | Demandeur.GetById=39ms | Repo.GetTrackedAsync=34ms | Repo.GetByIdAsync=20ms | Repo.GenererReferenceAsync=9ms | ResoudreDevise=7ms | Repo.AddAuditAsync=5ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=6ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=7ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=8ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=10ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=12ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=38ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=45ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=84ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=130ms SqlOps=11 Steps=MapperDetailApresCreation=84ms | Repo.GetTrackedAsync=45ms | Repo.GetByIdAsync=38ms | Repo.AddAuditAsync=12ms | Repo.AddAsync=10ms | Repo.GenererReferenceAsync=8ms | ResoudreDevise=7ms | Demandeur.GetById=6ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetByIdAsync Duration=23ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=AccesDemande Duration=9ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=ResoudreDevise Duration=6ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=UpdateBrouillonHeader Duration=88ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetTrackedAsync Duration=37ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.SaveChangesAsync Duration=5ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.AddAuditAsync Duration=13ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 TOTAL=190ms SqlOps=9 Steps=UpdateBrouillonHeader=88ms | Repo.GetTrackedAsync=37ms | Repo.GetByIdAsync=23ms | Repo.AddAuditAsync=13ms | AccesDemande=9ms | ResoudreDevise=6ms | Repo.SaveChangesAsync=5ms | Permission=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetByIdAsync Duration=29ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=ResoudreDevise Duration=3ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=UpdateBrouillonHeader Duration=15ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetTrackedAsync Duration=35ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.AddAuditAsync Duration=8ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 TOTAL=94ms SqlOps=9 Steps=Repo.GetTrackedAsync=35ms | Repo.GetByIdAsync=29ms | UpdateBrouillonHeader=15ms | Repo.AddAuditAsync=8ms | ResoudreDevise=3ms | Permission=0ms | AccesDemande=0ms | Repo.SaveChangesAsync=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetByIdAsync Duration=18ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=ResoudreDevise Duration=4ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=UpdateBrouillonHeader Duration=4ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetTrackedAsync Duration=4ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.AddAuditAsync Duration=3ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=UPDATE DemandeId=124 TOTAL=36ms SqlOps=9 Steps=Repo.GetByIdAsync=18ms | ResoudreDevise=4ms | UpdateBrouillonHeader=4ms | Repo.GetTrackedAsync=4ms | Repo.AddAuditAsync=3ms | Permission=0ms | AccesDemande=0ms | Repo.SaveChangesAsync=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=8ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=3ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=17ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=73ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=7ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=28ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=52ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=81ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=193ms SqlOps=11 Steps=MapperDetailApresCreation=81ms | Repo.AddAsync=73ms | Repo.GetTrackedAsync=52ms | Repo.GetByIdAsync=28ms | Repo.GenererReferenceAsync=17ms | Demandeur.GetById=8ms | Repo.AddAuditAsync=7ms | ResoudreDevise=3ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.GetDetailAsync Duration=25563ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=AccesDemande Duration=9ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=TransitionStatut Duration=286ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.GetTrackedAsync Duration=24ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.SaveChangesAsync Duration=276ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=AssurerValidationsInitiales Duration=283ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.AddAuditAsync Duration=21ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Mapping Duration=9ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 TOTAL=26236ms SqlOps=9 Steps=Repo.GetDetailAsync=25563ms | TransitionStatut=286ms | AssurerValidationsInitiales=283ms | Repo.SaveChangesAsync=276ms | Repo.GetTrackedAsync=24ms | Repo.AddAuditAsync=21ms | AccesDemande=9ms | Mapping=9ms | Permission=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=26ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=11ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=10ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=55ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=10ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=55ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=132ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=188ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=305ms SqlOps=11 Steps=MapperDetailApresCreation=188ms | Repo.GetTrackedAsync=132ms | Repo.AddAsync=55ms | Repo.GetByIdAsync=55ms | Demandeur.GetById=26ms | ResoudreDevise=11ms | Repo.GenererReferenceAsync=10ms | Repo.AddAuditAsync=10ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.GetDetailAsync Duration=25304ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=AccesDemande Duration=1ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=TransitionStatut Duration=47ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.GetTrackedAsync Duration=170ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.SaveChangesAsync Duration=15ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=AssurerValidationsInitiales Duration=15ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.AddAuditAsync Duration=14ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 TOTAL=25559ms SqlOps=9 Steps=Repo.GetDetailAsync=25304ms | Repo.GetTrackedAsync=170ms | TransitionStatut=47ms | Repo.SaveChangesAsync=15ms | AssurerValidationsInitiales=15ms | Repo.AddAuditAsync=14ms | AccesDemande=1ms | Permission=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=185ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=7ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=5ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=33ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=7ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=28ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=48ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=77ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=319ms SqlOps=11 Steps=Demandeur.GetById=185ms | MapperDetailApresCreation=77ms | Repo.GetTrackedAsync=48ms | Repo.AddAsync=33ms | Repo.GetByIdAsync=28ms | ResoudreDevise=7ms | Repo.AddAuditAsync=7ms | Repo.GenererReferenceAsync=5ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.GetDetailAsync Duration=25019ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=AccesDemande Duration=1ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=TransitionStatut Duration=72ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.GetTrackedAsync Duration=7ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.SaveChangesAsync Duration=41ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=AssurerValidationsInitiales Duration=41ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.AddAuditAsync Duration=7ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 TOTAL=25149ms SqlOps=9 Steps=Repo.GetDetailAsync=25019ms | TransitionStatut=72ms | Repo.SaveChangesAsync=41ms | AssurerValidationsInitiales=41ms | Repo.GetTrackedAsync=7ms | Repo.AddAuditAsync=7ms | AccesDemande=1ms | Permission=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=11ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=6ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=6ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=36ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=13ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=40ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=56ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=97ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=173ms SqlOps=11 Steps=MapperDetailApresCreation=97ms | Repo.GetTrackedAsync=56ms | Repo.GetByIdAsync=40ms | Repo.AddAsync=36ms | Repo.AddAuditAsync=13ms | Demandeur.GetById=11ms | ResoudreDevise=6ms | Repo.GenererReferenceAsync=6ms | Repo.SaveChangesAsync=1ms | Permission=0ms | AccesUb=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.GetDetailAsync Duration=25014ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=TransitionStatut Duration=35ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.GetTrackedAsync Duration=46ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.SaveChangesAsync Duration=55ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=AssurerValidationsInitiales Duration=55ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.AddAuditAsync Duration=23ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 TOTAL=25176ms SqlOps=9 Steps=Repo.GetDetailAsync=25014ms | Repo.SaveChangesAsync=55ms | AssurerValidationsInitiales=55ms | Repo.GetTrackedAsync=46ms | TransitionStatut=35ms | Repo.AddAuditAsync=23ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.GetDetailAsync Duration=25154ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=AccesDemande Duration=7ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=CalculEmpreinte Duration=59ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=TransitionStatut Duration=143ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.GetTrackedAsync Duration=88ms
+      UPDATE [dpm].[DEMANDE_PAIEMENT_VALIDATION] SET [DateSignaturePhysique] = @p0, [DateValidation] = @p1, [EmpreinteDonnees] = @p2, [FK_UtilisateurDeclarant] = @p3, [FonctionSignatairePhysique] = @p4, [ModeValidation] = @p5, [NomSignatairePhysique] = @p6, [Statut] = @p7
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.SaveChangesAsync Duration=74ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.AddAuditAsync Duration=60ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Mapping Duration=3ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 TOTAL=25629ms SqlOps=9 Steps=Repo.GetDetailAsync=25154ms | TransitionStatut=143ms | Repo.GetTrackedAsync=88ms | Repo.SaveChangesAsync=74ms | Repo.AddAuditAsync=60ms | CalculEmpreinte=59ms | AccesDemande=7ms | Mapping=3ms | Permission=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=14ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=5ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=6ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=29ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=6ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=26ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=37ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=63ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=127ms SqlOps=11 Steps=MapperDetailApresCreation=63ms | Repo.GetTrackedAsync=37ms | Repo.AddAsync=29ms | Repo.GetByIdAsync=26ms | Demandeur.GetById=14ms | Repo.GenererReferenceAsync=6ms | Repo.AddAuditAsync=6ms | ResoudreDevise=5ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.GetDetailAsync Duration=25156ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=TransitionStatut Duration=64ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.GetTrackedAsync Duration=108ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.SaveChangesAsync Duration=96ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=AssurerValidationsInitiales Duration=97ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.AddAuditAsync Duration=15ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 TOTAL=25443ms SqlOps=9 Steps=Repo.GetDetailAsync=25156ms | Repo.GetTrackedAsync=108ms | AssurerValidationsInitiales=97ms | Repo.SaveChangesAsync=96ms | TransitionStatut=64ms | Repo.AddAuditAsync=15ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.GetDetailAsync Duration=25163ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=AccesDemande Duration=1ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=CalculEmpreinte Duration=6ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=TransitionStatut Duration=32ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.GetTrackedAsync Duration=36ms
+      UPDATE [dpm].[DEMANDE_PAIEMENT_VALIDATION] SET [DateSignaturePhysique] = @p0, [DateValidation] = @p1, [EmpreinteDonnees] = @p2, [FK_UtilisateurDeclarant] = @p3, [FonctionSignatairePhysique] = @p4, [ModeValidation] = @p5, [NomSignatairePhysique] = @p6, [Statut] = @p7
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.SaveChangesAsync Duration=11ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.AddAuditAsync Duration=12ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 TOTAL=25264ms SqlOps=9 Steps=Repo.GetDetailAsync=25163ms | Repo.GetTrackedAsync=36ms | TransitionStatut=32ms | Repo.AddAuditAsync=12ms | Repo.SaveChangesAsync=11ms | CalculEmpreinte=6ms | AccesDemande=1ms | Permission=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=6ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=4ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=4ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=16ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=18ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=20ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=53ms SqlOps=11 Steps=MapperDetailApresCreation=20ms | Repo.GetByIdAsync=18ms | Repo.AddAsync=16ms | Demandeur.GetById=6ms | ResoudreDevise=4ms | Repo.GenererReferenceAsync=4ms | Repo.AddAuditAsync=1ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.GetDetailAsync Duration=25038ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=TransitionStatut Duration=27ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.GetTrackedAsync Duration=31ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.SaveChangesAsync Duration=23ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=AssurerValidationsInitiales Duration=23ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.AddAuditAsync Duration=5ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 TOTAL=25127ms SqlOps=9 Steps=Repo.GetDetailAsync=25038ms | Repo.GetTrackedAsync=31ms | TransitionStatut=27ms | Repo.SaveChangesAsync=23ms | AssurerValidationsInitiales=23ms | Repo.AddAuditAsync=5ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.GetDetailAsync Duration=25021ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=TransitionStatut Duration=46ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.GetTrackedAsync Duration=33ms
+      UPDATE [dpm].[DEMANDE_PAIEMENT_VALIDATION] SET [DateSignaturePhysique] = @p0, [DateValidation] = @p1, [EmpreinteDonnees] = @p2, [FK_UtilisateurDeclarant] = @p3, [FonctionSignatairePhysique] = @p4, [ModeValidation] = @p5, [NomSignatairePhysique] = @p6, [Statut] = @p7
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.SaveChangesAsync Duration=8ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.AddAuditAsync Duration=7ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 TOTAL=25118ms SqlOps=9 Steps=Repo.GetDetailAsync=25021ms | TransitionStatut=46ms | Repo.GetTrackedAsync=33ms | Repo.SaveChangesAsync=8ms | Repo.AddAuditAsync=7ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=8ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=3ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=4ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=20ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=5ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=32ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=4ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=37ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=80ms SqlOps=11 Steps=MapperDetailApresCreation=37ms | Repo.GetByIdAsync=32ms | Repo.AddAsync=20ms | Demandeur.GetById=8ms | Repo.AddAuditAsync=5ms | Repo.GenererReferenceAsync=4ms | Repo.GetTrackedAsync=4ms | ResoudreDevise=3ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Permission Duration=12ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.GetDetailAsync Duration=20123ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=TransitionStatut Duration=49ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.GetTrackedAsync Duration=68ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.SaveChangesAsync Duration=15ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=AssurerValidationsInitiales Duration=15ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.AddAuditAsync Duration=6ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 TOTAL=20276ms SqlOps=9 Steps=Repo.GetDetailAsync=20123ms | Repo.GetTrackedAsync=68ms | TransitionStatut=49ms | Repo.SaveChangesAsync=15ms | AssurerValidationsInitiales=15ms | Permission=12ms | Repo.AddAuditAsync=6ms | AccesDemande=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.GetDetailAsync Duration=10ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=TransitionStatut Duration=5ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.GetTrackedAsync Duration=2ms
+      UPDATE [dpm].[DEMANDE_PAIEMENT_VALIDATION] SET [DateSignaturePhysique] = @p0, [DateValidation] = @p1, [EmpreinteDonnees] = @p2, [FK_UtilisateurDeclarant] = @p3, [FonctionSignatairePhysique] = @p4, [ModeValidation] = @p5, [NomSignatairePhysique] = @p6, [Statut] = @p7
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.SaveChangesAsync Duration=8ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.AddAuditAsync Duration=2ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 TOTAL=31ms SqlOps=9 Steps=Repo.GetDetailAsync=10ms | Repo.SaveChangesAsync=8ms | TransitionStatut=5ms | Repo.GetTrackedAsync=2ms | Repo.AddAuditAsync=2ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=141 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=141 Etape=Repo.GetDetailAsync Duration=7ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=141 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=141 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=5ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=3ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=4ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=15ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=3ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=17ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=18ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=51ms SqlOps=11 Steps=MapperDetailApresCreation=18ms | Repo.GetByIdAsync=17ms | Repo.AddAsync=15ms | Demandeur.GetById=5ms | Repo.GenererReferenceAsync=4ms | ResoudreDevise=3ms | Repo.AddAuditAsync=3ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.GetDetailAsync Duration=5ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=TransitionStatut Duration=2ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.GetTrackedAsync Duration=1ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.SaveChangesAsync Duration=2ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=AssurerValidationsInitiales Duration=2ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 TOTAL=13ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | TransitionStatut=2ms | Repo.SaveChangesAsync=2ms | AssurerValidationsInitiales=2ms | Repo.GetTrackedAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.GetDetailAsync Duration=14ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=TransitionStatut Duration=1ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.GetTrackedAsync Duration=1ms
+      UPDATE [dpm].[DEMANDE_PAIEMENT_VALIDATION] SET [DateSignaturePhysique] = @p0, [DateValidation] = @p1, [EmpreinteDonnees] = @p2, [FK_UtilisateurDeclarant] = @p3, [FonctionSignatairePhysique] = @p4, [ModeValidation] = @p5, [NomSignatairePhysique] = @p6, [Statut] = @p7
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.SaveChangesAsync Duration=1ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 TOTAL=20ms SqlOps=9 Steps=Repo.GetDetailAsync=14ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=142 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=142 Etape=Repo.GetDetailAsync Duration=5ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=142 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=142 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=0ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=2ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=9ms SqlOps=11 Steps=MapperDetailApresCreation=2ms | Demandeur.GetById=1ms | Repo.GenererReferenceAsync=1ms | Repo.AddAsync=1ms | Repo.AddAuditAsync=1ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | ResoudreDevise=0ms | Repo.SaveChangesAsync=0ms | Repo.GetByIdAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.GetDetailAsync Duration=3ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=TransitionStatut Duration=1ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.GetTrackedAsync Duration=1ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.SaveChangesAsync Duration=1ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=AssurerValidationsInitiales Duration=1ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 TOTAL=10ms SqlOps=9 Steps=Repo.GetDetailAsync=3ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | AssurerValidationsInitiales=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.GetDetailAsync Duration=5ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=TransitionStatut Duration=1ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.GetTrackedAsync Duration=1ms
+      UPDATE [dpm].[DEMANDE_PAIEMENT_VALIDATION] SET [DateSignaturePhysique] = @p0, [DateValidation] = @p1, [EmpreinteDonnees] = @p2, [FK_UtilisateurDeclarant] = @p3, [FonctionSignatairePhysique] = @p4, [ModeValidation] = @p5, [NomSignatairePhysique] = @p6, [Statut] = @p7
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.SaveChangesAsync Duration=1ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.AddAuditAsync Duration=3ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 TOTAL=13ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | Repo.AddAuditAsync=3ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=143 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=143 Etape=Repo.GetDetailAsync Duration=27ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=143 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=143 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=2ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=3ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=1ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=2ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=3ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=14ms SqlOps=11 Steps=Repo.AddAuditAsync=3ms | MapperDetailApresCreation=3ms | Repo.AddAsync=2ms | Repo.GetTrackedAsync=2ms | Demandeur.GetById=1ms | Repo.GenererReferenceAsync=1ms | Repo.GetByIdAsync=1ms | Permission=0ms | AccesUb=0ms | ResoudreDevise=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.GetDetailAsync Duration=10ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=TransitionStatut Duration=7ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.GetTrackedAsync Duration=1ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.SaveChangesAsync Duration=7ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=AssurerValidationsInitiales Duration=7ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 TOTAL=30ms SqlOps=9 Steps=Repo.GetDetailAsync=10ms | TransitionStatut=7ms | Repo.SaveChangesAsync=7ms | AssurerValidationsInitiales=7ms | Repo.GetTrackedAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.GetDetailAsync Duration=4ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=TransitionStatut Duration=1ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.GetTrackedAsync Duration=1ms
+      UPDATE [dpm].[DEMANDE_PAIEMENT_VALIDATION] SET [DateSignaturePhysique] = @p0, [DateValidation] = @p1, [EmpreinteDonnees] = @p2, [FK_UtilisateurDeclarant] = @p3, [FonctionSignatairePhysique] = @p4, [ModeValidation] = @p5, [NomSignatairePhysique] = @p6, [Statut] = @p7
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.SaveChangesAsync Duration=1ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 TOTAL=11ms SqlOps=9 Steps=Repo.GetDetailAsync=4ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=144 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=144 Etape=Repo.GetDetailAsync Duration=16ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=144 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=144 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=SOUMETTRE DemandeId=144 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=SOUMETTRE DemandeId=144 Etape=Repo.GetDetailAsync Duration=5ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=2ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=2ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=1ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=2ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=11ms SqlOps=11 Steps=Demandeur.GetById=2ms | Repo.AddAsync=2ms | MapperDetailApresCreation=2ms | Repo.AddAuditAsync=1ms | Repo.GetByIdAsync=1ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | ResoudreDevise=0ms | Repo.GenererReferenceAsync=0ms | Repo.SaveChangesAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.GetDetailAsync Duration=4ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=TransitionStatut Duration=2ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.GetTrackedAsync Duration=1ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.SaveChangesAsync Duration=2ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=AssurerValidationsInitiales Duration=2ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 TOTAL=11ms SqlOps=9 Steps=Repo.GetDetailAsync=4ms | TransitionStatut=2ms | Repo.SaveChangesAsync=2ms | AssurerValidationsInitiales=2ms | Repo.GetTrackedAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.GetDetailAsync Duration=5ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=TransitionStatut Duration=1ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.GetTrackedAsync Duration=1ms
+      UPDATE [dpm].[DEMANDE_PAIEMENT_VALIDATION] SET [DateSignaturePhysique] = @p0, [DateValidation] = @p1, [EmpreinteDonnees] = @p2, [FK_UtilisateurDeclarant] = @p3, [FonctionSignatairePhysique] = @p4, [ModeValidation] = @p5, [NomSignatairePhysique] = @p6, [Statut] = @p7
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.SaveChangesAsync Duration=1ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 TOTAL=12ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=145 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=145 Etape=Repo.GetDetailAsync Duration=5ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=145 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=145 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=SOUMETTRE DemandeId=145 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=SOUMETTRE DemandeId=145 Etape=Repo.GetDetailAsync Duration=6ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=2ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=0ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=3ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=4ms
+      [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=13ms SqlOps=11 Steps=MapperDetailApresCreation=4ms | Repo.GetTrackedAsync=3ms | Repo.AddAsync=2ms | Demandeur.GetById=1ms | ResoudreDevise=1ms | Repo.GenererReferenceAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms | Repo.GetByIdAsync=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.GetDetailAsync Duration=5ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=TransitionStatut Duration=3ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.GetTrackedAsync Duration=2ms
+      MERGE [dpm].[DEMANDE_PAIEMENT_VALIDATION] USING (
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.SaveChangesAsync Duration=2ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=AssurerValidationsInitiales Duration=2ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.AddAuditAsync Duration=1ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 TOTAL=15ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | TransitionStatut=3ms | Repo.GetTrackedAsync=2ms | Repo.SaveChangesAsync=2ms | AssurerValidationsInitiales=2ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.GetDetailAsync Duration=7ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=TransitionStatut Duration=4ms
+      LEFT JOIN [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d1] ON [t].[IdDemandePaiement] = [d1].[FK_DemandePaiement]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.GetTrackedAsync Duration=1ms
+      UPDATE [dpm].[DEMANDE_PAIEMENT_VALIDATION] SET [DateSignaturePhysique] = @p0, [DateValidation] = @p1, [EmpreinteDonnees] = @p2, [FK_UtilisateurDeclarant] = @p3, [FonctionSignatairePhysique] = @p4, [ModeValidation] = @p5, [NomSignatairePhysique] = @p6, [Statut] = @p7
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.SaveChangesAsync Duration=1ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.AddAuditAsync Duration=2ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Mapping Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 TOTAL=18ms SqlOps=9 Steps=Repo.GetDetailAsync=7ms | TransitionStatut=4ms | Repo.AddAuditAsync=2ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=146 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=146 Etape=Repo.GetDetailAsync Duration=5ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=146 Etape=AccesDemande Duration=0ms
+      [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=146 Etape=CalculEmpreinte Duration=0ms
+      [PERF][MUTATION] Operation=SOUMETTRE DemandeId=146 Etape=Permission Duration=0ms
+          FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d5]
+      [PERF][MUTATION] Operation=SOUMETTRE DemandeId=146 Etape=Repo.GetDetailAsync Duration=5ms
+ CREATE run 1 ÔÇö HTTP POST client 2248 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=4ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=206ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=23ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=25ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=722ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=78ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=82ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=266ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=372ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=1486ms SqlOps=11 Steps=Repo.AddAsync=722ms | MapperDetailApresCreation=372ms | Repo.GetTrackedAsync=266ms | Demandeur.GetById=206ms | Repo.GetByIdAsync=82ms | Repo.AddAuditAsync=78ms | Repo.GenererReferenceAsync=25ms | ResoudreDevise=23ms | Permission=4ms | AccesUb=1ms | Repo.SaveChangesAsync=1ms
+ CREATE run 2 ÔÇö HTTP POST client 204 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=39ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=7ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=9ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=52ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=5ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=20ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=34ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=55ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=172ms SqlOps=11 Steps=MapperDetailApresCreation=55ms | Repo.AddAsync=52ms | Demandeur.GetById=39ms | Repo.GetTrackedAsync=34ms | Repo.GetByIdAsync=20ms | Repo.GenererReferenceAsync=9ms | ResoudreDevise=7ms | Repo.AddAuditAsync=5ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ CREATE run 3 ÔÇö HTTP POST client 154 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=6ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=7ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=8ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=10ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=12ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=38ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=45ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=84ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=130ms SqlOps=11 Steps=MapperDetailApresCreation=84ms | Repo.GetTrackedAsync=45ms | Repo.GetByIdAsync=38ms | Repo.AddAuditAsync=12ms | Repo.AddAsync=10ms | Repo.GenererReferenceAsync=8ms | ResoudreDevise=7ms | Demandeur.GetById=6ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ UPDATE run 1 (#124) ÔÇö HTTP PUT client 217 ms | status 200
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetByIdAsync Duration=23ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=AccesDemande Duration=9ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=ResoudreDevise Duration=6ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=UpdateBrouillonHeader Duration=88ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetTrackedAsync Duration=37ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.SaveChangesAsync Duration=5ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.AddAuditAsync Duration=13ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 TOTAL=190ms SqlOps=9 Steps=UpdateBrouillonHeader=88ms | Repo.GetTrackedAsync=37ms | Repo.GetByIdAsync=23ms | Repo.AddAuditAsync=13ms | AccesDemande=9ms | ResoudreDevise=6ms | Repo.SaveChangesAsync=5ms | Permission=0ms | Mapping=0ms
+ UPDATE run 2 (#124) ÔÇö HTTP PUT client 100 ms | status 200
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetByIdAsync Duration=29ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=ResoudreDevise Duration=3ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=UpdateBrouillonHeader Duration=15ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetTrackedAsync Duration=35ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.AddAuditAsync Duration=8ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 TOTAL=94ms SqlOps=9 Steps=Repo.GetTrackedAsync=35ms | Repo.GetByIdAsync=29ms | UpdateBrouillonHeader=15ms | Repo.AddAuditAsync=8ms | ResoudreDevise=3ms | Permission=0ms | AccesDemande=0ms | Repo.SaveChangesAsync=0ms | Mapping=0ms
+ UPDATE run 3 (#124) ÔÇö HTTP PUT client 39 ms | status 200
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetByIdAsync Duration=18ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=ResoudreDevise Duration=4ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=UpdateBrouillonHeader Duration=4ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetTrackedAsync Duration=4ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.AddAuditAsync Duration=3ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=UPDATE DemandeId=124 TOTAL=36ms SqlOps=9 Steps=Repo.GetByIdAsync=18ms | ResoudreDevise=4ms | UpdateBrouillonHeader=4ms | Repo.GetTrackedAsync=4ms | Repo.AddAuditAsync=3ms | Permission=0ms | AccesDemande=0ms | Repo.SaveChangesAsync=0ms | Mapping=0ms
+ setup create #1 ÔÇö HTTP POST client 198 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=8ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=3ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=17ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=73ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=7ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=28ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=52ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=81ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=193ms SqlOps=11 Steps=MapperDetailApresCreation=81ms | Repo.AddAsync=73ms | Repo.GetTrackedAsync=52ms | Repo.GetByIdAsync=28ms | Repo.GenererReferenceAsync=17ms | Demandeur.GetById=8ms | Repo.AddAuditAsync=7ms | ResoudreDevise=3ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ ENVOYER_VALIDATION run 1 (#127) ÔÇö HTTP POST client 26325 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.GetDetailAsync Duration=25563ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=AccesDemande Duration=9ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=TransitionStatut Duration=286ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.GetTrackedAsync Duration=24ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.SaveChangesAsync Duration=276ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=AssurerValidationsInitiales Duration=283ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.AddAuditAsync Duration=21ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Mapping Duration=9ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 TOTAL=26236ms SqlOps=9 Steps=Repo.GetDetailAsync=25563ms | TransitionStatut=286ms | AssurerValidationsInitiales=283ms | Repo.SaveChangesAsync=276ms | Repo.GetTrackedAsync=24ms | Repo.AddAuditAsync=21ms | AccesDemande=9ms | Mapping=9ms | Permission=0ms
+ setup create #2 ÔÇö HTTP POST client 331 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=26ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=11ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=10ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=55ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=10ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=55ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=132ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=188ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=305ms SqlOps=11 Steps=MapperDetailApresCreation=188ms | Repo.GetTrackedAsync=132ms | Repo.AddAsync=55ms | Repo.GetByIdAsync=55ms | Demandeur.GetById=26ms | ResoudreDevise=11ms | Repo.GenererReferenceAsync=10ms | Repo.AddAuditAsync=10ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ ENVOYER_VALIDATION run 2 (#135) ÔÇö HTTP POST client 25600 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.GetDetailAsync Duration=25304ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=AccesDemande Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=TransitionStatut Duration=47ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.GetTrackedAsync Duration=170ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.SaveChangesAsync Duration=15ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=AssurerValidationsInitiales Duration=15ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.AddAuditAsync Duration=14ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 TOTAL=25559ms SqlOps=9 Steps=Repo.GetDetailAsync=25304ms | Repo.GetTrackedAsync=170ms | TransitionStatut=47ms | Repo.SaveChangesAsync=15ms | AssurerValidationsInitiales=15ms | Repo.AddAuditAsync=14ms | AccesDemande=1ms | Permission=0ms | Mapping=0ms
+ setup create #3 ÔÇö HTTP POST client 338 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=185ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=7ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=5ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=33ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=7ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=28ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=48ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=77ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=319ms SqlOps=11 Steps=Demandeur.GetById=185ms | MapperDetailApresCreation=77ms | Repo.GetTrackedAsync=48ms | Repo.AddAsync=33ms | Repo.GetByIdAsync=28ms | ResoudreDevise=7ms | Repo.AddAuditAsync=7ms | Repo.GenererReferenceAsync=5ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ ENVOYER_VALIDATION run 3 (#137) ÔÇö HTTP POST client 25188 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.GetDetailAsync Duration=25019ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=AccesDemande Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=TransitionStatut Duration=72ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.GetTrackedAsync Duration=7ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.SaveChangesAsync Duration=41ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=AssurerValidationsInitiales Duration=41ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.AddAuditAsync Duration=7ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 TOTAL=25149ms SqlOps=9 Steps=Repo.GetDetailAsync=25019ms | TransitionStatut=72ms | Repo.SaveChangesAsync=41ms | AssurerValidationsInitiales=41ms | Repo.GetTrackedAsync=7ms | Repo.AddAuditAsync=7ms | AccesDemande=1ms | Permission=0ms | Mapping=0ms
+ setup create #11 ÔÇö HTTP POST client 180 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=11ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=6ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=6ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=36ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=13ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=40ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=56ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=97ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=173ms SqlOps=11 Steps=MapperDetailApresCreation=97ms | Repo.GetTrackedAsync=56ms | Repo.GetByIdAsync=40ms | Repo.AddAsync=36ms | Repo.AddAuditAsync=13ms | Demandeur.GetById=11ms | ResoudreDevise=6ms | Repo.GenererReferenceAsync=6ms | Repo.SaveChangesAsync=1ms | Permission=0ms | AccesUb=0ms
+ setup envoyer ÔÇö HTTP POST client 25192 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.GetDetailAsync Duration=25014ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=TransitionStatut Duration=35ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.GetTrackedAsync Duration=46ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.SaveChangesAsync Duration=55ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=AssurerValidationsInitiales Duration=55ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.AddAuditAsync Duration=23ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 TOTAL=25176ms SqlOps=9 Steps=Repo.GetDetailAsync=25014ms | Repo.SaveChangesAsync=55ms | AssurerValidationsInitiales=55ms | Repo.GetTrackedAsync=46ms | TransitionStatut=35ms | Repo.AddAuditAsync=23ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ VALIDATION_PHYSIQUE_N1 run 1 (#138) ÔÇö HTTP POST client 25963 ms | status 200
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.GetDetailAsync Duration=25154ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=AccesDemande Duration=7ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=CalculEmpreinte Duration=59ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=TransitionStatut Duration=143ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.GetTrackedAsync Duration=88ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.SaveChangesAsync Duration=74ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.AddAuditAsync Duration=60ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Mapping Duration=3ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 TOTAL=25629ms SqlOps=9 Steps=Repo.GetDetailAsync=25154ms | TransitionStatut=143ms | Repo.GetTrackedAsync=88ms | Repo.SaveChangesAsync=74ms | Repo.AddAuditAsync=60ms | CalculEmpreinte=59ms | AccesDemande=7ms | Mapping=3ms | Permission=0ms
+ setup create #12 ÔÇö HTTP POST client 168 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=14ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=5ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=6ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=29ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=6ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=26ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=37ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=63ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=127ms SqlOps=11 Steps=MapperDetailApresCreation=63ms | Repo.GetTrackedAsync=37ms | Repo.AddAsync=29ms | Repo.GetByIdAsync=26ms | Demandeur.GetById=14ms | Repo.GenererReferenceAsync=6ms | Repo.AddAuditAsync=6ms | ResoudreDevise=5ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ setup envoyer ÔÇö HTTP POST client 25455 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.GetDetailAsync Duration=25156ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=TransitionStatut Duration=64ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.GetTrackedAsync Duration=108ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.SaveChangesAsync Duration=96ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=AssurerValidationsInitiales Duration=97ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.AddAuditAsync Duration=15ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 TOTAL=25443ms SqlOps=9 Steps=Repo.GetDetailAsync=25156ms | Repo.GetTrackedAsync=108ms | AssurerValidationsInitiales=97ms | Repo.SaveChangesAsync=96ms | TransitionStatut=64ms | Repo.AddAuditAsync=15ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ VALIDATION_PHYSIQUE_N1 run 2 (#139) ÔÇö HTTP POST client 25299 ms | status 200
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.GetDetailAsync Duration=25163ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=AccesDemande Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=CalculEmpreinte Duration=6ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=TransitionStatut Duration=32ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.GetTrackedAsync Duration=36ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.SaveChangesAsync Duration=11ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.AddAuditAsync Duration=12ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 TOTAL=25264ms SqlOps=9 Steps=Repo.GetDetailAsync=25163ms | Repo.GetTrackedAsync=36ms | TransitionStatut=32ms | Repo.AddAuditAsync=12ms | Repo.SaveChangesAsync=11ms | CalculEmpreinte=6ms | AccesDemande=1ms | Permission=0ms | Mapping=0ms
+ setup create #13 ÔÇö HTTP POST client 62 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=6ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=4ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=4ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=16ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=18ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=20ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=53ms SqlOps=11 Steps=MapperDetailApresCreation=20ms | Repo.GetByIdAsync=18ms | Repo.AddAsync=16ms | Demandeur.GetById=6ms | ResoudreDevise=4ms | Repo.GenererReferenceAsync=4ms | Repo.AddAuditAsync=1ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ setup envoyer ÔÇö HTTP POST client 25134 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.GetDetailAsync Duration=25038ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=TransitionStatut Duration=27ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.GetTrackedAsync Duration=31ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.SaveChangesAsync Duration=23ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=AssurerValidationsInitiales Duration=23ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.AddAuditAsync Duration=5ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 TOTAL=25127ms SqlOps=9 Steps=Repo.GetDetailAsync=25038ms | Repo.GetTrackedAsync=31ms | TransitionStatut=27ms | Repo.SaveChangesAsync=23ms | AssurerValidationsInitiales=23ms | Repo.AddAuditAsync=5ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ VALIDATION_PHYSIQUE_N1 run 3 (#140) ÔÇö HTTP POST client 25129 ms | status 200
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.GetDetailAsync Duration=25021ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=CalculEmpreinte Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=TransitionStatut Duration=46ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.GetTrackedAsync Duration=33ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.SaveChangesAsync Duration=8ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.AddAuditAsync Duration=7ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 TOTAL=25118ms SqlOps=9 Steps=Repo.GetDetailAsync=25021ms | TransitionStatut=46ms | Repo.GetTrackedAsync=33ms | Repo.SaveChangesAsync=8ms | Repo.AddAuditAsync=7ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ setup create #21 ÔÇö HTTP POST client 85 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=8ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=3ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=4ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=20ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=5ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=32ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=4ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=37ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=80ms SqlOps=11 Steps=MapperDetailApresCreation=37ms | Repo.GetByIdAsync=32ms | Repo.AddAsync=20ms | Demandeur.GetById=8ms | Repo.AddAuditAsync=5ms | Repo.GenererReferenceAsync=4ms | Repo.GetTrackedAsync=4ms | ResoudreDevise=3ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ setup envoyer ÔÇö HTTP POST client 20290 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Permission Duration=12ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.GetDetailAsync Duration=20123ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=TransitionStatut Duration=49ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.GetTrackedAsync Duration=68ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.SaveChangesAsync Duration=15ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=AssurerValidationsInitiales Duration=15ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.AddAuditAsync Duration=6ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 TOTAL=20276ms SqlOps=9 Steps=Repo.GetDetailAsync=20123ms | Repo.GetTrackedAsync=68ms | TransitionStatut=49ms | Repo.SaveChangesAsync=15ms | AssurerValidationsInitiales=15ms | Permission=12ms | Repo.AddAuditAsync=6ms | AccesDemande=0ms | Mapping=0ms
+ setup n1 ÔÇö HTTP POST client 42 ms | status 200
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.GetDetailAsync Duration=10ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=CalculEmpreinte Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=TransitionStatut Duration=5ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.GetTrackedAsync Duration=2ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.SaveChangesAsync Duration=8ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.AddAuditAsync Duration=2ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 TOTAL=31ms SqlOps=9 Steps=Repo.GetDetailAsync=10ms | Repo.SaveChangesAsync=8ms | TransitionStatut=5ms | Repo.GetTrackedAsync=2ms | Repo.AddAuditAsync=2ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ VALIDATION_PHYSIQUE_N2 run 1 (#141) ÔÇö HTTP POST client 33 ms | status 400
+   ERREUR: {"status":400,"message":"Le document DPM sign├® physiquement (DOCUMENT_DPM_SIGNE) est obligatoire avant validation entit├® compl├¿te."}
+ setup create #22 ÔÇö HTTP POST client 55 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=5ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=3ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=4ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=15ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=3ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=17ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=18ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=51ms SqlOps=11 Steps=MapperDetailApresCreation=18ms | Repo.GetByIdAsync=17ms | Repo.AddAsync=15ms | Demandeur.GetById=5ms | Repo.GenererReferenceAsync=4ms | ResoudreDevise=3ms | Repo.AddAuditAsync=3ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ setup envoyer ÔÇö HTTP POST client 16 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.GetDetailAsync Duration=5ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=TransitionStatut Duration=2ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.SaveChangesAsync Duration=2ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=AssurerValidationsInitiales Duration=2ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 TOTAL=13ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | TransitionStatut=2ms | Repo.SaveChangesAsync=2ms | AssurerValidationsInitiales=2ms | Repo.GetTrackedAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ setup n1 ÔÇö HTTP POST client 23 ms | status 200
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.GetDetailAsync Duration=14ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=CalculEmpreinte Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=TransitionStatut Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.SaveChangesAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 TOTAL=20ms SqlOps=9 Steps=Repo.GetDetailAsync=14ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ VALIDATION_PHYSIQUE_N2 run 2 (#142) ÔÇö HTTP POST client 8 ms | status 400
+   ERREUR: {"status":400,"message":"Le document DPM sign├® physiquement (DOCUMENT_DPM_SIGNE) est obligatoire avant validation entit├® compl├¿te."}
+ setup create #23 ÔÇö HTTP POST client 11 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=2ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=9ms SqlOps=11 Steps=MapperDetailApresCreation=2ms | Demandeur.GetById=1ms | Repo.GenererReferenceAsync=1ms | Repo.AddAsync=1ms | Repo.AddAuditAsync=1ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | ResoudreDevise=0ms | Repo.SaveChangesAsync=0ms | Repo.GetByIdAsync=0ms
+ setup envoyer ÔÇö HTTP POST client 15 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.GetDetailAsync Duration=3ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=TransitionStatut Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.SaveChangesAsync Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=AssurerValidationsInitiales Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 TOTAL=10ms SqlOps=9 Steps=Repo.GetDetailAsync=3ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | AssurerValidationsInitiales=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ setup n1 ÔÇö HTTP POST client 17 ms | status 200
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.GetDetailAsync Duration=5ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=CalculEmpreinte Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=TransitionStatut Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.SaveChangesAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.AddAuditAsync Duration=3ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 TOTAL=13ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | Repo.AddAuditAsync=3ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ VALIDATION_PHYSIQUE_N2 run 3 (#143) ÔÇö HTTP POST client 31 ms | status 400
+   ERREUR: {"status":400,"message":"Le document DPM sign├® physiquement (DOCUMENT_DPM_SIGNE) est obligatoire avant validation entit├® compl├¿te."}
+ setup create #31 ÔÇö HTTP POST client 15 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=2ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=3ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=2ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=3ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=14ms SqlOps=11 Steps=Repo.AddAuditAsync=3ms | MapperDetailApresCreation=3ms | Repo.AddAsync=2ms | Repo.GetTrackedAsync=2ms | Demandeur.GetById=1ms | Repo.GenererReferenceAsync=1ms | Repo.GetByIdAsync=1ms | Permission=0ms | AccesUb=0ms | ResoudreDevise=0ms | Repo.SaveChangesAsync=0ms
+ setup envoyer ÔÇö HTTP POST client 33 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.GetDetailAsync Duration=10ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=TransitionStatut Duration=7ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.SaveChangesAsync Duration=7ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=AssurerValidationsInitiales Duration=7ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 TOTAL=30ms SqlOps=9 Steps=Repo.GetDetailAsync=10ms | TransitionStatut=7ms | Repo.SaveChangesAsync=7ms | AssurerValidationsInitiales=7ms | Repo.GetTrackedAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ setup n1 phys ÔÇö HTTP POST client 14 ms | status 200
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.GetDetailAsync Duration=4ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=CalculEmpreinte Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=TransitionStatut Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.SaveChangesAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 TOTAL=11ms SqlOps=9 Steps=Repo.GetDetailAsync=4ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ setup n2 phys ÔÇö HTTP POST client 25 ms | status 400
+   ERREUR: {"status":400,"message":"Le document DPM sign├® physiquement (DOCUMENT_DPM_SIGNE) est obligatoire avant validation entit├® compl├¿te."}
+ SOUMETTRE run 1 (#144) ÔÇö HTTP POST client 23 ms | status 409
+   ERREUR: {"status":409,"message":"La demande doit ├¬tre valid├®e par l'entit├® avant soumission au Budget."}
+ setup create #32 ÔÇö HTTP POST client 12 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=2ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=2ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=2ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=11ms SqlOps=11 Steps=Demandeur.GetById=2ms | Repo.AddAsync=2ms | MapperDetailApresCreation=2ms | Repo.AddAuditAsync=1ms | Repo.GetByIdAsync=1ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | ResoudreDevise=0ms | Repo.GenererReferenceAsync=0ms | Repo.SaveChangesAsync=0ms
+ setup envoyer ÔÇö HTTP POST client 14 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.GetDetailAsync Duration=4ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=TransitionStatut Duration=2ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.SaveChangesAsync Duration=2ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=AssurerValidationsInitiales Duration=2ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 TOTAL=11ms SqlOps=9 Steps=Repo.GetDetailAsync=4ms | TransitionStatut=2ms | Repo.SaveChangesAsync=2ms | AssurerValidationsInitiales=2ms | Repo.GetTrackedAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ setup n1 phys ÔÇö HTTP POST client 15 ms | status 200
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.GetDetailAsync Duration=5ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=CalculEmpreinte Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=TransitionStatut Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.SaveChangesAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 TOTAL=12ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ setup n2 phys ÔÇö HTTP POST client 7 ms | status 400
+   ERREUR: {"status":400,"message":"Le document DPM sign├® physiquement (DOCUMENT_DPM_SIGNE) est obligatoire avant validation entit├® compl├¿te."}
+ SOUMETTRE run 2 (#145) ÔÇö HTTP POST client 11 ms | status 409
+   ERREUR: {"status":409,"message":"La demande doit ├¬tre valid├®e par l'entit├® avant soumission au Budget."}
+ setup create #33 ÔÇö HTTP POST client 15 ms | status 201
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=2ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=0ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=3ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=4ms
+   [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=13ms SqlOps=11 Steps=MapperDetailApresCreation=4ms | Repo.GetTrackedAsync=3ms | Repo.AddAsync=2ms | Demandeur.GetById=1ms | ResoudreDevise=1ms | Repo.GenererReferenceAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms | Repo.GetByIdAsync=0ms
+ setup envoyer ÔÇö HTTP POST client 19 ms | status 200
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.GetDetailAsync Duration=5ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=TransitionStatut Duration=3ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.GetTrackedAsync Duration=2ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.SaveChangesAsync Duration=2ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=AssurerValidationsInitiales Duration=2ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.AddAuditAsync Duration=1ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 TOTAL=15ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | TransitionStatut=3ms | Repo.GetTrackedAsync=2ms | Repo.SaveChangesAsync=2ms | AssurerValidationsInitiales=2ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ setup n1 phys ÔÇö HTTP POST client 22 ms | status 200
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Permission Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.GetDetailAsync Duration=7ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=AccesDemande Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=CalculEmpreinte Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=TransitionStatut Duration=4ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.GetTrackedAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.SaveChangesAsync Duration=1ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.AddAuditAsync Duration=2ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Mapping Duration=0ms
+   [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 TOTAL=18ms SqlOps=9 Steps=Repo.GetDetailAsync=7ms | TransitionStatut=4ms | Repo.AddAuditAsync=2ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ setup n2 phys ÔÇö HTTP POST client 9 ms | status 400
+   ERREUR: {"status":400,"message":"Le document DPM sign├® physiquement (DOCUMENT_DPM_SIGNE) est obligatoire avant validation entit├® compl├¿te."}
+ SOUMETTRE run 3 (#146) ÔÇö HTTP POST client 7 ms | status 409
+   ERREUR: {"status":409,"message":"La demande doit ├¬tre valid├®e par l'entit├® avant soumission au Budget."}
+ === SYNTH├êSE PAR OP├ëRATION ===
+ CREATE: runs=3 | min=130ms | avg=596ms | max=1486ms
+ UPDATE: runs=3 | min=36ms | avg=106ms | max=190ms
+ ENVOYER_VALIDATION: runs=3 | min=25149ms | avg=25648ms | max=26236ms
+ VALIDATION_PHYSIQUE_N1: runs=3 | min=25118ms | avg=25337ms | max=25629ms
+ VALIDATION_PHYSIQUE_N2: aucune mesure TOTAL captur├®e.
+ SOUMETTRE: aucune mesure TOTAL captur├®e.
+ === TOUS LES LOGS [PERF][MUTATION] ===
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=4ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=206ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=23ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=25ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=722ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=78ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=82ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=266ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=372ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=1486ms SqlOps=11 Steps=Repo.AddAsync=722ms | MapperDetailApresCreation=372ms | Repo.GetTrackedAsync=266ms | Demandeur.GetById=206ms | Repo.GetByIdAsync=82ms | Repo.AddAuditAsync=78ms | Repo.GenererReferenceAsync=25ms | ResoudreDevise=23ms | Permission=4ms | AccesUb=1ms | Repo.SaveChangesAsync=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=39ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=7ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=9ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=52ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=5ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=20ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=34ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=55ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=172ms SqlOps=11 Steps=MapperDetailApresCreation=55ms | Repo.AddAsync=52ms | Demandeur.GetById=39ms | Repo.GetTrackedAsync=34ms | Repo.GetByIdAsync=20ms | Repo.GenererReferenceAsync=9ms | ResoudreDevise=7ms | Repo.AddAuditAsync=5ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=6ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=7ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=8ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=10ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=12ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=38ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=45ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=84ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=130ms SqlOps=11 Steps=MapperDetailApresCreation=84ms | Repo.GetTrackedAsync=45ms | Repo.GetByIdAsync=38ms | Repo.AddAuditAsync=12ms | Repo.AddAsync=10ms | Repo.GenererReferenceAsync=8ms | ResoudreDevise=7ms | Demandeur.GetById=6ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetByIdAsync Duration=23ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=AccesDemande Duration=9ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=ResoudreDevise Duration=6ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=UpdateBrouillonHeader Duration=88ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetTrackedAsync Duration=37ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.SaveChangesAsync Duration=5ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.AddAuditAsync Duration=13ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 TOTAL=190ms SqlOps=9 Steps=UpdateBrouillonHeader=88ms | Repo.GetTrackedAsync=37ms | Repo.GetByIdAsync=23ms | Repo.AddAuditAsync=13ms | AccesDemande=9ms | ResoudreDevise=6ms | Repo.SaveChangesAsync=5ms | Permission=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetByIdAsync Duration=29ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=ResoudreDevise Duration=3ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=UpdateBrouillonHeader Duration=15ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetTrackedAsync Duration=35ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.AddAuditAsync Duration=8ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 TOTAL=94ms SqlOps=9 Steps=Repo.GetTrackedAsync=35ms | Repo.GetByIdAsync=29ms | UpdateBrouillonHeader=15ms | Repo.AddAuditAsync=8ms | ResoudreDevise=3ms | Permission=0ms | AccesDemande=0ms | Repo.SaveChangesAsync=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetByIdAsync Duration=18ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=ResoudreDevise Duration=4ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=UpdateBrouillonHeader Duration=4ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.GetTrackedAsync Duration=4ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Repo.AddAuditAsync Duration=3ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=UPDATE DemandeId=124 TOTAL=36ms SqlOps=9 Steps=Repo.GetByIdAsync=18ms | ResoudreDevise=4ms | UpdateBrouillonHeader=4ms | Repo.GetTrackedAsync=4ms | Repo.AddAuditAsync=3ms | Permission=0ms | AccesDemande=0ms | Repo.SaveChangesAsync=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=8ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=3ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=17ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=73ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=7ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=28ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=52ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=81ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=193ms SqlOps=11 Steps=MapperDetailApresCreation=81ms | Repo.AddAsync=73ms | Repo.GetTrackedAsync=52ms | Repo.GetByIdAsync=28ms | Repo.GenererReferenceAsync=17ms | Demandeur.GetById=8ms | Repo.AddAuditAsync=7ms | ResoudreDevise=3ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.GetDetailAsync Duration=25563ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=AccesDemande Duration=9ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=TransitionStatut Duration=286ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.GetTrackedAsync Duration=24ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.SaveChangesAsync Duration=276ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=AssurerValidationsInitiales Duration=283ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Repo.AddAuditAsync Duration=21ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 Etape=Mapping Duration=9ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=127 TOTAL=26236ms SqlOps=9 Steps=Repo.GetDetailAsync=25563ms | TransitionStatut=286ms | AssurerValidationsInitiales=283ms | Repo.SaveChangesAsync=276ms | Repo.GetTrackedAsync=24ms | Repo.AddAuditAsync=21ms | AccesDemande=9ms | Mapping=9ms | Permission=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=26ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=11ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=10ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=55ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=10ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=55ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=132ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=188ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=305ms SqlOps=11 Steps=MapperDetailApresCreation=188ms | Repo.GetTrackedAsync=132ms | Repo.AddAsync=55ms | Repo.GetByIdAsync=55ms | Demandeur.GetById=26ms | ResoudreDevise=11ms | Repo.GenererReferenceAsync=10ms | Repo.AddAuditAsync=10ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.GetDetailAsync Duration=25304ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=AccesDemande Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=TransitionStatut Duration=47ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.GetTrackedAsync Duration=170ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.SaveChangesAsync Duration=15ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=AssurerValidationsInitiales Duration=15ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Repo.AddAuditAsync Duration=14ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=135 TOTAL=25559ms SqlOps=9 Steps=Repo.GetDetailAsync=25304ms | Repo.GetTrackedAsync=170ms | TransitionStatut=47ms | Repo.SaveChangesAsync=15ms | AssurerValidationsInitiales=15ms | Repo.AddAuditAsync=14ms | AccesDemande=1ms | Permission=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=185ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=7ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=5ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=33ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=7ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=28ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=48ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=77ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=319ms SqlOps=11 Steps=Demandeur.GetById=185ms | MapperDetailApresCreation=77ms | Repo.GetTrackedAsync=48ms | Repo.AddAsync=33ms | Repo.GetByIdAsync=28ms | ResoudreDevise=7ms | Repo.AddAuditAsync=7ms | Repo.GenererReferenceAsync=5ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.GetDetailAsync Duration=25019ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=AccesDemande Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=TransitionStatut Duration=72ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.GetTrackedAsync Duration=7ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.SaveChangesAsync Duration=41ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=AssurerValidationsInitiales Duration=41ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Repo.AddAuditAsync Duration=7ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=137 TOTAL=25149ms SqlOps=9 Steps=Repo.GetDetailAsync=25019ms | TransitionStatut=72ms | Repo.SaveChangesAsync=41ms | AssurerValidationsInitiales=41ms | Repo.GetTrackedAsync=7ms | Repo.AddAuditAsync=7ms | AccesDemande=1ms | Permission=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=11ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=6ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=6ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=36ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=13ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=40ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=56ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=97ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=173ms SqlOps=11 Steps=MapperDetailApresCreation=97ms | Repo.GetTrackedAsync=56ms | Repo.GetByIdAsync=40ms | Repo.AddAsync=36ms | Repo.AddAuditAsync=13ms | Demandeur.GetById=11ms | ResoudreDevise=6ms | Repo.GenererReferenceAsync=6ms | Repo.SaveChangesAsync=1ms | Permission=0ms | AccesUb=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.GetDetailAsync Duration=25014ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=TransitionStatut Duration=35ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.GetTrackedAsync Duration=46ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.SaveChangesAsync Duration=55ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=AssurerValidationsInitiales Duration=55ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Repo.AddAuditAsync Duration=23ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=138 TOTAL=25176ms SqlOps=9 Steps=Repo.GetDetailAsync=25014ms | Repo.SaveChangesAsync=55ms | AssurerValidationsInitiales=55ms | Repo.GetTrackedAsync=46ms | TransitionStatut=35ms | Repo.AddAuditAsync=23ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.GetDetailAsync Duration=25154ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=AccesDemande Duration=7ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=CalculEmpreinte Duration=59ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=TransitionStatut Duration=143ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.GetTrackedAsync Duration=88ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.SaveChangesAsync Duration=74ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Repo.AddAuditAsync Duration=60ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 Etape=Mapping Duration=3ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=138 TOTAL=25629ms SqlOps=9 Steps=Repo.GetDetailAsync=25154ms | TransitionStatut=143ms | Repo.GetTrackedAsync=88ms | Repo.SaveChangesAsync=74ms | Repo.AddAuditAsync=60ms | CalculEmpreinte=59ms | AccesDemande=7ms | Mapping=3ms | Permission=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=14ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=5ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=6ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=29ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=6ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=26ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=37ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=63ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=127ms SqlOps=11 Steps=MapperDetailApresCreation=63ms | Repo.GetTrackedAsync=37ms | Repo.AddAsync=29ms | Repo.GetByIdAsync=26ms | Demandeur.GetById=14ms | Repo.GenererReferenceAsync=6ms | Repo.AddAuditAsync=6ms | ResoudreDevise=5ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.GetDetailAsync Duration=25156ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=TransitionStatut Duration=64ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.GetTrackedAsync Duration=108ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.SaveChangesAsync Duration=96ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=AssurerValidationsInitiales Duration=97ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Repo.AddAuditAsync Duration=15ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=139 TOTAL=25443ms SqlOps=9 Steps=Repo.GetDetailAsync=25156ms | Repo.GetTrackedAsync=108ms | AssurerValidationsInitiales=97ms | Repo.SaveChangesAsync=96ms | TransitionStatut=64ms | Repo.AddAuditAsync=15ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.GetDetailAsync Duration=25163ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=AccesDemande Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=CalculEmpreinte Duration=6ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=TransitionStatut Duration=32ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.GetTrackedAsync Duration=36ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.SaveChangesAsync Duration=11ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Repo.AddAuditAsync Duration=12ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=139 TOTAL=25264ms SqlOps=9 Steps=Repo.GetDetailAsync=25163ms | Repo.GetTrackedAsync=36ms | TransitionStatut=32ms | Repo.AddAuditAsync=12ms | Repo.SaveChangesAsync=11ms | CalculEmpreinte=6ms | AccesDemande=1ms | Permission=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=6ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=4ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=4ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=16ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=18ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=20ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=53ms SqlOps=11 Steps=MapperDetailApresCreation=20ms | Repo.GetByIdAsync=18ms | Repo.AddAsync=16ms | Demandeur.GetById=6ms | ResoudreDevise=4ms | Repo.GenererReferenceAsync=4ms | Repo.AddAuditAsync=1ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.GetDetailAsync Duration=25038ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=TransitionStatut Duration=27ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.GetTrackedAsync Duration=31ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.SaveChangesAsync Duration=23ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=AssurerValidationsInitiales Duration=23ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Repo.AddAuditAsync Duration=5ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=140 TOTAL=25127ms SqlOps=9 Steps=Repo.GetDetailAsync=25038ms | Repo.GetTrackedAsync=31ms | TransitionStatut=27ms | Repo.SaveChangesAsync=23ms | AssurerValidationsInitiales=23ms | Repo.AddAuditAsync=5ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.GetDetailAsync Duration=25021ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=TransitionStatut Duration=46ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.GetTrackedAsync Duration=33ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.SaveChangesAsync Duration=8ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Repo.AddAuditAsync Duration=7ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=140 TOTAL=25118ms SqlOps=9 Steps=Repo.GetDetailAsync=25021ms | TransitionStatut=46ms | Repo.GetTrackedAsync=33ms | Repo.SaveChangesAsync=8ms | Repo.AddAuditAsync=7ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=8ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=3ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=4ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=20ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=5ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=32ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=4ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=37ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=80ms SqlOps=11 Steps=MapperDetailApresCreation=37ms | Repo.GetByIdAsync=32ms | Repo.AddAsync=20ms | Demandeur.GetById=8ms | Repo.AddAuditAsync=5ms | Repo.GenererReferenceAsync=4ms | Repo.GetTrackedAsync=4ms | ResoudreDevise=3ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Permission Duration=12ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.GetDetailAsync Duration=20123ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=TransitionStatut Duration=49ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.GetTrackedAsync Duration=68ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.SaveChangesAsync Duration=15ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=AssurerValidationsInitiales Duration=15ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Repo.AddAuditAsync Duration=6ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=141 TOTAL=20276ms SqlOps=9 Steps=Repo.GetDetailAsync=20123ms | Repo.GetTrackedAsync=68ms | TransitionStatut=49ms | Repo.SaveChangesAsync=15ms | AssurerValidationsInitiales=15ms | Permission=12ms | Repo.AddAuditAsync=6ms | AccesDemande=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.GetDetailAsync Duration=10ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=TransitionStatut Duration=5ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.GetTrackedAsync Duration=2ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.SaveChangesAsync Duration=8ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Repo.AddAuditAsync Duration=2ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=141 TOTAL=31ms SqlOps=9 Steps=Repo.GetDetailAsync=10ms | Repo.SaveChangesAsync=8ms | TransitionStatut=5ms | Repo.GetTrackedAsync=2ms | Repo.AddAuditAsync=2ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=141 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=141 Etape=Repo.GetDetailAsync Duration=7ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=141 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=141 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=5ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=3ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=4ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=15ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=3ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=17ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=18ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=51ms SqlOps=11 Steps=MapperDetailApresCreation=18ms | Repo.GetByIdAsync=17ms | Repo.AddAsync=15ms | Demandeur.GetById=5ms | Repo.GenererReferenceAsync=4ms | ResoudreDevise=3ms | Repo.AddAuditAsync=3ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.GetDetailAsync Duration=5ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=TransitionStatut Duration=2ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.SaveChangesAsync Duration=2ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=AssurerValidationsInitiales Duration=2ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=142 TOTAL=13ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | TransitionStatut=2ms | Repo.SaveChangesAsync=2ms | AssurerValidationsInitiales=2ms | Repo.GetTrackedAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.GetDetailAsync Duration=14ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=TransitionStatut Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.SaveChangesAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=142 TOTAL=20ms SqlOps=9 Steps=Repo.GetDetailAsync=14ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=142 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=142 Etape=Repo.GetDetailAsync Duration=5ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=142 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=142 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=2ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=9ms SqlOps=11 Steps=MapperDetailApresCreation=2ms | Demandeur.GetById=1ms | Repo.GenererReferenceAsync=1ms | Repo.AddAsync=1ms | Repo.AddAuditAsync=1ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | ResoudreDevise=0ms | Repo.SaveChangesAsync=0ms | Repo.GetByIdAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.GetDetailAsync Duration=3ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=TransitionStatut Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.SaveChangesAsync Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=AssurerValidationsInitiales Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=143 TOTAL=10ms SqlOps=9 Steps=Repo.GetDetailAsync=3ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | AssurerValidationsInitiales=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.GetDetailAsync Duration=5ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=TransitionStatut Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.SaveChangesAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Repo.AddAuditAsync Duration=3ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=143 TOTAL=13ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | Repo.AddAuditAsync=3ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=143 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=143 Etape=Repo.GetDetailAsync Duration=27ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=143 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=143 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=2ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=3ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=2ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=3ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=14ms SqlOps=11 Steps=Repo.AddAuditAsync=3ms | MapperDetailApresCreation=3ms | Repo.AddAsync=2ms | Repo.GetTrackedAsync=2ms | Demandeur.GetById=1ms | Repo.GenererReferenceAsync=1ms | Repo.GetByIdAsync=1ms | Permission=0ms | AccesUb=0ms | ResoudreDevise=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.GetDetailAsync Duration=10ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=TransitionStatut Duration=7ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.SaveChangesAsync Duration=7ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=AssurerValidationsInitiales Duration=7ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=144 TOTAL=30ms SqlOps=9 Steps=Repo.GetDetailAsync=10ms | TransitionStatut=7ms | Repo.SaveChangesAsync=7ms | AssurerValidationsInitiales=7ms | Repo.GetTrackedAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.GetDetailAsync Duration=4ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=TransitionStatut Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.SaveChangesAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=144 TOTAL=11ms SqlOps=9 Steps=Repo.GetDetailAsync=4ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=144 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=144 Etape=Repo.GetDetailAsync Duration=16ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=144 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=144 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=SOUMETTRE DemandeId=144 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=SOUMETTRE DemandeId=144 Etape=Repo.GetDetailAsync Duration=5ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=2ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=2ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=2ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=11ms SqlOps=11 Steps=Demandeur.GetById=2ms | Repo.AddAsync=2ms | MapperDetailApresCreation=2ms | Repo.AddAuditAsync=1ms | Repo.GetByIdAsync=1ms | Repo.GetTrackedAsync=1ms | Permission=0ms | AccesUb=0ms | ResoudreDevise=0ms | Repo.GenererReferenceAsync=0ms | Repo.SaveChangesAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.GetDetailAsync Duration=4ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=TransitionStatut Duration=2ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.SaveChangesAsync Duration=2ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=AssurerValidationsInitiales Duration=2ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=145 TOTAL=11ms SqlOps=9 Steps=Repo.GetDetailAsync=4ms | TransitionStatut=2ms | Repo.SaveChangesAsync=2ms | AssurerValidationsInitiales=2ms | Repo.GetTrackedAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.GetDetailAsync Duration=5ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=TransitionStatut Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.SaveChangesAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=145 TOTAL=12ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | TransitionStatut=1ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=145 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=145 Etape=Repo.GetDetailAsync Duration=5ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=145 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=145 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=SOUMETTRE DemandeId=145 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=SOUMETTRE DemandeId=145 Etape=Repo.GetDetailAsync Duration=6ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Demandeur.GetById Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=AccesUb Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=ResoudreDevise Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GenererReferenceAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAsync Duration=2ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.SaveChangesAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetByIdAsync Duration=0ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=Repo.GetTrackedAsync Duration=3ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) Etape=MapperDetailApresCreation Duration=4ms
+ [PERF][MUTATION] Operation=CREATE DemandeId=(null) TOTAL=13ms SqlOps=11 Steps=MapperDetailApresCreation=4ms | Repo.GetTrackedAsync=3ms | Repo.AddAsync=2ms | Demandeur.GetById=1ms | ResoudreDevise=1ms | Repo.GenererReferenceAsync=1ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesUb=0ms | Repo.SaveChangesAsync=0ms | Repo.GetByIdAsync=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.GetDetailAsync Duration=5ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=TransitionStatut Duration=3ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.GetTrackedAsync Duration=2ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.SaveChangesAsync Duration=2ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=AssurerValidationsInitiales Duration=2ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Repo.AddAuditAsync Duration=1ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=ENVOYER_VALIDATION DemandeId=146 TOTAL=15ms SqlOps=9 Steps=Repo.GetDetailAsync=5ms | TransitionStatut=3ms | Repo.GetTrackedAsync=2ms | Repo.SaveChangesAsync=2ms | AssurerValidationsInitiales=2ms | Repo.AddAuditAsync=1ms | Permission=0ms | AccesDemande=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.GetDetailAsync Duration=7ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=TransitionStatut Duration=4ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.GetTrackedAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.SaveChangesAsync Duration=1ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Repo.AddAuditAsync Duration=2ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 Etape=Mapping Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N1 DemandeId=146 TOTAL=18ms SqlOps=9 Steps=Repo.GetDetailAsync=7ms | TransitionStatut=4ms | Repo.AddAuditAsync=2ms | Repo.GetTrackedAsync=1ms | Repo.SaveChangesAsync=1ms | Permission=0ms | AccesDemande=0ms | CalculEmpreinte=0ms | Mapping=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=146 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=146 Etape=Repo.GetDetailAsync Duration=5ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=146 Etape=AccesDemande Duration=0ms
+ [PERF][MUTATION] Operation=VALIDATION_PHYSIQUE_N2 DemandeId=146 Etape=CalculEmpreinte Duration=0ms
+ [PERF][MUTATION] Operation=SOUMETTRE DemandeId=146 Etape=Permission Duration=0ms
+ [PERF][MUTATION] Operation=SOUMETTRE DemandeId=146 Etape=Repo.GetDetailAsync Duration=5ms

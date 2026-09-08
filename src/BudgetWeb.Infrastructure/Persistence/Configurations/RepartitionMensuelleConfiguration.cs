@@ -8,11 +8,14 @@ public class RepartitionMensuelleConfiguration : IEntityTypeConfiguration<Repart
 {
     public void Configure(EntityTypeBuilder<RepartitionMensuelle> builder)
     {
-        builder.ToTable("REPARTITION_MENSUELLE");
+        builder.ToTable("REPARTITION_MENSUELLE", t =>
+        {
+            t.HasTrigger("TR_REPARTITION_RECALCUL_MONTANT");
+        });
 
         builder.HasKey(e => e.IdRepartition);
 
-        builder.Property(e => e.IdRepartition).HasColumnName("IdRepartition");
+        builder.Property(e => e.IdRepartition).HasColumnName("IdRepartition").ValueGeneratedOnAdd();
         builder.Property(e => e.FK_PrevisionBudgetaire).HasColumnName("FK_PrevisionBudgetaire");
         builder.Property(e => e.Mois).HasColumnName("Mois");
         builder.Property(e => e.Montant).HasColumnName("Montant").HasColumnType("decimal(19,4)");

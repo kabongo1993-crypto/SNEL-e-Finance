@@ -12,7 +12,7 @@ public class UniteBudgetaireConfiguration : IEntityTypeConfiguration<UniteBudget
 
         builder.HasKey(e => e.IdUB);
 
-        builder.Property(e => e.IdUB).HasColumnName("IdUB");
+        builder.Property(e => e.IdUB).HasColumnName("IdUB").ValueGeneratedOnAdd();
         builder.Property(e => e.CodeUB).HasColumnName("CodeUB").HasMaxLength(30).IsUnicode(false);
         builder.Property(e => e.Libelle).HasColumnName("Libelle").HasMaxLength(200);
         builder.Property(e => e.FK_Departement).HasColumnName("FK_Departement");

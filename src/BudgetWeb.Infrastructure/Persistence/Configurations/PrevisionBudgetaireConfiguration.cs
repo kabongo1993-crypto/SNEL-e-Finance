@@ -8,11 +8,15 @@ public class PrevisionBudgetaireConfiguration : IEntityTypeConfiguration<Previsi
 {
     public void Configure(EntityTypeBuilder<PrevisionBudgetaire> builder)
     {
-        builder.ToTable("PREVISION_BUDGETAIRE");
+        builder.ToTable("PREVISION_BUDGETAIRE", t =>
+        {
+            // SQL Server refuse OUTPUT sans INTO quand un trigger est actif.
+            t.HasTrigger("TR_PREVISION_COHERENCE");
+        });
 
         builder.HasKey(e => e.IdPrevision);
 
-        builder.Property(e => e.IdPrevision).HasColumnName("IdPrevision");
+        builder.Property(e => e.IdPrevision).HasColumnName("IdPrevision").ValueGeneratedOnAdd();
         builder.Property(e => e.FK_VersionBudgetaire).HasColumnName("FK_VersionBudgetaire");
         builder.Property(e => e.FK_TypeBudget).HasColumnName("FK_TypeBudget");
         builder.Property(e => e.FK_UniteBudgetaire).HasColumnName("FK_UniteBudgetaire");

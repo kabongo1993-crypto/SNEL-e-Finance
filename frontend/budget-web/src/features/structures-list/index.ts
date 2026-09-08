@@ -1,0 +1,1 @@
+export { StructuresPage } from './StructuresPage';

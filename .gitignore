@@ -53,8 +53,9 @@ coverage/
 *.coverage
 *.coveragexml
 
-## EF Core migrations (non utilisées pour l'instant)
-**/Migrations/
+## Stockage local pièces justificatives / documents générés
+**/App_Data/pieces-justificatives/
+**/App_Data/documents/
 
 ## Solution .NET SDK 10+ (BudgetWeb.sln est la référence)
 *.slnx

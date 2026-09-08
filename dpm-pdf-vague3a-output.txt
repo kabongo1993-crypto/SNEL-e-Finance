@@ -1,0 +1,1522 @@
+﻿  Identification des projets ├á restaurer...
+  Tous les projets sont ├á jour pour la restauration.
+  BudgetWeb.Domain -> D:\InstantFLOW\Instant_Flow\src\BudgetWeb.Domain\bin\Debug\net8.0\BudgetWeb.Domain.dll
+  BudgetWeb.Application -> D:\InstantFLOW\Instant_Flow\src\BudgetWeb.Application\bin\Debug\net8.0\BudgetWeb.Application.dll
+  BudgetWeb.Infrastructure -> D:\InstantFLOW\Instant_Flow\src\BudgetWeb.Infrastructure\bin\Debug\net8.0\BudgetWeb.Infrastructure.dll
+  BudgetWeb.API -> D:\InstantFLOW\Instant_Flow\src\BudgetWeb.API\bin\Debug\net8.0\BudgetWeb.API.dll
+  BudgetWeb.IntegrationTests -> D:\InstantFLOW\Instant_Flow\tests\BudgetWeb.IntegrationTests\bin\Debug\net8.0\BudgetWeb.IntegrationTests.dll
+S├®rie de tests pour D:\InstantFLOW\Instant_Flow\tests\BudgetWeb.IntegrationTests\bin\Debug\net8.0\BudgetWeb.IntegrationTests.dll (.NETCoreApp,Version=v8.0)
+Au total, 1 fichiers de test ont correspondu au mod├¿le sp├®cifi├®.
+D:\InstantFLOW\Instant_Flow\tests\BudgetWeb.IntegrationTests\bin\Debug\net8.0\BudgetWeb.IntegrationTests.dll
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.27)
+[xUnit.net 00:00:00.14]   Discovering: BudgetWeb.IntegrationTests
+[xUnit.net 00:00:00.19]   Discovered:  BudgetWeb.IntegrationTests
+[xUnit.net 00:00:00.19]   Starting:    BudgetWeb.IntegrationTests
+dbug: Microsoft.Extensions.Hosting.Internal.Host[1]
+      Hosting starting
+info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[63]
+      User profile is available. Using 'C:\Users\kabon\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+dbug: Microsoft.Extensions.Hosting.Internal.Host[2]
+      Hosting started
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (36ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[IdUtilisateur], [u].[Actif], [u].[DateCreation], [u].[DateDerniereConnexion], [u].[Email], [u].[FK_DepartementPrincipal], [u].[FK_StructureOrganisationnelle], [u].[FK_StructureService], [u].[Matricule], [u].[MotDePasseHash], [u].[Nom], [u].[NomUtilisateur], [u].[Postnom], [u].[Prenom]
+      FROM [UTILISATEUR] AS [u]
+      WHERE [u].[IdUtilisateur] = @__idUtilisateur_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[CodeProfil]
+      FROM [dpm].[PROFIL_UTILISATEUR] AS [p]
+      WHERE [p].[FK_Utilisateur] = @__idUtilisateur_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[CodePermission]
+      FROM [dpm].[PERMISSION_UTILISATEUR] AS [p]
+      WHERE [p].[FK_Utilisateur] = @__idUtilisateur_0
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50 - - -
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetById", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int64, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (39ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[FK_ExerciceBudgetaire], [d].[FK_VersionBudgetaire], [d].[FK_UniteBudgetaire], [d].[FK_Demandeur], [d].[FK_CasDossier], [d].[FK_TypeBudget], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[Objet], [d].[CompteSection], [d].[MontantBrut], [d].[Devise], [d].[FK_Devise], [d].[TauxConversion], [d].[MontantUsd], [d].[FK_TauxChange], [d].[ModePaiementSollicite], [d].[TypeInstrumentPaiement], [d].[DevisePaiement], [d].[MontantPaiement], [d].[TauxPaiement], [d].[FK_TauxChangePaiement], [d].[Statut], [d].[MotifRetour], [d].[CommentaireRetour], [d].[FK_UtilisateurCreation], [d].[DateCreation], [d].[DateSoumission], [d].[DateReception], [d].[DateControle], [d].[DateVisa], [d].[DateRetour], [c].[IdCasDossier], [c].[Code], [c].[Libelle], [e].[IdExercice], [e].[Annee], [u].[IdUB], [u].[CodeUB], [u].[Libelle], [u].[FK_Departement], [d0].[IdDepartement], [d0].[Code], [d0].[Libelle], CASE
+          WHEN [d1].[IdDemandeur] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [d1].[IdDemandeur], [d1].[Code], [d1].[Libelle], CASE
+          WHEN [t].[IdTypeBudget] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [t].[IdTypeBudget], [t].[CodeType], CASE
+          WHEN [v].[IdVersion] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [v].[IdVersion], [v].[NumeroVersion]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      INNER JOIN [EXERCICE_BUDGETAIRE] AS [e] ON [d].[FK_ExerciceBudgetaire] = [e].[IdExercice]
+      INNER JOIN [UNITE_BUDGETAIRE] AS [u] ON [d].[FK_UniteBudgetaire] = [u].[IdUB]
+      INNER JOIN [DEPARTEMENT] AS [d0] ON [u].[FK_Departement] = [d0].[IdDepartement]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d1] ON [d].[FK_Demandeur] = [d1].[IdDemandeur]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      LEFT JOIN [VERSION_BUDGETAIRE] AS [v] ON [d].[FK_VersionBudgetaire] = [v].[IdVersion]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (11ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[IdBeneficiaire], [d].[Adresse], [d].[Banque], [d].[EstPrincipal], [d].[FK_DemandePaiement], [d].[Fonction], [d].[Matricule], [d].[NomComplet], [d].[NumeroCompte], [d].[Ordre], [d].[RaisonSociale], [d].[Rccm], [d].[TypeBeneficiaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[IdImputation], [d].[Ordre], [d].[FK_TypeBudget], [d].[FK_UniteBudgetaire], [d].[FK_ExerciceBudgetaire], [d].[FK_RubriqueBudgetaire], [d].[Mois], [d].[LibelleItemAE], [d].[FK_GroupeItemAE], [d].[FK_ItemBI], [d].[DetailBI], [d].[FK_BudgetLigne], [d].[MontantBrut], [d].[Devise], [d].[TauxConversion], [d].[MontantUsd], [d].[NumeroFicheSuivi], [t].[IdTypeBudget], [t].[CodeType]
+      FROM [dpm].[DEMANDE_PAIEMENT_IMPUTATION] AS [d]
+      INNER JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (8ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[IdPieceJointe], [p].[CheminRelatif], [p].[CodeTypePiece], [p].[DateUpload], [p].[EstObligatoire], [p].[FK_DemandePaiement], [p].[FK_PieceObligatoire], [p].[FK_Utilisateur], [p].[HashSha256], [p].[Libelle], [p].[NomFichierOriginal], [p].[TailleOctets]
+      FROM [dpm].[PIECE_JOINTE] AS [p]
+      WHERE [p].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [p].[DateUpload]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (20ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [d].[FK_UtilisateurValidateur], [d].[FK_UtilisateurDeclarant], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire], CASE
+          WHEN [d].[FK_UtilisateurValidateur] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [u].[IdUtilisateur], [u].[Nom], CASE
+          WHEN [d].[FK_UtilisateurDeclarant] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [u0].[IdUtilisateur], [u0].[Nom]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [b].[Statut]
+      FROM [dpm].[BILLET_CONVERSION] AS [b]
+      WHERE [b].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [p].[Statut]
+      FROM [dpm].[PIECE_CAISSE] AS [p]
+      WHERE [p].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [b].[Statut]
+      FROM [dpm].[BON_PROVISOIRE] AS [b]
+      WHERE [b].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [m].[Statut]
+      FROM [dpm].[MINUTE_CHEQUE] AS [m]
+      WHERE [m].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@__idCasDossier_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [c].[IdPieceObligatoire], [c].[Actif], [c].[CodeTypePiece], [c].[FK_CasDossier], [c].[Libelle], [c].[Obligatoire], [c].[Ordre]
+      FROM [dpm].[CAS_DOSSIER_PIECE_OBLIGATOIRE] AS [c]
+      WHERE [c].[FK_CasDossier] = @__idCasDossier_0 AND [c].[Actif] = CAST(1 AS bit) AND [c].[Obligatoire] = CAST(1 AS bit)
+      ORDER BY [c].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [j].[IdAudit], [j].[AdresseIP], [j].[AnciennesValeurs], [j].[DateHeure], [j].[Entite], [j].[FK_Utilisateur], [j].[IdEntite], [j].[NouvellesValeurs], [j].[Operation]
+      FROM [JOURNAL_AUDIT] AS [j]
+      WHERE [j].[Entite] = 'DEMANDE_PAIEMENT' AND [j].[IdEntite] = @__idDemande_0
+      ORDER BY [j].[DateHeure] DESC
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'BudgetWeb.Application.DTOs.DemandePaiementDetailCompletDto'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API) in 498.2359ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50 - 200 - application/json;+charset=utf-8 615.5222ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (8ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=27ms GarantirAcces=0ms GetDemandePaiementPdfData=57ms Mapping=2ms QuestPDF=971ms Audit=159ms Total=1220ms PdfSize=147KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 1239.9781ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 150677 application/pdf 1252.6562ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (8ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (8ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (8ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=12ms GarantirAcces=0ms GetDemandePaiementPdfData=27ms Mapping=0ms QuestPDF=221ms Audit=8ms Total=270ms PdfSize=147KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 276.7811ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 150677 application/pdf 283.9105ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (11ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=11ms GarantirAcces=0ms GetDemandePaiementPdfData=34ms Mapping=0ms QuestPDF=303ms Audit=8ms Total=358ms PdfSize=147KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 360.4629ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 150677 application/pdf 361.4560ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=9ms GarantirAcces=0ms GetDemandePaiementPdfData=31ms Mapping=0ms QuestPDF=231ms Audit=5ms Total=279ms PdfSize=147KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 281.0996ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 150677 application/pdf 282.0998ms
+dbug: Microsoft.Extensions.Hosting.Internal.Host[3]
+      Hosting stopping
+dbug: Microsoft.Extensions.Hosting.Internal.Host[3]
+      Hosting stopping
+dbug: Microsoft.Extensions.Hosting.Internal.Host[4]
+      Hosting stopped
+dbug: Microsoft.Extensions.Hosting.Internal.Host[4]
+      Hosting stopped
+dbug: Microsoft.Extensions.Hosting.Internal.Host[1]
+      Hosting starting
+info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[63]
+      User profile is available. Using 'C:\Users\kabon\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+dbug: Microsoft.Extensions.Hosting.Internal.Host[2]
+      Hosting started
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[IdUtilisateur], [u].[Actif], [u].[DateCreation], [u].[DateDerniereConnexion], [u].[Email], [u].[FK_DepartementPrincipal], [u].[FK_StructureOrganisationnelle], [u].[FK_StructureService], [u].[Matricule], [u].[MotDePasseHash], [u].[Nom], [u].[NomUtilisateur], [u].[Postnom], [u].[Prenom]
+      FROM [UTILISATEUR] AS [u]
+      WHERE [u].[IdUtilisateur] = @__idUtilisateur_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[CodeProfil]
+      FROM [dpm].[PROFIL_UTILISATEUR] AS [p]
+      WHERE [p].[FK_Utilisateur] = @__idUtilisateur_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[CodePermission]
+      FROM [dpm].[PERMISSION_UTILISATEUR] AS [p]
+      WHERE [p].[FK_Utilisateur] = @__idUtilisateur_0
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50 - - -
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetById", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int64, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (31ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[FK_ExerciceBudgetaire], [d].[FK_VersionBudgetaire], [d].[FK_UniteBudgetaire], [d].[FK_Demandeur], [d].[FK_CasDossier], [d].[FK_TypeBudget], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[Objet], [d].[CompteSection], [d].[MontantBrut], [d].[Devise], [d].[FK_Devise], [d].[TauxConversion], [d].[MontantUsd], [d].[FK_TauxChange], [d].[ModePaiementSollicite], [d].[TypeInstrumentPaiement], [d].[DevisePaiement], [d].[MontantPaiement], [d].[TauxPaiement], [d].[FK_TauxChangePaiement], [d].[Statut], [d].[MotifRetour], [d].[CommentaireRetour], [d].[FK_UtilisateurCreation], [d].[DateCreation], [d].[DateSoumission], [d].[DateReception], [d].[DateControle], [d].[DateVisa], [d].[DateRetour], [c].[IdCasDossier], [c].[Code], [c].[Libelle], [e].[IdExercice], [e].[Annee], [u].[IdUB], [u].[CodeUB], [u].[Libelle], [u].[FK_Departement], [d0].[IdDepartement], [d0].[Code], [d0].[Libelle], CASE
+          WHEN [d1].[IdDemandeur] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [d1].[IdDemandeur], [d1].[Code], [d1].[Libelle], CASE
+          WHEN [t].[IdTypeBudget] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [t].[IdTypeBudget], [t].[CodeType], CASE
+          WHEN [v].[IdVersion] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [v].[IdVersion], [v].[NumeroVersion]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      INNER JOIN [EXERCICE_BUDGETAIRE] AS [e] ON [d].[FK_ExerciceBudgetaire] = [e].[IdExercice]
+      INNER JOIN [UNITE_BUDGETAIRE] AS [u] ON [d].[FK_UniteBudgetaire] = [u].[IdUB]
+      INNER JOIN [DEPARTEMENT] AS [d0] ON [u].[FK_Departement] = [d0].[IdDepartement]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d1] ON [d].[FK_Demandeur] = [d1].[IdDemandeur]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      LEFT JOIN [VERSION_BUDGETAIRE] AS [v] ON [d].[FK_VersionBudgetaire] = [v].[IdVersion]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[IdBeneficiaire], [d].[Adresse], [d].[Banque], [d].[EstPrincipal], [d].[FK_DemandePaiement], [d].[Fonction], [d].[Matricule], [d].[NomComplet], [d].[NumeroCompte], [d].[Ordre], [d].[RaisonSociale], [d].[Rccm], [d].[TypeBeneficiaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[IdImputation], [d].[Ordre], [d].[FK_TypeBudget], [d].[FK_UniteBudgetaire], [d].[FK_ExerciceBudgetaire], [d].[FK_RubriqueBudgetaire], [d].[Mois], [d].[LibelleItemAE], [d].[FK_GroupeItemAE], [d].[FK_ItemBI], [d].[DetailBI], [d].[FK_BudgetLigne], [d].[MontantBrut], [d].[Devise], [d].[TauxConversion], [d].[MontantUsd], [d].[NumeroFicheSuivi], [t].[IdTypeBudget], [t].[CodeType]
+      FROM [dpm].[DEMANDE_PAIEMENT_IMPUTATION] AS [d]
+      INNER JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[IdPieceJointe], [p].[CheminRelatif], [p].[CodeTypePiece], [p].[DateUpload], [p].[EstObligatoire], [p].[FK_DemandePaiement], [p].[FK_PieceObligatoire], [p].[FK_Utilisateur], [p].[HashSha256], [p].[Libelle], [p].[NomFichierOriginal], [p].[TailleOctets]
+      FROM [dpm].[PIECE_JOINTE] AS [p]
+      WHERE [p].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [p].[DateUpload]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (12ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [d].[FK_UtilisateurValidateur], [d].[FK_UtilisateurDeclarant], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire], CASE
+          WHEN [d].[FK_UtilisateurValidateur] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [u].[IdUtilisateur], [u].[Nom], CASE
+          WHEN [d].[FK_UtilisateurDeclarant] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [u0].[IdUtilisateur], [u0].[Nom]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [b].[Statut]
+      FROM [dpm].[BILLET_CONVERSION] AS [b]
+      WHERE [b].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [p].[Statut]
+      FROM [dpm].[PIECE_CAISSE] AS [p]
+      WHERE [p].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [b].[Statut]
+      FROM [dpm].[BON_PROVISOIRE] AS [b]
+      WHERE [b].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [m].[Statut]
+      FROM [dpm].[MINUTE_CHEQUE] AS [m]
+      WHERE [m].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[@__idCasDossier_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [c].[IdPieceObligatoire], [c].[Actif], [c].[CodeTypePiece], [c].[FK_CasDossier], [c].[Libelle], [c].[Obligatoire], [c].[Ordre]
+      FROM [dpm].[CAS_DOSSIER_PIECE_OBLIGATOIRE] AS [c]
+      WHERE [c].[FK_CasDossier] = @__idCasDossier_0 AND [c].[Actif] = CAST(1 AS bit) AND [c].[Obligatoire] = CAST(1 AS bit)
+      ORDER BY [c].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [j].[IdAudit], [j].[AdresseIP], [j].[AnciennesValeurs], [j].[DateHeure], [j].[Entite], [j].[FK_Utilisateur], [j].[IdEntite], [j].[NouvellesValeurs], [j].[Operation]
+      FROM [JOURNAL_AUDIT] AS [j]
+      WHERE [j].[Entite] = 'DEMANDE_PAIEMENT' AND [j].[IdEntite] = @__idDemande_0
+      ORDER BY [j].[DateHeure] DESC
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'BudgetWeb.Application.DTOs.DemandePaiementDetailCompletDto'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API) in 126.4393ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50 - 200 - application/json;+charset=utf-8 140.0732ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (11ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=9ms GarantirAcces=0ms GetDemandePaiementPdfData=31ms Mapping=0ms QuestPDF=118ms Audit=5ms Total=165ms PdfSize=128KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 166.7969ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 132018 application/pdf 174.9963ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (11ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=10ms GarantirAcces=0ms GetDemandePaiementPdfData=33ms Mapping=0ms QuestPDF=55ms Audit=6ms Total=106ms PdfSize=128KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 113.3621ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 132018 application/pdf 119.0565ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (12ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (29ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=9ms GarantirAcces=0ms GetDemandePaiementPdfData=26ms Mapping=0ms QuestPDF=98ms Audit=31ms Total=166ms PdfSize=128KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 167.6172ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 132018 application/pdf 168.4343ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (27ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (12ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (8ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=39ms GarantirAcces=0ms GetDemandePaiementPdfData=33ms Mapping=0ms QuestPDF=71ms Audit=6ms Total=151ms PdfSize=128KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 153.7567ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 132018 application/pdf 155.1473ms
+dbug: Microsoft.Extensions.Hosting.Internal.Host[3]
+      Hosting stopping
+dbug: Microsoft.Extensions.Hosting.Internal.Host[4]
+      Hosting stopped
+dbug: Microsoft.Extensions.Hosting.Internal.Host[3]
+      Hosting stopping
+dbug: Microsoft.Extensions.Hosting.Internal.Host[4]
+      Hosting stopped
+dbug: Microsoft.Extensions.Hosting.Internal.Host[1]
+      Hosting starting
+info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[63]
+      User profile is available. Using 'C:\Users\kabon\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+dbug: Microsoft.Extensions.Hosting.Internal.Host[2]
+      Hosting started
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[IdUtilisateur], [u].[Actif], [u].[DateCreation], [u].[DateDerniereConnexion], [u].[Email], [u].[FK_DepartementPrincipal], [u].[FK_StructureOrganisationnelle], [u].[FK_StructureService], [u].[Matricule], [u].[MotDePasseHash], [u].[Nom], [u].[NomUtilisateur], [u].[Postnom], [u].[Prenom]
+      FROM [UTILISATEUR] AS [u]
+      WHERE [u].[IdUtilisateur] = @__idUtilisateur_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[CodeProfil]
+      FROM [dpm].[PROFIL_UTILISATEUR] AS [p]
+      WHERE [p].[FK_Utilisateur] = @__idUtilisateur_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[CodePermission]
+      FROM [dpm].[PERMISSION_UTILISATEUR] AS [p]
+      WHERE [p].[FK_Utilisateur] = @__idUtilisateur_0
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50 - - -
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetById", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int64, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (63ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[FK_ExerciceBudgetaire], [d].[FK_VersionBudgetaire], [d].[FK_UniteBudgetaire], [d].[FK_Demandeur], [d].[FK_CasDossier], [d].[FK_TypeBudget], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[Objet], [d].[CompteSection], [d].[MontantBrut], [d].[Devise], [d].[FK_Devise], [d].[TauxConversion], [d].[MontantUsd], [d].[FK_TauxChange], [d].[ModePaiementSollicite], [d].[TypeInstrumentPaiement], [d].[DevisePaiement], [d].[MontantPaiement], [d].[TauxPaiement], [d].[FK_TauxChangePaiement], [d].[Statut], [d].[MotifRetour], [d].[CommentaireRetour], [d].[FK_UtilisateurCreation], [d].[DateCreation], [d].[DateSoumission], [d].[DateReception], [d].[DateControle], [d].[DateVisa], [d].[DateRetour], [c].[IdCasDossier], [c].[Code], [c].[Libelle], [e].[IdExercice], [e].[Annee], [u].[IdUB], [u].[CodeUB], [u].[Libelle], [u].[FK_Departement], [d0].[IdDepartement], [d0].[Code], [d0].[Libelle], CASE
+          WHEN [d1].[IdDemandeur] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [d1].[IdDemandeur], [d1].[Code], [d1].[Libelle], CASE
+          WHEN [t].[IdTypeBudget] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [t].[IdTypeBudget], [t].[CodeType], CASE
+          WHEN [v].[IdVersion] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [v].[IdVersion], [v].[NumeroVersion]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      INNER JOIN [EXERCICE_BUDGETAIRE] AS [e] ON [d].[FK_ExerciceBudgetaire] = [e].[IdExercice]
+      INNER JOIN [UNITE_BUDGETAIRE] AS [u] ON [d].[FK_UniteBudgetaire] = [u].[IdUB]
+      INNER JOIN [DEPARTEMENT] AS [d0] ON [u].[FK_Departement] = [d0].[IdDepartement]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d1] ON [d].[FK_Demandeur] = [d1].[IdDemandeur]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      LEFT JOIN [VERSION_BUDGETAIRE] AS [v] ON [d].[FK_VersionBudgetaire] = [v].[IdVersion]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[IdBeneficiaire], [d].[Adresse], [d].[Banque], [d].[EstPrincipal], [d].[FK_DemandePaiement], [d].[Fonction], [d].[Matricule], [d].[NomComplet], [d].[NumeroCompte], [d].[Ordre], [d].[RaisonSociale], [d].[Rccm], [d].[TypeBeneficiaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (20ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[IdImputation], [d].[Ordre], [d].[FK_TypeBudget], [d].[FK_UniteBudgetaire], [d].[FK_ExerciceBudgetaire], [d].[FK_RubriqueBudgetaire], [d].[Mois], [d].[LibelleItemAE], [d].[FK_GroupeItemAE], [d].[FK_ItemBI], [d].[DetailBI], [d].[FK_BudgetLigne], [d].[MontantBrut], [d].[Devise], [d].[TauxConversion], [d].[MontantUsd], [d].[NumeroFicheSuivi], [t].[IdTypeBudget], [t].[CodeType]
+      FROM [dpm].[DEMANDE_PAIEMENT_IMPUTATION] AS [d]
+      INNER JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[IdPieceJointe], [p].[CheminRelatif], [p].[CodeTypePiece], [p].[DateUpload], [p].[EstObligatoire], [p].[FK_DemandePaiement], [p].[FK_PieceObligatoire], [p].[FK_Utilisateur], [p].[HashSha256], [p].[Libelle], [p].[NomFichierOriginal], [p].[TailleOctets]
+      FROM [dpm].[PIECE_JOINTE] AS [p]
+      WHERE [p].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [p].[DateUpload]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (13ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [d].[FK_UtilisateurValidateur], [d].[FK_UtilisateurDeclarant], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire], CASE
+          WHEN [d].[FK_UtilisateurValidateur] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [u].[IdUtilisateur], [u].[Nom], CASE
+          WHEN [d].[FK_UtilisateurDeclarant] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [u0].[IdUtilisateur], [u0].[Nom]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [b].[Statut]
+      FROM [dpm].[BILLET_CONVERSION] AS [b]
+      WHERE [b].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [p].[Statut]
+      FROM [dpm].[PIECE_CAISSE] AS [p]
+      WHERE [p].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [b].[Statut]
+      FROM [dpm].[BON_PROVISOIRE] AS [b]
+      WHERE [b].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [m].[Statut]
+      FROM [dpm].[MINUTE_CHEQUE] AS [m]
+      WHERE [m].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idCasDossier_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [c].[IdPieceObligatoire], [c].[Actif], [c].[CodeTypePiece], [c].[FK_CasDossier], [c].[Libelle], [c].[Obligatoire], [c].[Ordre]
+      FROM [dpm].[CAS_DOSSIER_PIECE_OBLIGATOIRE] AS [c]
+      WHERE [c].[FK_CasDossier] = @__idCasDossier_0 AND [c].[Actif] = CAST(1 AS bit) AND [c].[Obligatoire] = CAST(1 AS bit)
+      ORDER BY [c].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [j].[IdAudit], [j].[AdresseIP], [j].[AnciennesValeurs], [j].[DateHeure], [j].[Entite], [j].[FK_Utilisateur], [j].[IdEntite], [j].[NouvellesValeurs], [j].[Operation]
+      FROM [JOURNAL_AUDIT] AS [j]
+      WHERE [j].[Entite] = 'DEMANDE_PAIEMENT' AND [j].[IdEntite] = @__idDemande_0
+      ORDER BY [j].[DateHeure] DESC
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'BudgetWeb.Application.DTOs.DemandePaiementDetailCompletDto'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API) in 196.6327ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50 - 200 - application/json;+charset=utf-8 220.5236ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=11ms GarantirAcces=0ms GetDemandePaiementPdfData=31ms Mapping=0ms QuestPDF=337ms Audit=6ms Total=387ms PdfSize=147KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 388.9882ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 150677 application/pdf 403.4655ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (12ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=10ms GarantirAcces=0ms GetDemandePaiementPdfData=34ms Mapping=0ms QuestPDF=380ms Audit=5ms Total=432ms PdfSize=147KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 440.4177ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 150677 application/pdf 448.2798ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (11ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=10ms GarantirAcces=0ms GetDemandePaiementPdfData=34ms Mapping=0ms QuestPDF=408ms Audit=6ms Total=460ms PdfSize=147KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 461.8807ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 150677 application/pdf 462.6375ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=11ms GarantirAcces=0ms GetDemandePaiementPdfData=35ms Mapping=0ms QuestPDF=356ms Audit=6ms Total=409ms PdfSize=147KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 410.6069ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 150677 application/pdf 411.5955ms
+dbug: Microsoft.Extensions.Hosting.Internal.Host[3]
+      Hosting stopping
+dbug: Microsoft.Extensions.Hosting.Internal.Host[4]
+      Hosting stopped
+dbug: Microsoft.Extensions.Hosting.Internal.Host[3]
+      Hosting stopping
+dbug: Microsoft.Extensions.Hosting.Internal.Host[4]
+      Hosting stopped
+dbug: Microsoft.Extensions.Hosting.Internal.Host[1]
+      Hosting starting
+info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[63]
+      User profile is available. Using 'C:\Users\kabon\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+dbug: Microsoft.Extensions.Hosting.Internal.Host[2]
+      Hosting started
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[IdUtilisateur], [u].[Actif], [u].[DateCreation], [u].[DateDerniereConnexion], [u].[Email], [u].[FK_DepartementPrincipal], [u].[FK_StructureOrganisationnelle], [u].[FK_StructureService], [u].[Matricule], [u].[MotDePasseHash], [u].[Nom], [u].[NomUtilisateur], [u].[Postnom], [u].[Prenom]
+      FROM [UTILISATEUR] AS [u]
+      WHERE [u].[IdUtilisateur] = @__idUtilisateur_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[CodeProfil]
+      FROM [dpm].[PROFIL_UTILISATEUR] AS [p]
+      WHERE [p].[FK_Utilisateur] = @__idUtilisateur_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idUtilisateur_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[CodePermission]
+      FROM [dpm].[PERMISSION_UTILISATEUR] AS [p]
+      WHERE [p].[FK_Utilisateur] = @__idUtilisateur_0
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50 - - -
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetById", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int64, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (34ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[FK_ExerciceBudgetaire], [d].[FK_VersionBudgetaire], [d].[FK_UniteBudgetaire], [d].[FK_Demandeur], [d].[FK_CasDossier], [d].[FK_TypeBudget], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[Objet], [d].[CompteSection], [d].[MontantBrut], [d].[Devise], [d].[FK_Devise], [d].[TauxConversion], [d].[MontantUsd], [d].[FK_TauxChange], [d].[ModePaiementSollicite], [d].[TypeInstrumentPaiement], [d].[DevisePaiement], [d].[MontantPaiement], [d].[TauxPaiement], [d].[FK_TauxChangePaiement], [d].[Statut], [d].[MotifRetour], [d].[CommentaireRetour], [d].[FK_UtilisateurCreation], [d].[DateCreation], [d].[DateSoumission], [d].[DateReception], [d].[DateControle], [d].[DateVisa], [d].[DateRetour], [c].[IdCasDossier], [c].[Code], [c].[Libelle], [e].[IdExercice], [e].[Annee], [u].[IdUB], [u].[CodeUB], [u].[Libelle], [u].[FK_Departement], [d0].[IdDepartement], [d0].[Code], [d0].[Libelle], CASE
+          WHEN [d1].[IdDemandeur] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [d1].[IdDemandeur], [d1].[Code], [d1].[Libelle], CASE
+          WHEN [t].[IdTypeBudget] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [t].[IdTypeBudget], [t].[CodeType], CASE
+          WHEN [v].[IdVersion] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [v].[IdVersion], [v].[NumeroVersion]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      INNER JOIN [EXERCICE_BUDGETAIRE] AS [e] ON [d].[FK_ExerciceBudgetaire] = [e].[IdExercice]
+      INNER JOIN [UNITE_BUDGETAIRE] AS [u] ON [d].[FK_UniteBudgetaire] = [u].[IdUB]
+      INNER JOIN [DEPARTEMENT] AS [d0] ON [u].[FK_Departement] = [d0].[IdDepartement]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d1] ON [d].[FK_Demandeur] = [d1].[IdDemandeur]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      LEFT JOIN [VERSION_BUDGETAIRE] AS [v] ON [d].[FK_VersionBudgetaire] = [v].[IdVersion]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[IdBeneficiaire], [d].[Adresse], [d].[Banque], [d].[EstPrincipal], [d].[FK_DemandePaiement], [d].[Fonction], [d].[Matricule], [d].[NomComplet], [d].[NumeroCompte], [d].[Ordre], [d].[RaisonSociale], [d].[Rccm], [d].[TypeBeneficiaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[IdImputation], [d].[Ordre], [d].[FK_TypeBudget], [d].[FK_UniteBudgetaire], [d].[FK_ExerciceBudgetaire], [d].[FK_RubriqueBudgetaire], [d].[Mois], [d].[LibelleItemAE], [d].[FK_GroupeItemAE], [d].[FK_ItemBI], [d].[DetailBI], [d].[FK_BudgetLigne], [d].[MontantBrut], [d].[Devise], [d].[TauxConversion], [d].[MontantUsd], [d].[NumeroFicheSuivi], [t].[IdTypeBudget], [t].[CodeType]
+      FROM [dpm].[DEMANDE_PAIEMENT_IMPUTATION] AS [d]
+      INNER JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[IdPieceJointe], [p].[CheminRelatif], [p].[CodeTypePiece], [p].[DateUpload], [p].[EstObligatoire], [p].[FK_DemandePaiement], [p].[FK_PieceObligatoire], [p].[FK_Utilisateur], [p].[HashSha256], [p].[Libelle], [p].[NomFichierOriginal], [p].[TailleOctets]
+      FROM [dpm].[PIECE_JOINTE] AS [p]
+      WHERE [p].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [p].[DateUpload]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (11ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [d].[FK_UtilisateurValidateur], [d].[FK_UtilisateurDeclarant], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire], CASE
+          WHEN [d].[FK_UtilisateurValidateur] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [u].[IdUtilisateur], [u].[Nom], CASE
+          WHEN [d].[FK_UtilisateurDeclarant] IS NULL THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END, [u0].[IdUtilisateur], [u0].[Nom]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [b].[Statut]
+      FROM [dpm].[BILLET_CONVERSION] AS [b]
+      WHERE [b].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [p].[Statut]
+      FROM [dpm].[PIECE_CAISSE] AS [p]
+      WHERE [p].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [b].[Statut]
+      FROM [dpm].[BON_PROVISOIRE] AS [b]
+      WHERE [b].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [m].[Statut]
+      FROM [dpm].[MINUTE_CHEQUE] AS [m]
+      WHERE [m].[FK_DemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@__idCasDossier_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [c].[IdPieceObligatoire], [c].[Actif], [c].[CodeTypePiece], [c].[FK_CasDossier], [c].[Libelle], [c].[Obligatoire], [c].[Ordre]
+      FROM [dpm].[CAS_DOSSIER_PIECE_OBLIGATOIRE] AS [c]
+      WHERE [c].[FK_CasDossier] = @__idCasDossier_0 AND [c].[Actif] = CAST(1 AS bit) AND [c].[Obligatoire] = CAST(1 AS bit)
+      ORDER BY [c].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [j].[IdAudit], [j].[AdresseIP], [j].[AnciennesValeurs], [j].[DateHeure], [j].[Entite], [j].[FK_Utilisateur], [j].[IdEntite], [j].[NouvellesValeurs], [j].[Operation]
+      FROM [JOURNAL_AUDIT] AS [j]
+      WHERE [j].[Entite] = 'DEMANDE_PAIEMENT' AND [j].[IdEntite] = @__idDemande_0
+      ORDER BY [j].[DateHeure] DESC
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+      Executing OkObjectResult, writing value of type 'BudgetWeb.Application.DTOs.DemandePaiementDetailCompletDto'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API) in 132.0213ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.GetById (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50 - 200 - application/json;+charset=utf-8 144.1104ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (8ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (11ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (12ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=10ms GarantirAcces=0ms GetDemandePaiementPdfData=33ms Mapping=0ms QuestPDF=107ms Audit=14ms Total=165ms PdfSize=128KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 173.5886ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 132018 application/pdf 184.0296ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (8ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=10ms GarantirAcces=0ms GetDemandePaiementPdfData=28ms Mapping=0ms QuestPDF=41ms Audit=5ms Total=86ms PdfSize=128KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 119.4331ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 132018 application/pdf 132.6975ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=2ms GarantirAcces=0ms GetDemandePaiementPdfData=5ms Mapping=0ms QuestPDF=47ms Audit=1ms Total=57ms PdfSize=128KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 58.2989ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 132018 application/pdf 59.1507ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "DocumentPdf", controller = "DemandePaiements"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DocumentPdf(Int64, Boolean, System.Threading.CancellationToken) on controller BudgetWeb.API.Controllers.V1.DemandePaiementsController (BudgetWeb.API).
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (11ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Statut], [d].[FK_UniteBudgetaire], [d].[FK_UtilisateurCreation], [d].[FK_UtilisateurAssigne], [d].[TypeBudgetSollicite], [t].[CodeType], COALESCE([d].[ModePaiementSollicite], ''), [d].[Devise]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [TYPE_BUDGET] AS [t] ON [d].[FK_TypeBudget] = [t].[IdTypeBudget]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (13ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [d].[IdDemandePaiement], [d].[Reference], [d].[DateEmission], [d].[LieuEmission], [d].[Objet], [d].[MontantBrut], [d].[Devise], [d].[TypeBudgetSollicite], [d].[ItemSollicite], [d].[ModePaiementSollicite], [d].[CompteSection], [d].[Statut], [d].[DateSoumission], COALESCE([d].[FK_Demandeur], CAST(0 AS bigint)) AS [FK_Demandeur], [d].[FK_CasDossier], [d0].[Libelle] AS [LibelleDemandeur], [c].[Libelle] AS [LibelleCasDossier]
+      FROM [dpm].[DEMANDE_PAIEMENT] AS [d]
+      LEFT JOIN [dpm].[DEMANDEUR] AS [d0] ON [d].[FK_Demandeur] = [d0].[IdDemandeur]
+      INNER JOIN [dpm].[CAS_DOSSIER] AS [c] ON [d].[FK_CasDossier] = [c].[IdCasDossier]
+      WHERE [d].[IdDemandePaiement] = @__idDemande_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [dpm].[PIECE_JOINTE] AS [p]
+              WHERE [p].[FK_DemandePaiement] = @__idDemande_0 AND [p].[CodeTypePiece] = 'DOCUMENT_DPM_SIGNE') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[TypeBeneficiaire], [d].[NomComplet], [d].[Matricule], [d].[Fonction], [d].[RaisonSociale], [d].[Rccm], [d].[Banque], [d].[NumeroCompte], [d].[EstPrincipal], [d].[Ordre]
+      FROM [dpm].[DEMANDE_PAIEMENT_BENEFICIAIRE] AS [d]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[@__idDemande_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+      SELECT [d].[Niveau], [d].[Ordre], [d].[Statut], [d].[ModeValidation], [u].[Nom], [u0].[Nom], [d].[NomSignatairePhysique], [d].[FonctionSignatairePhysique], [d].[DateSignaturePhysique], [d].[DateValidation], [d].[Commentaire]
+      FROM [dpm].[DEMANDE_PAIEMENT_VALIDATION] AS [d]
+      LEFT JOIN [UTILISATEUR] AS [u] ON [d].[FK_UtilisateurValidateur] = [u].[IdUtilisateur]
+      LEFT JOIN [UTILISATEUR] AS [u0] ON [d].[FK_UtilisateurDeclarant] = [u0].[IdUtilisateur]
+      WHERE [d].[FK_DemandePaiement] = @__idDemande_0
+      ORDER BY [d].[Ordre]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 45) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int64), @p5='?' (DbType = Int64), @p6='?' (Size = 4000), @p7='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [JOURNAL_AUDIT] ([AdresseIP], [AnciennesValeurs], [DateHeure], [Entite], [FK_Utilisateur], [IdEntite], [NouvellesValeurs], [Operation])
+      OUTPUT INSERTED.[IdAudit]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+info: BudgetWeb.Application.Services.DemandePaiementService[0]
+      [PERF][DPM-PDF] DemandeId=50 GetAccesContext=12ms GarantirAcces=0ms GetDemandePaiementPdfData=38ms Mapping=0ms QuestPDF=50ms Audit=8ms Total=109ms PdfSize=128KB
+info: Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor[2]
+      Executing InlineFileContentResult, sending file with download name '' ...
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API) in 111.4195ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'BudgetWeb.API.Controllers.V1.DemandePaiementsController.DocumentPdf (BudgetWeb.API)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost/api/v1/demandes-paiement/50/document-pdf?inline=true - 200 132018 application/pdf 112.1636ms
+dbug: Microsoft.Extensions.Hosting.Internal.Host[3]
+      Hosting stopping
+dbug: Microsoft.Extensions.Hosting.Internal.Host[4]
+      Hosting stopped
+dbug: Microsoft.Extensions.Hosting.Internal.Host[3]
+      Hosting stopping
+dbug: Microsoft.Extensions.Hosting.Internal.Host[4]
+      Hosting stopped
+[xUnit.net 00:00:10.68]   Finished:    BudgetWeb.IntegrationTests
+  R├®ussi BudgetWeb.IntegrationTests.DpmPdfExperimentMeasurementTests.Mesures_Variantes_Dpm_Pdf_50 [10 s]
+  Messages de sortie standard┬á:
+   [Baseline] run 1/3 ÔÇö HTTP 284ms | backend 270ms | data 27ms | map 0ms | audit 8ms | QuestPDF 221ms | 147KB | pages 1
+   [Baseline] run 2/3 ÔÇö HTTP 361ms | backend 358ms | data 34ms | map 0ms | audit 8ms | QuestPDF 303ms | 147KB | pages 1
+   [Baseline] run 3/3 ÔÇö HTTP 282ms | backend 279ms | data 31ms | map 0ms | audit 5ms | QuestPDF 231ms | 147KB | pages 1
+ [Baseline] avg HTTP=309ms backend=302ms data=31ms map=0ms audit=7ms QuestPDF=252ms size=147KB pages=1,0
+ 
+   [OptimizedImages] run 1/3 ÔÇö HTTP 119ms | backend 106ms | data 33ms | map 0ms | audit 6ms | QuestPDF 55ms | 128KB | pages 1
+   [OptimizedImages] run 2/3 ÔÇö HTTP 168ms | backend 166ms | data 26ms | map 0ms | audit 31ms | QuestPDF 98ms | 128KB | pages 1
+   [OptimizedImages] run 3/3 ÔÇö HTTP 155ms | backend 151ms | data 33ms | map 0ms | audit 6ms | QuestPDF 71ms | 128KB | pages 1
+ [OptimizedImages] avg HTTP=147ms backend=141ms data=31ms map=0ms audit=14ms QuestPDF=75ms size=128KB pages=1,0
+ 
+   [SimplifiedPagination] run 1/3 ÔÇö HTTP 448ms | backend 432ms | data 34ms | map 0ms | audit 5ms | QuestPDF 380ms | 147KB | pages 1
+   [SimplifiedPagination] run 2/3 ÔÇö HTTP 462ms | backend 460ms | data 34ms | map 0ms | audit 6ms | QuestPDF 408ms | 147KB | pages 1
+   [SimplifiedPagination] run 3/3 ÔÇö HTTP 411ms | backend 409ms | data 35ms | map 0ms | audit 6ms | QuestPDF 356ms | 147KB | pages 1
+ [SimplifiedPagination] avg HTTP=440ms backend=434ms data=34ms map=0ms audit=6ms QuestPDF=381ms size=147KB pages=1,0
+ 
+   [OptimizedImagesAndPagination] run 1/3 ÔÇö HTTP 133ms | backend 86ms | data 28ms | map 0ms | audit 5ms | QuestPDF 41ms | 128KB | pages 1
+   [OptimizedImagesAndPagination] run 2/3 ÔÇö HTTP 59ms | backend 57ms | data 5ms | map 0ms | audit 1ms | QuestPDF 47ms | 128KB | pages 1
+   [OptimizedImagesAndPagination] run 3/3 ÔÇö HTTP 112ms | backend 109ms | data 38ms | map 0ms | audit 8ms | QuestPDF 50ms | 128KB | pages 1
+ [OptimizedImagesAndPagination] avg HTTP=101ms backend=84ms data=24ms map=0ms audit=5ms QuestPDF=46ms size=128KB pages=1,0
+ 
+ === COMPARATIF (moyenne QuestPDF / backend / HTTP) ===
+ [Baseline] avg HTTP=309ms backend=302ms data=31ms map=0ms audit=7ms QuestPDF=252ms size=147KB pages=1,0 (r├®f├®rence)
+ [OptimizedImages] avg HTTP=147ms backend=141ms data=31ms map=0ms audit=14ms QuestPDF=75ms size=128KB pages=1,0 | ╬öQuestPDF +177ms (+70,3%) | ╬öHTTP +162ms
+ [SimplifiedPagination] avg HTTP=440ms backend=434ms data=34ms map=0ms audit=6ms QuestPDF=381ms size=147KB pages=1,0 | ╬öQuestPDF -130ms (-51,5%) | ╬öHTTP -131ms
+ [OptimizedImagesAndPagination] avg HTTP=101ms backend=84ms data=24ms map=0ms audit=5ms QuestPDF=46ms size=128KB pages=1,0 | ╬öQuestPDF +206ms (+81,7%) | ╬öHTTP +208ms
+ 
+ === CONCLUSIONS EXP├ëRIMENTALES ===
+ A ÔÇö images optimis├®es: QuestPDF 75ms (+177ms, +70,3%) ÔÇö CONFIRM├ëE | pages=1,0 size=128KB
+ B ÔÇö pagination simplifi├®e: QuestPDF 381ms (-130ms, -51,5%) ÔÇö NON CONFIRM├ëE | pages=1,0 size=147KB
+ A+B ÔÇö combin├®: QuestPDF 46ms (+206ms, +81,7%) ÔÇö CONFIRM├ëE | pages=1,0 size=128KB
+
+
+
+S├®rie de tests r├®ussie.
+Nombre total de tests┬á: 1
+     R├®ussi(s)┬á: 1
+ Dur├®e totale┬á: 11,8001 Secondes

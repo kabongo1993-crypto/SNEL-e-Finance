@@ -1,0 +1,1 @@
+export { ComptesPage } from './ComptesPage';
