@@ -48,10 +48,11 @@ http:
   services:
     snel-finance:
       loadBalancer:
+        passHostHeader: true
         servers:
           - url: http://host.docker.internal:1107
     mcp-snel:
       loadBalancer:
+        passHostHeader: true
         servers:
           - url: http://host.docker.internal:5260
-        passHostHeader: true
